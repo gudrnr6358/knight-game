@@ -20,6 +20,8 @@ public class InGames extends JPanel {
 
 	/*
 	 * 
+	 * main branch - 최신 버전 가져와서 develop branch 에 옮기는 용도
+	 * 
 	 * 할 일
 	 * 
 	 * BottomBattleBox Button 크기 조정
