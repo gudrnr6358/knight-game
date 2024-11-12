@@ -19,7 +19,6 @@ import game.monster.Monster;
 public class InGames extends JPanel {
 
 	/*
-	 * develop branch 추가
 	 * 할 일
 	 * 
 	 * 이미지 삽입 - TopPanel class 안에 CombatantImages class 만들기?
