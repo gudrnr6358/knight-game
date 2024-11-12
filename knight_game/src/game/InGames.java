@@ -21,8 +21,6 @@ public class InGames extends JPanel {
 	/*
 	 * 할 일
 	 * 
-	 * 이미지 삽입 - TopPanel class 안에 CombatantImages class 만들기?
-	 * 
 	 * BottomBox 텍스트 라인 추가하기 - BottomBox class 안에 JLabel BottomBattleBox Button 크기
 	 * 조정
 	 * 
