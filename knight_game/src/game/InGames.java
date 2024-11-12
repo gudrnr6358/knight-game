@@ -19,7 +19,10 @@ import game.monster.Monster;
 public class InGames extends JPanel {
 
 	/*
+<<<<<<< HEAD
 	 * develop commit and push
+=======
+>>>>>>> refs/heads/main
 	 * 
 	 * 할 일
 	 * 
