@@ -23,8 +23,6 @@ public class InGames extends JPanel {
 	 * 
 	 * BottomBattleBox Button 크기 조정
 	 * 
-	 * BottomBox 텍스트 라인 추가하기 - BottomBox class 안에 JLabel
-	 * 
 	 * 첫 몬스터 처치 후 다음 몬스터 생성하는 로직 생성 몬스터가 공격하는 로직 생성
 	 */
 
@@ -34,6 +32,7 @@ public class InGames extends JPanel {
 	private Monster monster;
 	private static Boolean inBattle = false;
 	private Timer timer;
+	private static JLabel textLabel;
 
 	private static int count = 0;
 
@@ -41,23 +40,27 @@ public class InGames extends JPanel {
 		this.character = character;
 		this.monsters = monsters;
 		this.monster = monsters[count++];
+		BottomPanel.TextLabel.setTextLabel("하이욤 ㅋㅋzzz");
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setPanel();
+		InGames.this.repaint();
 	}
 
 	private void setPanel() {
 		InGames.this.removeAll();
 		InGames.this.revalidate();
+		// 이것보다는 몬스터 처치 시에 이런 로직을 넣는 게 좋을 듯
+		if (monster.nowHp <= 0) {
+			this.monster = monsters[count++];
+		}
+		//
 		setTopPanel();
 		setBottomPanel();
 		InGames.this.repaint();
 	}
 
 	private void setTopPanel() {
-		if (monster.nowHp <= 0) {
-			this.monster = monsters[count++];
-		}
 		add(new TopPanel(monster));
 	}
 
@@ -65,20 +68,21 @@ public class InGames extends JPanel {
 		add(new BottomPanel());
 	}
 
-	private void setBottomBoxText() {
-
-	}
-
-	public void battle() {
+	private void battle() {
 		if (monster.nowHp <= 0 || character.nowHp <= 0) {
 			InGames.this.removeAll();
 			timer.stop();
 		}
 	}
 
-	class TopPanel extends JPanel {
+	private void nextText(String str) {
+		BottomPanel.TextLabel.setTextLabel(str);
+		setPanel();
+	}
 
-		public TopPanel(Monster monster) {
+	private class TopPanel extends JPanel {
+
+		private TopPanel(Monster monster) {
 			setLayout(null);
 			setBackground(Color.white);
 			add(new StatusPanel(character));
@@ -192,6 +196,22 @@ public class InGames extends JPanel {
 			add(bottomBox);
 		}
 
+		private static class TextLabel extends JLabel {
+
+			private TextLabel(String str) {
+				super(str);
+				textLabel = this;
+				setFont(new Font("SansSerif", Font.BOLD, 25));
+				setBackground(Color.black);
+				setForeground(Color.pink);
+				setBounds(0, 0, 1000, 50);
+			}
+
+			private static void setTextLabel(String str) {
+				new TextLabel(str);
+			}
+		}
+
 		private class BottomBox extends JPanel {
 
 			private BottomBox() {
@@ -206,43 +226,45 @@ public class InGames extends JPanel {
 				}
 			}
 
-			class BottomBasicPanel extends JPanel {
+			private class BottomBasicPanel extends JPanel {
 
-				public BottomBasicPanel() {
+				private BottomBasicPanel() {
 					setLayout(null);
 					setBounds(3, 3, 1314, 329);
 					add(new FightButton());
 					add(new RunButton());
+					add(textLabel);
 				}
 
-				class FightButton extends MyButton {
+				private class FightButton extends MyButton {
 					private FightButton() {
 						super("싸운다");
 						setBounds(55, 100, 1200, 90);
 					}
 				}
 
-				class RunButton extends MyButton {
+				private class RunButton extends MyButton {
 
 					private RunButton() {
 						super("도망친다");
 						setBounds(55, 210, 1200, 90);
 					}
 				}
+
 			}
 
-			class BottomBattlePanel extends JPanel {
+			private class BottomBattlePanel extends JPanel {
 
-				public BottomBattlePanel() {
+				private BottomBattlePanel() {
 					setLayout(null);
 					add(new AttackButton());
 					add(new SkillButton());
 					add(new CharSkillButton());
 					setBounds(3, 3, 1314, 329);
-					InGames.this.repaint();
+					add(textLabel);
 				}
 
-				class AttackButton extends MyButton {
+				private class AttackButton extends MyButton {
 
 					private AttackButton() {
 						super("공격");
@@ -250,7 +272,7 @@ public class InGames extends JPanel {
 					}
 				}
 
-				class SkillButton extends MyButton {
+				private class SkillButton extends MyButton {
 
 					private SkillButton() {
 						super("캐릭터 스킬");
@@ -258,23 +280,25 @@ public class InGames extends JPanel {
 					}
 				}
 
-				class CharSkillButton extends MyButton {
+				private class CharSkillButton extends MyButton {
 
 					private CharSkillButton() {
 						super("CharSkillButton");
 						setBounds(230, 10, 100, 30);
 					}
 				}
+
 			}
 
-			class MyButton extends JButton {
-				public MyButton(String str) {
+			private class MyButton extends JButton {
+				private MyButton(String str) {
 					super(str);
 					addMouseListener(new ButtonEvent());
 					setFocusable(false);
 					setFont(FONT);
 				}
 			}
+
 		}
 
 		private class ButtonEvent extends MouseAdapter {
@@ -297,6 +321,7 @@ public class InGames extends JPanel {
 						}
 					});
 					timer.start();
+					nextText("전투 시작!!!");
 				}
 				if (src.getText().equals("도망친다")) {
 					GameFrame.setPanel(new Lobby(character));
