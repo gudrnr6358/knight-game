@@ -169,10 +169,10 @@ public class InGames extends JPanel {
 			private CombatantImages(ImageUnit unit) {
 				super(unit.getImage());
 				if (unit instanceof Character) {
-					setBounds(0, 0, 0, 0);
+					setBounds(1000, 100, 200, 200);
 				}
 				if (unit instanceof Monster) {
-					setBounds(0, 0, 0, 0);
+					setBounds(100, 500, 200, 200);
 				}
 			}
 
