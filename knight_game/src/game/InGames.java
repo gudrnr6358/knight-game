@@ -21,8 +21,9 @@ public class InGames extends JPanel {
 	/*
 	 * 할 일
 	 * 
-	 * BottomBox 텍스트 라인 추가하기 - BottomBox class 안에 JLabel BottomBattleBox Button 크기
-	 * 조정
+	 * BottomBattleBox Button 크기 조정
+	 * 
+	 * BottomBox 텍스트 라인 추가하기 - BottomBox class 안에 JLabel
 	 * 
 	 * 첫 몬스터 처치 후 다음 몬스터 생성하는 로직 생성 몬스터가 공격하는 로직 생성
 	 */
