@@ -2,7 +2,7 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class Character implements Combatant, Image {
+public class Character implements Combatant, ImageUnit {
 	public static boolean hadCharacter = false;
 	public String name;
 	public Integer level;
