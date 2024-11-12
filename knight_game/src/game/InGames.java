@@ -25,6 +25,7 @@ public class InGames extends JPanel {
 	 * 조정
 	 * 
 	 * 첫 몬스터 처치 후 다음 몬스터 생성하는 로직 생성 몬스터가 공격하는 로직 생성
+	 * 
 	 */
 
 	private final Font FONT = new Font("SansSerif", Font.BOLD, 20);
