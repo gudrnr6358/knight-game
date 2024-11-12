@@ -19,6 +19,8 @@ import game.monster.Monster;
 public class InGames extends JPanel {
 
 	/*
+	 * develop commit and push
+	 * 
 	 * 할 일
 	 * 
 	 * BottomBattleBox Button 크기 조정
