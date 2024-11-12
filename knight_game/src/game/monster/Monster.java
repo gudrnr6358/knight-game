@@ -1,9 +1,9 @@
 package game.monster;
 
 import game.Combatant;
-import game.Image;
+import game.ImageUnit;
 
-public abstract class Monster implements Combatant, Image {
+public abstract class Monster implements Combatant, ImageUnit {
 	public final String NAME;
 	public final Integer HP;
 	public Integer nowHp;

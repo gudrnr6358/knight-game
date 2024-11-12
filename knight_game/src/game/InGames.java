@@ -19,10 +19,7 @@ import game.monster.Monster;
 public class InGames extends JPanel {
 
 	/*
-	 * develop branch 추가
 	 * 할 일
-	 * 
-	 * 이미지 삽입 - TopPanel class 안에 CombatantImages class 만들기?
 	 * 
 	 * BottomBox 텍스트 라인 추가하기 - BottomBox class 안에 JLabel BottomBattleBox Button 크기
 	 * 조정
@@ -49,6 +46,8 @@ public class InGames extends JPanel {
 	}
 
 	private void setPanel() {
+		InGames.this.removeAll();
+		InGames.this.revalidate();
 		setTopPanel();
 		setBottomPanel();
 		InGames.this.repaint();
@@ -83,6 +82,8 @@ public class InGames extends JPanel {
 			setBackground(Color.white);
 			add(new StatusPanel(character));
 			add(new StatusPanel(monster));
+			add(new CombatantImages(character));
+			add(new CombatantImages(monster));
 			setBounds(0, 0, 1366, 510);
 		}
 
@@ -158,6 +159,20 @@ public class InGames extends JPanel {
 						}
 						g.fillRoundRect(0, 0, (int) ((m.nowHp / (double) m.HP) * 230), 20, 10, 10);
 					}
+				}
+			}
+
+		}
+
+		private class CombatantImages extends JLabel {
+
+			private CombatantImages(ImageUnit unit) {
+				super(unit.getImage());
+				if (unit instanceof Character) {
+					setBounds(150, 200, 300, 300);
+				}
+				if (unit instanceof Monster) {
+					setBounds(950, 0, 300, 300);
 				}
 			}
 
@@ -288,19 +303,19 @@ public class InGames extends JPanel {
 
 				if (src.getText().equals("공격")) {
 					monster.nowHp -= character.attack();
-					// 스크립트 발생, 시간 2초 대기 메서드 실행
+					// 스크립트 출력, 시간 2초 대기 메서드 실행
 					character.nowHp -= monster.attack();
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
 					monster.nowHp -= character.skill();
-					// 스크립트 발생, 시간 2초 대기 메서드 실행
+					// 스크립트 출력, 시간 2초 대기 메서드 실행
 					character.nowHp -= monster.attack();
 				}
 
 				if (src.getText().equals("CharSkillButton")) {
 					monster.nowHp -= character.charSkill();
-					// 스크립트 발생, 시간 2초 대기 메서드 실행
+					// 스크립트 출력, 시간 2초 대기 메서드 실행
 					character.nowHp -= monster.attack();
 				}
 			}

@@ -2,7 +2,7 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class Character implements Combatant, Image {
+public class Character implements Combatant, ImageUnit {
 	public static boolean hadCharacter = false;
 	public String name;
 	public Integer level;
@@ -41,18 +41,17 @@ public class Character implements Combatant, Image {
 		return 10;
 	}
 
-
 	@Override
 	public ImageIcon getImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ImageIcon("images/knight.png");
 	}
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
+		if (nowHp > 0) {
+			return true;
+		}
 		return false;
 	}
 
-	
 }
