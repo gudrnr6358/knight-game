@@ -41,18 +41,17 @@ public class Character implements Combatant, ImageUnit {
 		return 10;
 	}
 
-
 	@Override
 	public ImageIcon getImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ImageIcon("images/knight.png");
 	}
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
+		if (nowHp > 0) {
+			return true;
+		}
 		return false;
 	}
 
-	
 }

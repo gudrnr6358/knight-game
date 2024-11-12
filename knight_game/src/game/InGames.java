@@ -48,6 +48,8 @@ public class InGames extends JPanel {
 	}
 
 	private void setPanel() {
+		InGames.this.removeAll();
+		InGames.this.revalidate();
 		setTopPanel();
 		setBottomPanel();
 		InGames.this.repaint();
@@ -169,10 +171,10 @@ public class InGames extends JPanel {
 			private CombatantImages(ImageUnit unit) {
 				super(unit.getImage());
 				if (unit instanceof Character) {
-					setBounds(1000, 100, 200, 200);
+					setBounds(150, 200, 300, 300);
 				}
 				if (unit instanceof Monster) {
-					setBounds(100, 500, 200, 200);
+					setBounds(950, 0, 300, 300);
 				}
 			}
 

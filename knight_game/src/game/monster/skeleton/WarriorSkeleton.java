@@ -17,8 +17,7 @@ public class WarriorSkeleton extends Skeleton{
 
 	@Override
 	public ImageIcon getImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ImageIcon("images/skeleton.png");
 	}
 
 	
