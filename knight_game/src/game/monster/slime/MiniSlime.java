@@ -16,7 +16,7 @@ public class MiniSlime extends Slime {
 
 	@Override
 	public ImageIcon getImage() {
-		return null;
+		return new ImageIcon("images/minislime.png");
 	}
 
 	@Override

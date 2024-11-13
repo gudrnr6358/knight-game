@@ -16,7 +16,7 @@ public class BossSlime extends Slime {
 
 	@Override
 	public ImageIcon getImage() {
-		return null;
+		return new ImageIcon("images/bossslime.png");
 	}
 
 	@Override

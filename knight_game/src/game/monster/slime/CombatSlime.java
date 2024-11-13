@@ -16,7 +16,7 @@ public class CombatSlime extends Slime {
 
 	@Override
 	public ImageIcon getImage() {
-		return null;
+		return new ImageIcon("images/slime.png");
 	}
 
 	@Override
