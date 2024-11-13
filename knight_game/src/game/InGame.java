@@ -137,10 +137,10 @@ public class InGame extends JPanel {
 					this.combatant = combatant;
 
 					if (combatant instanceof Character) {
-						setBounds(15, 55, 300, 20);
+						setBounds(15, 55, 332, 20);
 					}
 					if (combatant instanceof Monster) {
-						setBounds(15, 55, 300, 20);
+						setBounds(15, 55, 332, 20);
 					}
 				}
 
@@ -148,6 +148,7 @@ public class InGame extends JPanel {
 					super.paintComponent(g);
 					g.setColor(Color.LIGHT_GRAY);
 					g.fillRoundRect(0, 0, 230, 20, 10, 10);
+					String str;
 
 					if (combatant instanceof Character) {
 						Character c = (Character) combatant;
@@ -156,6 +157,10 @@ public class InGame extends JPanel {
 							g.setColor(Color.red);
 						}
 						g.fillRoundRect(0, 0, (int) ((c.nowHp / (double) c.hp) * 230), 20, 10, 10);
+						str = new String(c.nowHp + " / " + c.hp);
+						g.setColor(Color.black);
+						g.setFont(FONT);
+						g.drawString(str, 235, 15);
 					}
 
 					if (combatant instanceof Monster) {
@@ -165,6 +170,10 @@ public class InGame extends JPanel {
 							g.setColor(Color.red);
 						}
 						g.fillRoundRect(0, 0, (int) ((m.nowHp / (double) m.HP) * 230), 20, 10, 10);
+						str = new String(m.nowHp + " / " + m.HP);
+						g.setColor(Color.black);
+						g.setFont(FONT);
+						g.drawString(str, 235, 15);
 					}
 				}
 			}
