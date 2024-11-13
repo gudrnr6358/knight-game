@@ -19,4 +19,9 @@ public class CombatSlime extends Slime {
 	public ImageIcon getImage() {
 		return null;
 	}
+
+	@Override
+	public String getSkillName() {
+		return "베기를";
+	}
 }

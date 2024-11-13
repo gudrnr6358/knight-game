@@ -19,6 +19,10 @@ public class BabyDragon extends Dragon {
 	public ImageIcon getImage() {
 		return null;
 	}
-	
+
+	@Override
+	public String getSkillName() {
+		return "할퀴기를";
+	}
 	
 }

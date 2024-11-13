@@ -20,5 +20,8 @@ public class WarriorSkeleton extends Skeleton{
 		return new ImageIcon("images/skeleton.png");
 	}
 
-	
+	@Override
+	public String getSkillName() {
+		return "쌍검 휘두르기를";
+	}
 }

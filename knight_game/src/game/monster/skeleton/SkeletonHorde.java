@@ -21,4 +21,8 @@ public class SkeletonHorde extends Skeleton {
 		return null;
 	}
 
+	@Override
+	public String getSkillName() {
+		return "집단공격을";
+	}
 }

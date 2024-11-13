@@ -20,4 +20,9 @@ public class CowardDragon extends Dragon {
 	public ImageIcon getImage() {
 		return null;
 	}
+
+	@Override
+	public String getSkillName() {
+		return "옆에 있던 용에게 도움요청하기를";
+	}
 }

@@ -19,4 +19,9 @@ public class MiniSlime extends Slime {
 	public ImageIcon getImage() {
 		return null;
 	}
+
+	@Override
+	public String getSkillName() {
+		return "조약돌 던지기를";
+	}
 }

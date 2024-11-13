@@ -19,4 +19,9 @@ public class BossSlime extends Slime {
 	public ImageIcon getImage() {
 		return null;
 	}
+
+	@Override
+	public String getSkillName() {
+		return "슬라임 총공격을";
+	}
 }
