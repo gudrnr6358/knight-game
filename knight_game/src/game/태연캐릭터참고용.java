@@ -1,3 +1,4 @@
+/*
 package game;
 
 public class 태연캐릭터참고용 {
@@ -55,3 +56,4 @@ public class 태연캐릭터참고용 {
 	}
 
 }
+*/
