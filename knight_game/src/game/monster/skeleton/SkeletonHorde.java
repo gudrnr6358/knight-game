@@ -11,7 +11,6 @@ public class SkeletonHorde extends Skeleton {
 
 	@Override
 	public int skill() {
-		System.out.println(NAME + "가 집단공격을 시전했습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 

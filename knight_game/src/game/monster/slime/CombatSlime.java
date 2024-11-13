@@ -11,7 +11,6 @@ public class CombatSlime extends Slime {
 	// 베기
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 베기를 사용했습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 

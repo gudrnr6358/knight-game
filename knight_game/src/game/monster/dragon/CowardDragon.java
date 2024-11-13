@@ -11,8 +11,6 @@ public class CowardDragon extends Dragon {
 	//
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 도움 요청을 사용했습니다!");
-		System.out.println("옆에 있던 용이 당신을 공격했습니다.");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 	

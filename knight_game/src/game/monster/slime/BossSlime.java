@@ -11,7 +11,6 @@ public class BossSlime extends Slime {
 	// 슬라임 총공격
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 슬라임 총공격을 사용했습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 

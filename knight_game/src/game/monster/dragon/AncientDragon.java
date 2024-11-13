@@ -10,7 +10,6 @@ public class AncientDragon extends Dragon {
 	//
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 드래곤 브레스를 사용했습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 	

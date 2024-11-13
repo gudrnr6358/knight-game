@@ -11,7 +11,6 @@ public class WarriorSkeleton extends Skeleton{
 
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 쌍검을 휘둘렀습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 

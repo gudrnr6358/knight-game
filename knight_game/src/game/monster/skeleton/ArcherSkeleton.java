@@ -11,7 +11,6 @@ public class ArcherSkeleton extends Skeleton{
 
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 불화살을 쐈습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 
