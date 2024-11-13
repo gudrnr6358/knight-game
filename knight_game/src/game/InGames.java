@@ -21,6 +21,7 @@ public class InGames extends JPanel {
 	/*
 	 * 할 일
 	 * 
+	 * 캐릭터 사망했을 때 일어날 이벤트 추가하기 - timer 이용해서 추가하면 될 듯
 	 * 
 	 */
 
