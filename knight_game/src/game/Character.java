@@ -16,6 +16,10 @@ public class Character implements Combatant, ImageUnit {
 	private Integer[] LEVEL_UP_PLUS_HP = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 
+	/*
+	 * 레벨업 로직 경험치 얻는 메서드
+	 */
+
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
 		this.level = 1;
@@ -27,8 +31,8 @@ public class Character implements Combatant, ImageUnit {
 
 	@Override
 	public int attack() {
-		useSkill= false;
-		attackValue = 10;
+		useSkill = false;
+		attackValue = power + (int) (Math.random() * 5 + 1);
 		return attackValue;
 	}
 
@@ -36,13 +40,13 @@ public class Character implements Combatant, ImageUnit {
 	public int skill() {
 		// 20은 그냥 막 넣어놓은 값임, power 관련 연산 진행하고
 		// 그걸 attackValue 에 넣어서 return 하면 될 듯
-		useSkill= true;
+		useSkill = true;
 		attackValue = 20;
 		return attackValue;
 	}
 
 	public int charSkill() {
-		useSkill= true;
+		useSkill = true;
 		attackValue = 20;
 		return attackValue;
 	}
