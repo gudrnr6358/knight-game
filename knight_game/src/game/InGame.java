@@ -18,14 +18,6 @@ import game.monster.Monster;
 
 public class InGame extends JPanel {
 
-	/*
-	 * 할 일 !
-	 * 
-	 * 캐릭터 사망했을 때 일어날 이벤트 추가하기 - timer 이용해서 추가하면 될 듯 스테이지 클리어 (모든 몬스터 처치) 시에 진행할 이벤트
-	 * 생각
-	 * 
-	 */
-
 	private final Font FONT = new Font("SansSerif", Font.BOLD, 20);
 	private Character character;
 	private Monster[] monsters;
@@ -36,6 +28,12 @@ public class InGame extends JPanel {
 
 	private static int count = 0;
 
+	/*
+	 * 할 일
+	 * 
+	 * 캐릭터 스킬 사용 가능 횟수 관련 
+	 */
+	
 	public InGame(Character character, Monster[] monsters) {
 		this.character = character;
 		this.monsters = monsters;
@@ -72,7 +70,8 @@ public class InGame extends JPanel {
 	private void battle() {
 		// 마지막 몬스터가 사망하면 removeAll
 		if (monsters[monsters.length - 1].nowHp <= 0) {
-			InGame.this.removeAll();
+//			InGame.this.removeAll();
+			nextText("스테이지 클리어!");
 			timer.stop();
 		}
 	}
@@ -326,6 +325,10 @@ public class InGame extends JPanel {
 					timer = new Timer(500, new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
+							if (character.nowHp <= 0) {
+								nextText("캐릭터가 사망했습니다.");
+								timer.stop();
+							}
 							battle();
 							InGame.this.repaint();
 						}
@@ -339,24 +342,37 @@ public class InGame extends JPanel {
 
 				if (src.getText().equals("공격")) {
 					monster.nowHp -= character.attack();
-					character.nowHp -= monster.attack();
+					if (checkMonsterDead()) {
+						setPanel();
+						return;
+					} else {
+						character.nowHp -= monster.attack();
+					}
 					battleText();
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
 					monster.nowHp -= character.skill();
-					character.nowHp -= monster.attack();
+					if (checkMonsterDead()) {
+						setPanel();
+					} else {
+						character.nowHp -= monster.attack();
+					}
 					battleText();
 				}
 
 				if (src.getText().equals("CharSkillButton")) {
 					monster.nowHp -= character.charSkill();
-					character.nowHp -= monster.attack();
+					if (checkMonsterDead()) {
+						setPanel();
+					} else {
+						character.nowHp -= monster.attack();
+					}
 					battleText();
 				}
 			}
 
-			public void battleText() {
+			private void battleText() {
 				String monsterString, characterString;
 
 				if (character.useSkill) {
@@ -373,7 +389,14 @@ public class InGame extends JPanel {
 				} else {
 					monsterString = new String(monster.NAME + "의 공격!  " + character.name + " -" + monster.attackValue);
 				}
-				nextText(characterString + "        ||       " + monsterString);
+				nextText(characterString + "                         " + monsterString);
+			}
+
+			private boolean checkMonsterDead() {
+				if (monster.nowHp > 0) {
+					return false;
+				}
+				return true;
 			}
 		}
 	}
