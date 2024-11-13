@@ -11,7 +11,6 @@ public class BabyDragon extends Dragon {
 	//
 	@Override
 	public int skill() {
-		System.out.println(NAME + "이 할퀴기를 사용했습니다!");
 		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
 	}
 
@@ -19,6 +18,10 @@ public class BabyDragon extends Dragon {
 	public ImageIcon getImage() {
 		return null;
 	}
-	
+
+	@Override
+	public String getSkillName() {
+		return "할퀴기를";
+	}
 	
 }

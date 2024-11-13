@@ -19,14 +19,14 @@ import game.monster.Monster;
 public class InGames extends JPanel {
 
 	/*
+<<<<<<< HEAD
 	 * 
 	 * main branch - 최신 버전 가져와서 develop branch 에 옮기는 용도
 	 * 
+=======
+>>>>>>> refs/heads/develop
 	 * 할 일
 	 * 
-	 * BottomBattleBox Button 크기 조정
-	 * 
-	 * 첫 몬스터 처치 후 다음 몬스터 생성하는 로직 생성 몬스터가 공격하는 로직 생성
 	 * 
 	 */
 
@@ -44,7 +44,7 @@ public class InGames extends JPanel {
 		this.character = character;
 		this.monsters = monsters;
 		this.monster = monsters[count++];
-		BottomPanel.TextLabel.setTextLabel("하이욤 ㅋㅋzzz");
+		BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setPanel();
@@ -55,8 +55,10 @@ public class InGames extends JPanel {
 		InGames.this.removeAll();
 		InGames.this.revalidate();
 		// 이것보다는 몬스터 처치 시에 이런 로직을 넣는 게 좋을 듯
-		if (monster.nowHp <= 0) {
+		if (monster.nowHp <= 0 && count < monsters.length) {
 			this.monster = monsters[count++];
+			inBattle = false;
+			BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
 		}
 		//
 		setTopPanel();
@@ -73,7 +75,8 @@ public class InGames extends JPanel {
 	}
 
 	private void battle() {
-		if (monster.nowHp <= 0 || character.nowHp <= 0) {
+		// 마지막 몬스터가 사망하면 removeAll
+		if ( monsters[monsters.length - 1].nowHp <= 0) {
 			InGames.this.removeAll();
 			timer.stop();
 		}
@@ -205,10 +208,9 @@ public class InGames extends JPanel {
 			private TextLabel(String str) {
 				super(str);
 				textLabel = this;
-				setFont(new Font("SansSerif", Font.BOLD, 25));
-				setBackground(Color.black);
-				setForeground(Color.pink);
-				setBounds(0, 0, 1000, 50);
+				setFont(new Font("SansSerif", Font.PLAIN, 25));
+				setForeground(Color.black);
+				setBounds(30, 10, 1300, 60);
 			}
 
 			private static void setTextLabel(String str) {
@@ -272,7 +274,7 @@ public class InGames extends JPanel {
 
 					private AttackButton() {
 						super("공격");
-						setBounds(10, 10, 100, 30);
+						setBounds(100, 100, 250, 120);
 					}
 				}
 
@@ -280,7 +282,7 @@ public class InGames extends JPanel {
 
 					private SkillButton() {
 						super("캐릭터 스킬");
-						setBounds(120, 10, 100, 30);
+						setBounds(500, 100, 250, 120);
 					}
 				}
 
@@ -288,7 +290,7 @@ public class InGames extends JPanel {
 
 					private CharSkillButton() {
 						super("CharSkillButton");
-						setBounds(230, 10, 100, 30);
+						setBounds(900, 100, 250, 120);
 					}
 				}
 
@@ -333,21 +335,41 @@ public class InGames extends JPanel {
 
 				if (src.getText().equals("공격")) {
 					monster.nowHp -= character.attack();
-					// 스크립트 출력, 시간 2초 대기 메서드 실행
 					character.nowHp -= monster.attack();
+					battleText();
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
 					monster.nowHp -= character.skill();
-					// 스크립트 출력, 시간 2초 대기 메서드 실행
 					character.nowHp -= monster.attack();
+					battleText();
 				}
 
 				if (src.getText().equals("CharSkillButton")) {
 					monster.nowHp -= character.charSkill();
-					// 스크립트 출력, 시간 2초 대기 메서드 실행
 					character.nowHp -= monster.attack();
+					battleText();
 				}
+			}
+
+			public void battleText() {
+				String monsterString, characterString;
+
+				if (character.useSkill) {
+					characterString = new String(
+							character.name + "의 스킬!!  " + monster.NAME + " -" + character.attackValue);
+				} else {
+					characterString = new String(
+							character.name + "의 공격!  " + monster.NAME + " -" + character.attackValue);
+				}
+
+				if (monster.useSkill) {
+					monsterString = new String(monster.NAME + "의 " + monster.getSkillName() + "!!  " + character.name
+							+ " -" + monster.attackValue);
+				} else {
+					monsterString = new String(monster.NAME + "의 공격!  " + character.name + " -" + monster.attackValue);
+				}
+				nextText(characterString + "               " + monsterString);
 			}
 		}
 	}

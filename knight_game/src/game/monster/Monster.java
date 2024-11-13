@@ -9,6 +9,7 @@ public abstract class Monster implements Combatant, ImageUnit {
 	public Integer nowHp;
 	public final Integer POWER;
 	public Boolean useSkill;
+	public Integer attackValue;
 
 	protected Monster(String nAME, int hP, int pOWER) {
 		NAME = nAME;
@@ -19,15 +20,17 @@ public abstract class Monster implements Combatant, ImageUnit {
 
 	@Override
 	public int attack() {
-		int num = (int) ((Math.random() * 10) + 1);
-		
+		useSkill = false;
+		int random = (int) ((Math.random() * 10) + 1);
+
 		// 몬스터 스킬 발동 확률 30%
-		if (num < 4) {
-			return skill();
+		if (random < 4) {
+			useSkill = true;
+			attackValue = skill();
+			return attackValue;
 		}
-		
-		System.out.println(NAME + "의 공격!");
-		return (int) (POWER + (Math.random() * 5 + 1));
+		attackValue = (int) (POWER + (Math.random() * 5 + 1));
+		return attackValue;
 	}
 
 	@Override
@@ -38,5 +41,7 @@ public abstract class Monster implements Combatant, ImageUnit {
 			return false;
 		}
 	}
+
+	public abstract String getSkillName();
 
 }
