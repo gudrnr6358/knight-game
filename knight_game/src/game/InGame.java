@@ -21,8 +21,8 @@ public class InGame extends JPanel {
 	/*
 	 * 할 일 !
 	 * 
-	 * 캐릭터 사망했을 때 일어날 이벤트 추가하기 - timer 이용해서 추가하면 될 듯
-	 * 스테이지 클리어 (모든 몬스터 처치) 시에 진행할 이벤트 생각
+	 * 캐릭터 사망했을 때 일어날 이벤트 추가하기 - timer 이용해서 추가하면 될 듯 스테이지 클리어 (모든 몬스터 처치) 시에 진행할 이벤트
+	 * 생각
 	 * 
 	 */
 
@@ -71,7 +71,7 @@ public class InGame extends JPanel {
 
 	private void battle() {
 		// 마지막 몬스터가 사망하면 removeAll
-		if ( monsters[monsters.length - 1].nowHp <= 0) {
+		if (monsters[monsters.length - 1].nowHp <= 0) {
 			InGame.this.removeAll();
 			timer.stop();
 		}
