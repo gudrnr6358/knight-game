@@ -54,7 +54,6 @@ public class InGames extends JPanel {
 	private void setPanel() {
 		InGames.this.removeAll();
 		InGames.this.revalidate();
-		// 이것보다는 몬스터 처치 시에 이런 로직을 넣는 게 좋을 듯
 		if (monster.nowHp <= 0 && count < monsters.length) {
 			this.monster = monsters[count++];
 			inBattle = false;
