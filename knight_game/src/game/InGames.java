@@ -359,12 +359,12 @@ public class InGames extends JPanel {
 				}
 
 				if (monster.useSkill) {
-					monsterString = new String(monster.NAME + "의 " + monster.getSkillName() + "!!  " + character.name
+					monsterString = new String(monster.NAME + "의 " + monster.getSkillName() + " !!  " + character.name
 							+ " -" + monster.attackValue);
 				} else {
 					monsterString = new String(monster.NAME + "의 공격!  " + character.name + " -" + monster.attackValue);
 				}
-				nextText(characterString + "               " + monsterString);
+				nextText(characterString + "        ||       " + monsterString);
 			}
 		}
 	}

@@ -21,6 +21,6 @@ public class WarriorSkeleton extends Skeleton{
 
 	@Override
 	public String getSkillName() {
-		return "쌍검 휘두르기를";
+		return "쌍검 휘두르기";
 	}
 }

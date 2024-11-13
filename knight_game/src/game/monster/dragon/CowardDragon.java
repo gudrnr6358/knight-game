@@ -21,6 +21,6 @@ public class CowardDragon extends Dragon {
 
 	@Override
 	public String getSkillName() {
-		return "옆에 있던 용에게 도움요청하기를";
+		return "옆에 있던 용에게 도움요청하기";
 	}
 }

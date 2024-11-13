@@ -22,7 +22,7 @@ public class ArcherSkeleton extends Skeleton{
 
 	@Override
 	public String getSkillName() {
-		return "불화살 쏘기를";
+		return "불화살 쏘기";
 	}
 	
 }
