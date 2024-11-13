@@ -20,7 +20,7 @@ public class AncientDragon extends Dragon {
 
 	@Override
 	public String getSkillName() {
-		return "드래곤 브레스를";
+		return "드래곤 브레스";
 	}
 	
 }

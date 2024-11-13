@@ -21,6 +21,6 @@ public class BossSlime extends Slime {
 
 	@Override
 	public String getSkillName() {
-		return "슬라임 총공격을";
+		return "슬라임 총공격";
 	}
 }

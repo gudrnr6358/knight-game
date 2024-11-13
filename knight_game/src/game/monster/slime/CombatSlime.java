@@ -21,6 +21,6 @@ public class CombatSlime extends Slime {
 
 	@Override
 	public String getSkillName() {
-		return "베기를";
+		return "베기";
 	}
 }
