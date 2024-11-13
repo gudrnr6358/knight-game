@@ -21,14 +21,12 @@ public class GameFrame extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Monster[] m = { new WarriorSkeleton(), new MiniSlime(), new MiniSlime() };
-		InGames ingamesPanel = new InGames(c, m);
 		InGame ingamePanel = new InGame(c, m);
 
 		cardPanel.add(ingamePanel, "InGame");
-		cardPanel.add(ingamesPanel, "InGames");
 		frame.add(cardPanel);
 
-		cardLayout.show(cardPanel, "InGames");
+		cardLayout.show(cardPanel, "InGame");
 		
 		frame.setSize(1366, 900);
 		frame.setResizable(false);

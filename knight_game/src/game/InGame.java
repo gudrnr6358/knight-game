@@ -5,9 +5,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,257 +21,351 @@ public class InGame extends JPanel {
 	/*
 	 * 할 일
 	 * 
-	 * 하단 bar 위치 조정해서 규격 보내주기 전체적인 버튼 위치 조정 몬스터 스킬 로직 구현 (랜덤 사용)
-	 *
-	 * *** monster 정보 순서대로 얻는 방법 구현하기 ***
-	 * 
-	 * 다음 몬스터 만났을 때, 상태창과 이미지 재세팅하는 메서드 고안.. setStatusBar setImage 메서드 만들어서 if 안에서
-	 * 호출하면 될 듯?
-	 * 
-	 * 스크립트 라인 추가하기 스크립트 표시하는 방법 고안
+	 * 캐릭터 사망했을 때 일어날 이벤트 추가하기 - timer 이용해서 추가하면 될 듯
+	 * 스테이지 클리어 (모든 몬스터 처치) 시에 진행할 이벤트 생각
 	 * 
 	 */
-	Character character;
-	Monster[] monsters;
-	Monster monster;
 
-	ImageIcon characterImage;
-	ImageIcon monsterImage;
-	JLabel charImage;
-	JLabel monImage;
+	private final Font FONT = new Font("SansSerif", Font.BOLD, 20);
+	private Character character;
+	private Monster[] monsters;
+	private Monster monster;
+	private static Boolean inBattle = false;
+	private Timer timer;
+	private static JLabel textLabel;
 
-	JPanel bar;
+	private static int count = 0;
 
-	JPanel characterStatusBar;
-	JLabel charName;
-	JLabel charPower;
-	CharacterHealthBar charHealthBar;
-
-	JPanel monsterStatusBar;
-	JLabel monName;
-	JLabel monPower;
-	MonsterHealthBar monHealthBar;
-
-	JPanel battleBar;
-
-	Timer timer;
-	Boolean inBattle = false;
-	static int count;
-	Font font = new Font("SansSerif", Font.BOLD, 20);
-
-	// Monster 배열 넘겨 받는 걸로 수정해야함
 	public InGame(Character character, Monster[] monsters) {
-		setBackground(Color.WHITE);
-		
 		this.character = character;
+		this.monsters = monsters;
 		this.monster = monsters[count++];
+		BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
+		setBackground(Color.WHITE);
 		setLayout(null);
-
-		this.setStatusBar();
-		this.setBar();
+		setPanel();
+		InGame.this.repaint();
 	}
 
-	public void battle() {
-		if (monster.nowHp <= 0 || character.nowHp <= 0) {
-			removeAll();
+	private void setPanel() {
+		InGame.this.removeAll();
+		InGame.this.revalidate();
+		if (monster.nowHp <= 0 && count < monsters.length) {
+			this.monster = monsters[count++];
+			inBattle = false;
+			BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
+		}
+		//
+		setTopPanel();
+		setBottomPanel();
+		InGame.this.repaint();
+	}
+
+	private void setTopPanel() {
+		add(new TopPanel(monster));
+	}
+
+	private void setBottomPanel() {
+		add(new BottomPanel());
+	}
+
+	private void battle() {
+		// 마지막 몬스터가 사망하면 removeAll
+		if ( monsters[monsters.length - 1].nowHp <= 0) {
+			InGame.this.removeAll();
 			timer.stop();
-			return;
+		}
+	}
+
+	private void nextText(String str) {
+		BottomPanel.TextLabel.setTextLabel(str);
+		setPanel();
+	}
+
+	private class TopPanel extends JPanel {
+
+		private TopPanel(Monster monster) {
+			setLayout(null);
+			setBackground(Color.white);
+			add(new StatusPanel(character));
+			add(new StatusPanel(monster));
+			add(new CombatantImages(character));
+			add(new CombatantImages(monster));
+			setBounds(0, 0, 1366, 510);
 		}
 
-	}
+		private class StatusPanel extends JPanel {
 
-	public void setStatusBar() {
-		// 캐릭터 상태바 생성
-		characterStatusBar = new JPanel();
-		characterStatusBar.setLayout(null);
-		characterStatusBar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
-		characterStatusBar.setBounds(986, 400, 350, 100);
-		add(characterStatusBar);
+			private StatusPanel(Character c) {
+				setLayout(null);
+				setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+				add(new NameLabel(c.name));
+				add(new PowerLabel(c.power.toString()));
+				add(new HealthPanel(c));
+				setBounds(986, 400, 350, 100);
+			}
 
-		charName = new JLabel(character.name);
-		charName.setFont(font);
-		charName.setBounds(15, 10, 500, 30);
-		characterStatusBar.add(charName);
+			private StatusPanel(Monster m) {
+				setLayout(null);
+				setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+				add(new NameLabel(m.NAME));
+				add(new PowerLabel(m.POWER.toString()));
+				add(new HealthPanel(m));
+				setBounds(25, 25, 350, 100);
+			}
 
-		charPower = new JLabel("전투력 : " + character.power.toString());
-		charPower.setFont(font);
-		charPower.setBounds(195, 10, 200, 30);
-		characterStatusBar.add(charPower);
+			private class NameLabel extends JLabel {
+				private NameLabel(String name) {
+					super(name);
+					super.setFont(FONT);
+					super.setBounds(15, 10, 500, 30);
+				}
+			}
 
-		charHealthBar = new CharacterHealthBar(character);
-		characterStatusBar.add(charHealthBar);
-		charHealthBar.setBounds(15, 55, 300, 20);
+			private class PowerLabel extends JLabel {
+				private PowerLabel(String power) {
+					super("전투력 : " + power);
+					super.setFont(FONT);
+					super.setBounds(195, 10, 200, 30);
+				}
+			}
 
-		// 몬스터 상태바 생성
-		monsterStatusBar = new JPanel();
-		monsterStatusBar.setLayout(null);
-		monsterStatusBar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
-		monsterStatusBar.setBounds(25, 25, 350, 100);
-		add(monsterStatusBar);
+			private class HealthPanel extends JPanel {
+				Combatant combatant;
 
-		monName = new JLabel(monster.NAME);
-		monName.setFont(font);
-		monName.setBounds(15, 10, 500, 30);
-		monsterStatusBar.add(monName);
+				private HealthPanel(Combatant combatant) {
+					this.combatant = combatant;
 
-		monPower = new JLabel("전투력 : " + monster.POWER.toString());
-		monPower.setFont(font);
-		monPower.setBounds(195, 10, 200, 30);
-		monsterStatusBar.add(monPower);
-
-		monHealthBar = new MonsterHealthBar(monster);
-		monsterStatusBar.add(monHealthBar);
-		monHealthBar.setBounds(15, 55, 300, 20);
-	}
-
-	public void setImage() {
-		// Character, Monster Image, Status 나타내기 출력
-		characterImage = character.getImage();
-		monsterImage = monsters[count].getImage();
-		charImage = new JLabel(characterImage);
-		monImage = new JLabel(monsterImage);
-
-		charImage.setBackground(Color.black);
-		monImage.setBackground(Color.black);
-
-		charImage.setBounds(50, 500, 100, 100);
-		monImage.setBounds(50, 1000, 100, 100);
-
-		add(charImage);
-		add(monImage);
-	}
-
-	public void setBar() {
-		bar = new JPanel();
-		bar.setLayout(null);
-		bar.setBorder(BorderFactory.createLineBorder(Color.gray, 3, true));
-		bar.setBounds(16, 513, 1320, 335);
-		add(bar);
-
-		JButton btn1 = new JButton("싸운다");
-		btn1.setFont(font);
-		btn1.setBounds(20, 57, 1280, 60);
-		btn1.setForeground(Color.BLACK);
-		btn1.setBackground(Color.white);
-		btn1.setFocusable(false); // 실행 후 첫 화면, check 방지용
-		btn1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				bar.removeAll();
-				setBattleBar();
-				timer = new Timer(500, new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						battle();
-						repaint();
-						revalidate();
+					if (combatant instanceof Character) {
+						setBounds(15, 55, 300, 20);
 					}
-				});
-				timer.start();
-				inBattle = true;
-				System.out.println(inBattle);
-			}
-		});
+					if (combatant instanceof Monster) {
+						setBounds(15, 55, 300, 20);
+					}
+				}
 
-		JButton btn2 = new JButton("도망친다");
-		btn2.setFont(font);
-		btn2.setBounds(20, 125, 1280, 60);
-		btn2.setForeground(Color.BLACK);
-		btn2.setBackground(Color.white);
-		btn2.setFocusable(false);
-		btn2.addActionListener(new ActionListener() {
+				public void paintComponent(Graphics g) {
+					super.paintComponent(g);
+					g.setColor(Color.LIGHT_GRAY);
+					g.fillRoundRect(0, 0, 230, 20, 10, 10);
+
+					if (combatant instanceof Character) {
+						Character c = (Character) combatant;
+						g.setColor(Color.green);
+						if ((int) ((c.nowHp / (double) c.hp) * 100) <= 15) {
+							g.setColor(Color.red);
+						}
+						g.fillRoundRect(0, 0, (int) ((c.nowHp / (double) c.hp) * 230), 20, 10, 10);
+					}
+
+					if (combatant instanceof Monster) {
+						Monster m = (Monster) combatant;
+						g.setColor(Color.green);
+						if ((int) ((m.nowHp / (double) m.HP) * 100) <= 15) {
+							g.setColor(Color.red);
+						}
+						g.fillRoundRect(0, 0, (int) ((m.nowHp / (double) m.HP) * 230), 20, 10, 10);
+					}
+				}
+			}
+
+		}
+
+		private class CombatantImages extends JLabel {
+
+			private CombatantImages(ImageUnit unit) {
+				super(unit.getImage());
+				if (unit instanceof Character) {
+					setBounds(150, 200, 300, 300);
+				}
+				if (unit instanceof Monster) {
+					setBounds(950, 0, 300, 300);
+				}
+			}
+
+		}
+	}
+
+	private class BottomPanel extends JPanel {
+
+		private BottomBox bottomBox;
+
+		private BottomPanel() {
+			setLayout(null);
+			setBackground(Color.white);
+			setBounds(0, 510, 1366, 390);
+			bottomBox = new BottomBox();
+			add(bottomBox);
+		}
+
+		private static class TextLabel extends JLabel {
+
+			private TextLabel(String str) {
+				super(str);
+				textLabel = this;
+				setFont(new Font("SansSerif", Font.PLAIN, 25));
+				setForeground(Color.black);
+				setBounds(30, 10, 1300, 60);
+			}
+
+			private static void setTextLabel(String str) {
+				new TextLabel(str);
+			}
+		}
+
+		private class BottomBox extends JPanel {
+
+			private BottomBox() {
+				setLayout(null);
+				setBorder(BorderFactory.createLineBorder(Color.gray, 3, true));
+				setBounds(16, 3, 1320, 335);
+				if (inBattle) {
+					add(new BottomBattlePanel());
+				}
+				if (!inBattle) {
+					add(new BottomBasicPanel());
+				}
+			}
+
+			private class BottomBasicPanel extends JPanel {
+
+				private BottomBasicPanel() {
+					setLayout(null);
+					setBounds(3, 3, 1314, 329);
+					add(new FightButton());
+					add(new RunButton());
+					add(textLabel);
+				}
+
+				private class FightButton extends MyButton {
+					private FightButton() {
+						super("싸운다");
+						setBounds(55, 100, 1200, 90);
+					}
+				}
+
+				private class RunButton extends MyButton {
+
+					private RunButton() {
+						super("도망친다");
+						setBounds(55, 210, 1200, 90);
+					}
+				}
+
+			}
+
+			private class BottomBattlePanel extends JPanel {
+
+				private BottomBattlePanel() {
+					setLayout(null);
+					add(new AttackButton());
+					add(new SkillButton());
+					add(new CharSkillButton());
+					setBounds(3, 3, 1314, 329);
+					add(textLabel);
+				}
+
+				private class AttackButton extends MyButton {
+
+					private AttackButton() {
+						super("공격");
+						setBounds(100, 100, 250, 120);
+					}
+				}
+
+				private class SkillButton extends MyButton {
+
+					private SkillButton() {
+						super("캐릭터 스킬");
+						setBounds(500, 100, 250, 120);
+					}
+				}
+
+				private class CharSkillButton extends MyButton {
+
+					private CharSkillButton() {
+						super("CharSkillButton");
+						setBounds(900, 100, 250, 120);
+					}
+				}
+
+			}
+
+			private class MyButton extends JButton {
+				private MyButton(String str) {
+					super(str);
+					addMouseListener(new ButtonEvent());
+					setFocusable(false);
+					setFont(FONT);
+				}
+			}
+
+		}
+
+		private class ButtonEvent extends MouseAdapter {
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// 로비로 돌아가기 어차피 뭘 하든 로비로 돌아가니까
-				// new InGame() 끝난 뒤에는 new Lobby 하면 될 듯
-			}
-		});
-		bar.add(btn1);
-		bar.add(btn2);
-		
-	}
+			public void mousePressed(MouseEvent e) {
+				JButton src = (JButton) e.getSource();
 
-	public void setBattleBar() {
-			bar.removeAll();
-			
-			JButton attackBtn = new JButton("공격");
-			attackBtn.setFont(font);
-			attackBtn.setBounds(200, 70, 250, 90);
-			attackBtn.setForeground(Color.BLACK);
-			attackBtn.setBackground(Color.white);
-			attackBtn.setFocusable(false); // 실행 후 첫 화면, check 방지용
-			attackBtn.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
+				if (src.getText().equals("싸운다")) {
+					inBattle = true;
+					BottomPanel.this.removeAll();
+					BottomPanel.this.add(new BottomBox());
+					BottomPanel.this.revalidate();
+					BottomPanel.this.repaint();
+					timer = new Timer(500, new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							battle();
+							InGame.this.repaint();
+						}
+					});
+					timer.start();
+					nextText("전투 시작!!!");
+				}
+				if (src.getText().equals("도망친다")) {
+					GameFrame.setPanel(new Lobby(character));
+				}
+
+				if (src.getText().equals("공격")) {
 					monster.nowHp -= character.attack();
+					character.nowHp -= monster.attack();
+					battleText();
 				}
-			});
 
-			JButton skillBtn = new JButton("스킬1");
-			skillBtn.setFont(font);
-			skillBtn.setBounds(500, 70, 250, 90);
-			skillBtn.setForeground(Color.BLACK);
-			skillBtn.setBackground(Color.white);
-			skillBtn.setFocusable(false); // 실행 후 첫 화면, check 방지용
-			skillBtn.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
+				if (src.getText().equals("캐릭터 스킬")) {
 					monster.nowHp -= character.skill();
+					character.nowHp -= monster.attack();
+					battleText();
 				}
-			});
-			JButton charSkillBtn = new JButton("스킬2");
-			charSkillBtn.setFont(font);
-			charSkillBtn.setBounds(800, 70, 250, 90);
-			charSkillBtn.setForeground(Color.BLACK);
-			charSkillBtn.setBackground(Color.white);
-			charSkillBtn.setFocusable(false); // 실행 후 첫 화면, check 방지용
-			charSkillBtn.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
+
+				if (src.getText().equals("CharSkillButton")) {
 					monster.nowHp -= character.charSkill();
+					character.nowHp -= monster.attack();
+					battleText();
 				}
-			});
-
-			bar.add(attackBtn);
-			bar.add(skillBtn);
-			bar.add(charSkillBtn);
-	}
-	
-	class CharacterHealthBar extends JPanel {
-		Character character;
-
-		public CharacterHealthBar(Character character) {
-			this.character = character;
-		}
-
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			g.setColor(Color.LIGHT_GRAY);
-			g.fillRoundRect(0, 0, 230, 20, 10, 10);
-
-			g.setColor(Color.green);
-			if ((int) ((character.nowHp / (double) character.hp) * 100) <= 15) {
-				g.setColor(Color.red);
 			}
-			g.fillRoundRect(0, 0, (int) ((character.nowHp / (double) character.hp) * 230), 20, 10, 10);
-		}
-	}
 
-	class MonsterHealthBar extends JPanel {
-		Monster monster;
+			public void battleText() {
+				String monsterString, characterString;
 
-		public MonsterHealthBar(Monster monster) {
-			this.monster = monster;
-		}
+				if (character.useSkill) {
+					characterString = new String(
+							character.name + "의 스킬!!  " + monster.NAME + " -" + character.attackValue);
+				} else {
+					characterString = new String(
+							character.name + "의 공격!  " + monster.NAME + " -" + character.attackValue);
+				}
 
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			g.setColor(Color.LIGHT_GRAY);
-			g.fillRoundRect(0, 0, 230, 20, 10, 10);
-
-			g.setColor(Color.green);
-			g.fillRoundRect(0, 0, (int) ((monster.nowHp / (double) monster.HP) * 230), 20, 10, 10);
-
+				if (monster.useSkill) {
+					monsterString = new String(monster.NAME + "의 " + monster.getSkillName() + "!!  " + character.name
+							+ " -" + monster.attackValue);
+				} else {
+					monsterString = new String(monster.NAME + "의 공격!  " + character.name + " -" + monster.attackValue);
+				}
+				nextText(characterString + "        ||       " + monsterString);
+			}
 		}
 	}
 }
