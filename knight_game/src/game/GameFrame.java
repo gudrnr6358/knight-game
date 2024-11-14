@@ -7,23 +7,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import game.monster.Monster;
-import game.monster.boss.Boss;
-import game.monster.dragon.BabyDragon;
 import game.monster.slime.BossSlime;
+import game.monster.slime.CombatSlime;
+import game.monster.slime.MiniSlime;
 
 public class GameFrame extends JFrame {
-	public static CardLayout cardLayout = new CardLayout();
-	public static JPanel cardPanel = new JPanel(cardLayout);
 	public static JFrame frame = new JFrame("기사 키우기");
 
+	static Character c;
+	
 	public static void main(String[] args) {
-		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
-		Character c = new Character();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Monster[] m = { new Boss(), new BabyDragon(), new BossSlime() };
+		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
+		Character c = new Character();
+		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
 		InGame ingamePanel = new InGame(c, m);
-
+		
 		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
 		setPanel(ingamePanel);
 		
@@ -40,4 +40,5 @@ public class GameFrame extends JFrame {
 		c.add(panel);
 		c.repaint();
 	}
+	
 }
