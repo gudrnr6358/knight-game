@@ -31,9 +31,8 @@ public class InGame extends JPanel {
 	/*
 	 * 할 일
 	 * 
-	 * 보스 몬스터 추가 캐릭터 스킬 사용 가능 횟수 관련 (Character class 에서 제공하는 기능 이용) 공격쪽 코드 개선
-	 * 
 	 * 전체적인 코드 개선~
+	 * 
 	 */
 
 	public InGame(Character character, Monster[] monsters) {
