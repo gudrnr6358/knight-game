@@ -7,9 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import game.monster.Monster;
+import game.monster.boss.Boss;
 import game.monster.dragon.BabyDragon;
-import game.monster.skeleton.SkeletonHorde;
-import game.monster.skeleton.WarriorSkeleton;
 import game.monster.slime.BossSlime;
 
 public class GameFrame extends JFrame {
@@ -22,7 +21,7 @@ public class GameFrame extends JFrame {
 		Character c = new Character();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Monster[] m = { new WarriorSkeleton(), new BabyDragon(), new BossSlime() };
+		Monster[] m = { new Boss(), new BabyDragon(), new BossSlime() };
 		InGame ingamePanel = new InGame(c, m);
 
 		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
