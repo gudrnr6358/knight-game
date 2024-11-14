@@ -23,8 +23,6 @@ public class InGame extends JPanel {
 	private Monster[] monsters;
 	private Monster monster;
 	private static Boolean inBattle = false;
-	private Timer timer;
-	private static JLabel textLabel;
 
 	private static int count = 0;
 
@@ -32,6 +30,7 @@ public class InGame extends JPanel {
 	 * 할 일
 	 * 
 	 * 전체적인 코드 개선~
+	 * 몬스터 죽이고 경험치 얻고 몬스터 죽은 거 나타내기
 	 * 
 	 */
 
@@ -187,6 +186,7 @@ public class InGame extends JPanel {
 	private class BottomPanel extends JPanel {
 
 		private BottomBox bottomBox;
+		private static JLabel textLabel;
 
 		private BottomPanel() {
 			setLayout(null);
@@ -301,6 +301,7 @@ public class InGame extends JPanel {
 		}
 
 		private class ButtonEvent extends MouseAdapter {
+			private Timer timer;
 
 			@Override
 			public void mousePressed(MouseEvent e) {
