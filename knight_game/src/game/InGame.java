@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Stack;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -31,13 +32,11 @@ public class InGame extends JPanel {
 	/*
 	 * 할 일
 	 * 
-	 * 보스 몬스터 추가
-	 * 캐릭터 스킬 사용 가능 횟수 관련 (Character class 에서 제공하는 기능 이용)
-	 * 공격쪽 코드 개선
-	 *  
+	 * 보스 몬스터 추가 캐릭터 스킬 사용 가능 횟수 관련 (Character class 에서 제공하는 기능 이용) 공격쪽 코드 개선
+	 * 
 	 * 전체적인 코드 개선~
 	 */
-	
+
 	public InGame(Character character, Monster[] monsters) {
 		this.character = character;
 		this.monsters = monsters;
@@ -46,7 +45,6 @@ public class InGame extends JPanel {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setPanel();
-		InGame.this.repaint();
 	}
 
 	private void setPanel() {
@@ -57,7 +55,6 @@ public class InGame extends JPanel {
 			inBattle = false;
 			BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
 		}
-		//
 		setTopPanel();
 		setBottomPanel();
 		InGame.this.repaint();
@@ -69,15 +66,6 @@ public class InGame extends JPanel {
 
 	private void setBottomPanel() {
 		add(new BottomPanel());
-	}
-
-	private void battle() {
-		// 마지막 몬스터가 사망하면 removeAll
-		if (monsters[monsters.length - 1].nowHp <= 0) {
-//			InGame.this.removeAll();
-			nextText("스테이지 클리어!");
-			timer.stop();
-		}
 	}
 
 	private void nextText(String str) {
@@ -322,23 +310,8 @@ public class InGame extends JPanel {
 
 				if (src.getText().equals("싸운다")) {
 					inBattle = true;
-					BottomPanel.this.removeAll();
-					BottomPanel.this.add(new BottomBox());
-					BottomPanel.this.revalidate();
 					BottomPanel.this.repaint();
-					timer = new Timer(500, new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							if (character.nowHp <= 0) {
-								nextText("캐릭터가 사망했습니다.");
-								timer.stop();
-							}
-							battle();
-							InGame.this.repaint();
-						}
-					});
-					timer.start();
-					nextText("전투 시작!!!");
+					nextText("전투 시작!");
 				}
 				if (src.getText().equals("도망친다")) {
 					GameFrame.setPanel(new Lobby(character));
@@ -346,31 +319,45 @@ public class InGame extends JPanel {
 
 				if (src.getText().equals("공격")) {
 					monster.nowHp -= character.attack();
-					if (checkMonsterDead()) {
+					if (!monster.isAlive()) {
 						setPanel();
 						return;
 					} else {
 						character.nowHp -= monster.attack();
+					}
+					if (!character.isAlive()) {
+						nextText("캐릭터가 사망했습니다");
+						return;
 					}
 					battleText();
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
 					monster.nowHp -= character.skill();
-					if (checkMonsterDead()) {
+					if (!monster.isAlive()) {
 						setPanel();
+						return;
 					} else {
 						character.nowHp -= monster.attack();
+					}
+					if (!character.isAlive()) {
+						nextText("캐릭터가 사망했습니다");
+						return;
 					}
 					battleText();
 				}
 
 				if (src.getText().equals("CharSkillButton")) {
 					monster.nowHp -= character.charSkill();
-					if (checkMonsterDead()) {
+					if (!monster.isAlive()) {
 						setPanel();
+						return;
 					} else {
 						character.nowHp -= monster.attack();
+					}
+					if (!character.isAlive()) {
+						nextText("캐릭터가 사망했습니다");
+						return;
 					}
 					battleText();
 				}
