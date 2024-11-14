@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Stack;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -312,6 +311,16 @@ public class InGame extends JPanel {
 					inBattle = true;
 					BottomPanel.this.repaint();
 					nextText("전투 시작!");
+					timer = new Timer(1000, new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if (!monsters[(monsters.length - 1)].isAlive()) {
+								nextText("스테이지 클리어!");
+								timer.stop();
+							}
+						}
+					});
+					timer.start();
 				}
 				if (src.getText().equals("도망친다")) {
 					GameFrame.setPanel(new Lobby(character));
