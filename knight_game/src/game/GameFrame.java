@@ -14,8 +14,6 @@ import game.monster.slime.MiniSlime;
 public class GameFrame extends JFrame {
 	public static JFrame frame = new JFrame("기사 키우기");
 
-	static Character c;
-	
 	public static void main(String[] args) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
