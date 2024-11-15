@@ -23,7 +23,7 @@ public class GameFrame extends JFrame {
 		InGame ingamePanel = new InGame(c, m);
 		
 		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
-		setPanel(ingamePanel);
+		setPanel(new Lobby());
 		
 		frame.setSize(1366, 900);
 		frame.setResizable(false);

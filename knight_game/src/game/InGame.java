@@ -325,7 +325,7 @@ public class InGame extends JPanel {
 					timer.start();
 				}
 				if (src.getText().equals("도망친다")) {
-					GameFrame.setPanel(new Lobby(character));
+					GameFrame.setPanel(new Lobby());
 				}
 
 				if (src.getText().equals("공격")) {

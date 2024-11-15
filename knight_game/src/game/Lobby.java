@@ -11,7 +11,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class Lobby extends JPanel {
-	public Lobby(Character c) {
+	public Lobby() {
 		Player la = new Player();
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(800, 600));
