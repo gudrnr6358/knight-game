@@ -22,18 +22,15 @@ public class InGame extends JPanel {
 	private Character character;
 	private Monster[] monsters;
 	private Monster monster;
-	private static Boolean inBattle = false;
+	private Boolean inBattle = false;
 
 	private static int count = 0;
 
 	/*
 	 * 할 일
 	 * 
-	 * 전체적인 코드 개선~
 	 * 몬스터 죽이고 경험치 얻고 몬스터 죽은 거 나타내기
-	 * -> timer 사용?
-	 * -> while문 1000번 반복?
-	 * -> StringBuilder concat 반복 사용?
+	 * 
 	 */
 
 	public InGame(Character character, Monster[] monsters) {
