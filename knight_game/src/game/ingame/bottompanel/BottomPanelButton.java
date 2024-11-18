@@ -18,10 +18,18 @@ public class BottomPanelButton extends JButton {
 
 class BasicPanelButton extends BottomPanelButton {
 
-	// BasicPanelButton size 세팅
+	// BasicPanelButton size 세팅 (1200, 90)
 	protected BasicPanelButton(String str) {
 		super(str);
 		setSize(1200, 90);
 	}
 
+}
+
+class BattlePanelButton extends BottomPanelButton {
+	// BattlePanelButton size 세팅 (250, 120)
+	protected BattlePanelButton(String str) {
+		super(str);
+		setSize(250, 120);
+	}
 }
