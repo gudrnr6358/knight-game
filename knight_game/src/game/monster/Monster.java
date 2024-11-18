@@ -3,19 +3,10 @@ package game.monster;
 import game.Combatant;
 import game.ImageUnit;
 
-public abstract class Monster implements Combatant, ImageUnit {
-	public final String NAME;
-	public final Integer HP;
-	public Integer nowHp;
-	public final Integer POWER;
-	public Boolean useSkill;
-	public Integer attackValue;
+public abstract class Monster extends Combatant implements ImageUnit {
 
-	protected Monster(String nAME, int hP, int pOWER) {
-		NAME = nAME;
-		HP = hP;
-		POWER = pOWER;
-		nowHp = hP;
+	protected Monster(String name, int hp, int power) {
+		super(name,hp,power);
 	}
 
 	@Override
@@ -29,7 +20,7 @@ public abstract class Monster implements Combatant, ImageUnit {
 			attackValue = skill();
 			return attackValue;
 		}
-		attackValue = (int) (POWER + (Math.random() * 5 + 1));
+		attackValue = (int) (power + (Math.random() * 5 + 1));
 		return attackValue;
 	}
 

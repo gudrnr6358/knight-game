@@ -26,7 +26,6 @@ public class GameFrame extends JFrame {
 		setPanel(ingamePanel);
 
 		frame.setContentPane(ingamePanel);
-		frame.setContentPane(new Lobby());
 		
 		frame.setSize(1366, 900);
 		frame.setResizable(false);

@@ -11,7 +11,7 @@ public class BossSlime extends Slime {
 	// 슬라임 총공격
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 
 	@Override

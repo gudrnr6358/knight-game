@@ -10,7 +10,7 @@ public class AncientDragon extends Dragon {
 	//
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 	
 	@Override
