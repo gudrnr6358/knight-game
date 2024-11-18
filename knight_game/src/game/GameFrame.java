@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.CardLayout;
 import java.awt.Container;
 
 import javax.swing.JFrame;
