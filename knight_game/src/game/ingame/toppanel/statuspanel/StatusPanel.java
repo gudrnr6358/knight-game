@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import game.Combatant;
 
 public abstract class StatusPanel extends JPanel {
-	private final Font FONT = new Font("SansSerif", Font.BOLD, 20);
+	private Font FONT = new Font("SansSerif", Font.BOLD, 20);
 	private Combatant c;
 
 	protected StatusPanel(Combatant c) {

@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import game.ingame.bottompanel.BasicPanel;
+import game.ingame.bottompanel.BottomBox;
 import game.ingame.toppanel.ingameimages.CharacterImageUnit;
 import game.ingame.toppanel.ingameimages.MonsterImageUnit;
 import game.ingame.toppanel.statuspanel.CharacterStatusPanel;
@@ -76,9 +78,12 @@ public class InGames extends JPanel {
 	// 생성자 사용해서 기본 틀 제공 및 "기본 BottomBox" 부착하는 메서드 호출
 	private class BottomPanel extends JPanel {
 
-		// 생성자 사용해서 기본 Border 및 TextBar 제공
-		abstract class BottomBox extends JPanel {
-
+		private BottomPanel() {
+			setLayout(null);
+			setBackground(Color.white);
+			setBounds(0, 510, 1366, 390);
+			// setBottomBoxPanel 메서드 체이닝 사용
+			add(new BottomBox().setBottomBoxPanel(new BasicPanel()));
 		}
 	}
 }
