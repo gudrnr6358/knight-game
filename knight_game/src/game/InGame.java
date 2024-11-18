@@ -37,7 +37,7 @@ public class InGame extends JPanel {
 		this.character = character;
 		this.monsters = monsters;
 		this.monster = monsters[count++];
-		BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
+		BottomPanel.TextLabel.setTextLabel(monster.name + "을 마주쳤다!");
 		setBackground(Color.WHITE);
 		setLayout(null);
 		setPanel();
@@ -49,7 +49,7 @@ public class InGame extends JPanel {
 		if (monster.nowHp <= 0 && count < monsters.length) {
 			this.monster = monsters[count++];
 			inBattle = false;
-			BottomPanel.TextLabel.setTextLabel(monster.NAME + "을 마주쳤다!");
+			BottomPanel.TextLabel.setTextLabel(monster.name + "을 마주쳤다!");
 		}
 		setTopPanel();
 		setBottomPanel();
@@ -95,8 +95,8 @@ public class InGame extends JPanel {
 			private StatusPanel(Monster m) {
 				setLayout(null);
 				setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
-				add(new NameLabel(m.NAME));
-				add(new PowerLabel(m.POWER.toString()));
+				add(new NameLabel(m.name));
+				add(new PowerLabel(m.power.toString()));
 				add(new HealthPanel(m));
 				setBounds(25, 25, 350, 100);
 			}
@@ -153,11 +153,11 @@ public class InGame extends JPanel {
 					if (combatant instanceof Monster) {
 						Monster m = (Monster) combatant;
 						g.setColor(Color.green);
-						if ((int) ((m.nowHp / (double) m.HP) * 100) <= 15) {
+						if ((int) ((m.nowHp / (double) m.hp) * 100) <= 15) {
 							g.setColor(Color.red);
 						}
-						g.fillRoundRect(0, 0, (int) ((m.nowHp / (double) m.HP) * 230), 20, 10, 10);
-						str = new String(m.nowHp + " / " + m.HP);
+						g.fillRoundRect(0, 0, (int) ((m.nowHp / (double) m.hp	) * 230), 20, 10, 10);
+						str = new String(m.nowHp + " / " + m.hp);
 						g.setColor(Color.black);
 						g.setFont(FONT);
 						g.drawString(str, 235, 15);
@@ -298,7 +298,6 @@ public class InGame extends JPanel {
 			}
 
 			public void setBottomeBox(JPanel panel) {
-				d
 			}
 		}
 
@@ -340,7 +339,6 @@ public class InGame extends JPanel {
 						nextText("캐릭터가 사망했습니다");
 						return;
 					}
-					battleText();
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
@@ -355,7 +353,6 @@ public class InGame extends JPanel {
 						nextText("캐릭터가 사망했습니다");
 						return;
 					}
-					battleText();
 				}
 
 				if (src.getText().equals("CharSkillButton")) {
@@ -370,35 +367,7 @@ public class InGame extends JPanel {
 						nextText("캐릭터가 사망했습니다");
 						return;
 					}
-					battleText();
 				}
-			}
-
-			private void battleText() {
-				String monsterString, characterString;
-
-				if (character.useSkill) {
-					characterString = new String(
-							character.name + "의 스킬!!  " + monster.NAME + " -" + character.attackValue);
-				} else {
-					characterString = new String(
-							character.name + "의 공격!  " + monster.NAME + " -" + character.attackValue);
-				}
-
-				if (monster.useSkill) {
-					monsterString = new String(monster.NAME + "의 " + monster.getSkillName() + "!!  " + character.name
-							+ " -" + monster.attackValue);
-				} else {
-					monsterString = new String(monster.NAME + "의 공격!  " + character.name + " -" + monster.attackValue);
-				}
-				nextText(characterString + "                         " + monsterString);
-			}
-
-			private boolean checkMonsterDead() {
-				if (monster.nowHp > 0) {
-					return false;
-				}
-				return true;
 			}
 		}
 	}
