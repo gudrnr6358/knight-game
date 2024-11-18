@@ -12,6 +12,7 @@ import game.monster.slime.MiniSlime;
 
 public class GameFrame extends JFrame {
 	public static JFrame frame = new JFrame("기사 키우기");
+	public static Container container = frame.getContentPane();
 
 	public static void main(String[] args) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,22 +21,24 @@ public class GameFrame extends JFrame {
 		Character c = new Character();
 		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
 		InGame ingamePanel = new InGame(c, m);
-		
+
 		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
 		setPanel(ingamePanel);
+
+		frame.setContentPane(ingamePanel);
+		frame.setContentPane(new Lobby());
 		
 		frame.setSize(1366, 900);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
+
 	}
 
 	public static void setPanel(JPanel panel) {
-		Container c = frame.getContentPane();
-		c.removeAll();
-		c.add(panel);
-		c.repaint();
+		container.removeAll();
+		container.add(panel);
+		container.repaint();
 	}
-	
+
 }

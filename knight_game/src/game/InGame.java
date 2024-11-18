@@ -297,6 +297,11 @@ public class InGame extends JPanel {
 				}
 			}
 
+			public void setBottomeBox(JPanel panel) {
+				BottomBox.this.removeAll();
+				BottomBox.this.add(panel);
+				BottomBox.this.repaint();                      
+			}
 		}
 
 		private class ButtonEvent extends MouseAdapter {
