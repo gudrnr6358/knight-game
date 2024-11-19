@@ -4,7 +4,6 @@ public class BattlePanel extends BottomBox {
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BattlePanel() {
-		setLayout(null);
 		add(new AttackButton());
 		add(new SkillButton());
 		add(new CharSkillButton());

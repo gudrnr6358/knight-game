@@ -4,7 +4,6 @@ public class BasicPanel extends BottomBox {
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BasicPanel() {
-		setLayout(null);
 		add(new FightButton());
 		add(new RunButton());
 	}
