@@ -1,4 +1,4 @@
-package game.ingame.bottompanel;
+package game.ingame.bottom;
 
 public class BattlePanel extends BottomBox {
 

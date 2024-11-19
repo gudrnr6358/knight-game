@@ -1,4 +1,4 @@
-package game.ingame.bottompanel;
+package game.ingame.bottom;
 
 import java.awt.Color;
 import java.awt.Font;

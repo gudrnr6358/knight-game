@@ -4,8 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-import game.ingame.bottompanel.BasicPanel;
-import game.ingame.bottompanel.BottomBox;
+import game.ingame.bottom.BasicPanel;
+import game.ingame.bottom.BottomBox;
 import game.ingame.toppanel.ingameimages.CharacterImageUnit;
 import game.ingame.toppanel.ingameimages.MonsterImageUnit;
 import game.ingame.toppanel.statuspanel.CharacterStatusPanel;
@@ -26,9 +26,8 @@ public class InGames extends JPanel {
 		this.monsters = monsters;
 		this.monster = monsters[count];
 
-		setBackground(Color.WHITE);
 		setLayout(null);
-
+		setBackground(Color.WHITE);
 		setPanel();
 	}
 
