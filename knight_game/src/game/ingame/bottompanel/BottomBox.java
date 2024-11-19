@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class BottomBox extends JPanel {
 
 	// static 선언 -> 상속받는 클래스들이 하나의 TextLabel 사용
-	private static TextLabel textLabel = new TextLabel();
+	protected static TextLabel textLabel = new TextLabel();
 
 	// TextLabel 부착 및 Border, Size, Location 제공
 	public BottomBox() {
@@ -19,7 +19,7 @@ public class BottomBox extends JPanel {
 		setBounds(16, 3, 1320, 335);
 	}
 
-	// BottomPanel 생성자에서 메서드 체이닝 이용하기 위해 return 설정 
+	// BottomPanel 생성자에서 메서드 체이닝 이용하기 위해 return 설정
 	public BottomBox setBottomBoxPanel(BottomBox bottomBox) {
 		BottomBox.this.removeAll();
 		BottomBox.this.add(bottomBox);
