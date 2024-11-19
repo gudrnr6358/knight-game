@@ -79,7 +79,7 @@ public class InGames extends JPanel {
 	private class BottomPanel extends JPanel {
 
 		private BottomPanel() {
-			setLayout(null);
+			BottomPanel.this.setLayout(null);
 			setBackground(Color.white);
 			setBounds(0, 510, 1366, 390);
 			// setBottomBoxPanel 메서드 체이닝 사용

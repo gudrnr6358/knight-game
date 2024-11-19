@@ -5,7 +5,6 @@ public class BattlePanel extends BottomBox {
 	// 크기, 위치 설정 및 버튼 부착
 	public BattlePanel() {
 		setLayout(null);
-		setBounds(3, 3, 1314, 329);
 		add(new AttackButton());
 		add(new SkillButton());
 		add(new CharSkillButton());
@@ -15,7 +14,7 @@ public class BattlePanel extends BottomBox {
 
 		private AttackButton() {
 			super("공격");
-			setLocation(100, 100);
+			setLocation(105, 100);
 		}
 	}
 
@@ -23,7 +22,7 @@ public class BattlePanel extends BottomBox {
 
 		private SkillButton() {
 			super("캐릭터 스킬");
-			setLocation(500, 100);
+			setLocation(505, 100);
 		}
 	}
 
@@ -31,7 +30,7 @@ public class BattlePanel extends BottomBox {
 
 		private CharSkillButton() {
 			super("CharSkillButton");
-			setLocation(900, 100);
+			setLocation(905, 100);
 		}
 	}
 

@@ -14,9 +14,9 @@ public class BottomBox extends JPanel {
 	// TextLabel 부착 및 Border, Size, Location 제공
 	public BottomBox() {
 		setLayout(null);
-		setBorder(BorderFactory.createLineBorder(Color.gray, 3, true));
+		BottomBox.this.setBorder(BorderFactory.createLineBorder(Color.gray, 3, true));
 		BottomBox.this.add(textLabel);
-		setBounds(16, 3, 1320, 335);
+		BottomBox.this.setBounds(16, 3, 1320, 335);
 	}
 
 	// BottomPanel 생성자에서 메서드 체이닝 이용하기 위해 return 설정
