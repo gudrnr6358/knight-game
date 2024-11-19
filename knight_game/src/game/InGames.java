@@ -58,6 +58,7 @@ public class InGames extends JPanel {
 		}
 
 		public void setTopPanel() {
+			setBackground(Color.white);
 			setStatusBar();
 			setInGameImageUnit();
 		}
