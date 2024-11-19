@@ -12,6 +12,5 @@ public class BattleTextPanel extends BottomBox {
 	// 조금 더 명확한 메서드를 만들어주고 싶었음
 	public void setBattleText(String text) {
 		super.textLabel.setTextLabel(text);
-		BattleTextPanel.this.repaint();
 	}
 }
