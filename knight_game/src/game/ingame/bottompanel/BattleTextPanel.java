@@ -1,7 +1,7 @@
 package game.ingame.bottompanel;
 
 // 전투 상황 텍스트를 출력하는 패널
-// 오직 Text
+// 오직 Text 출력을 위한 패널
 public class BattleTextPanel extends BottomBox {
 
 	private BattleTextPanel() {
