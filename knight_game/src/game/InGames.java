@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
 import game.ingame.bottom.BottomBox;
-import game.ingame.toppanel.ingameimages.CharacterImageUnit;
-import game.ingame.toppanel.ingameimages.MonsterImageUnit;
-import game.ingame.toppanel.statuspanel.CharacterStatusPanel;
-import game.ingame.toppanel.statuspanel.MonsterStatusPanel;
+import game.ingame.top.ingameimages.CharacterImageUnit;
+import game.ingame.top.ingameimages.MonsterImageUnit;
+import game.ingame.top.statuspanel.CharacterStatusPanel;
+import game.ingame.top.statuspanel.MonsterStatusPanel;
 import game.monster.Monster;
 
 public class InGames extends JPanel {
