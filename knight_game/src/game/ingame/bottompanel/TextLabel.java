@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 
 public class TextLabel extends JLabel {
 
-	private String text;
+	private String text = "";
 
 	// Label 크기 및 글자 관련 설정 세팅
 	public TextLabel() {

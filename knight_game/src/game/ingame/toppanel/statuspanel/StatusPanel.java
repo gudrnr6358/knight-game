@@ -42,12 +42,17 @@ public abstract class StatusPanel extends JPanel {
 
 	private class HealthPanel extends JPanel {
 
+		private HealthPanel() {
+			super();
+			setBounds(15, 55, 332, 20);
+		}
+
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			// 체력의 경계를 나타내줄 기본 틀 그리기
 			g.setColor(Color.LIGHT_GRAY);
 			g.fillRoundRect(0, 0, 230, 20, 10, 10);
-			
+
 			g.setColor(Color.green);
 			// 체력이 15% 이하일 경우 빨간색으로 체력 표시
 			if ((int) ((c.nowHp / (double) c.hp) * 100) <= 15) {

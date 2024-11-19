@@ -20,7 +20,7 @@ public class GameFrame extends JFrame {
 		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
 		Character c = new Character();
 		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
-		InGame ingamePanel = new InGame(c, m);
+		InGames ingamePanel = new InGames(c, m);
 
 		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
 		setPanel(ingamePanel);

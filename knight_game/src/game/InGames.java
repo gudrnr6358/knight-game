@@ -20,11 +20,11 @@ public class InGames extends JPanel {
 	private Integer count = 0;
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
-	public InGames(Character character, Monster[] monsters, Monster monster) {
+	public InGames(Character character, Monster[] monsters) {
 		super();
 		this.character = character;
 		this.monsters = monsters;
-		this.monster = monster;
+		this.monster = monsters[count];
 
 		setBackground(Color.WHITE);
 		setLayout(null);
