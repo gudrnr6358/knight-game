@@ -20,7 +20,7 @@ public class TextLabel extends JLabel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawString(text, 30, 10);
+		g.drawString(text, 35, 15);
 	}
 
 	public void setTextLabel(String text) {
