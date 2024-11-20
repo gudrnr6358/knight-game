@@ -15,7 +15,7 @@ public class SkeletonHorde extends Skeleton {
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		// TODO Auto-generated method stub
 		return null;
 	}

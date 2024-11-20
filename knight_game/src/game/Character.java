@@ -45,7 +45,7 @@ public class Character extends Combatant implements ImageUnit {
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/knight.png");
 	}
 

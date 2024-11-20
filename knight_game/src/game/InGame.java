@@ -170,7 +170,7 @@ public class InGame extends JPanel {
 		private class CombatantImages extends JLabel {
 
 			private CombatantImages(ImageUnit unit) {
-				super(unit.getImage());
+				super(unit.getUnitImage());
 				if (unit instanceof Character) {
 					setBounds(150, 200, 300, 300);
 				}

@@ -15,7 +15,7 @@ public class CowardDragon extends Dragon {
 	}
 	
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return null;
 	}
 

@@ -15,7 +15,7 @@ public class WarriorSkeleton extends Skeleton{
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/skeleton.png");
 	}
 

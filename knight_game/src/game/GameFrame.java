@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Container;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,13 +21,15 @@ public class GameFrame extends JFrame {
 		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
 		Character c = new Character();
 		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
+		Vector<Monster> v = new Vector<>();
+		v.add(new MiniSlime());
 		InGames ingamePanel = new InGames(c, m);
 
 		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
 		setPanel(ingamePanel);
 
 		frame.setContentPane(ingamePanel);
-		
+
 		frame.setSize(1366, 900);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
