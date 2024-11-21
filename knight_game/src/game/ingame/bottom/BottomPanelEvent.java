@@ -12,6 +12,7 @@ import game.InGames;
 import game.Lobby;
 
 public class BottomPanelEvent {
+	public static InGames inGame;
 	public static InGames.BottomPanel bottomPanel;
 
 	class BottomMouseListener extends MouseAdapter {
@@ -23,12 +24,21 @@ public class BottomPanelEvent {
 
 			if (src.getText().equals("싸운다")) {
 				bottomPanel.setBottomBoxPanel(new BattlePanel());
+				TextLabel.textLabel.setTextLabel("몬스터 ㅎㅇ");
+				return;
 			}
 
 			if (src.getText().equals("도망친다")) {
 				GameFrame.setPanel(new Lobby());
 				return;
 			}
+
+			if (src.getText().equals("공격")) {
+				inGame.characterAttack();
+				bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+				return;
+			}
+
 		}
 
 	}

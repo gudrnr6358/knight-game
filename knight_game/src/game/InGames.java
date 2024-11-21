@@ -15,10 +15,10 @@ import game.monster.Monster;
 
 public class InGames extends JPanel {
 
-	private Character character;
-	private Monster[] monsters;
-	private Monster monster;
-	private Integer count = 0;
+	public Character character;
+	public Monster[] monsters;
+	public Monster monster;
+	public Integer count = 0;
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
 	public InGames(Character character, Monster[] monsters) {
@@ -107,6 +107,7 @@ public class InGames extends JPanel {
 			setBounds(0, 510, 1366, 390);
 			add(new BasicPanel());
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
+			BottomPanelEvent.inGame = InGames.this;
 			BottomPanelEvent.bottomPanel = this;
 		}
 
