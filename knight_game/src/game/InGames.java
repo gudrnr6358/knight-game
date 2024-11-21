@@ -32,7 +32,7 @@ public class InGames extends JPanel {
 	}
 
 	// 이전 Panel 제거하고 Panel 부착
-	private void setPanel() {
+	public void setPanel() {
 		InGames.this.removeAll();
 		setTopPanel();
 		setBottomPanel();
@@ -47,29 +47,50 @@ public class InGames extends JPanel {
 		add(new BottomPanel());
 	}
 
+	public void characterAttack() {
+		monster.nowHp -= character.attack();
+	}
+
+	public void characterSkill() {
+		monster.nowHp -= character.skill();
+	}
+
+	public void charaSkill() {
+		monster.nowHp -= character.charSkill();
+	}
+
+	public void monsterAttack() {
+		character.nowHp -= monster.attack();
+	}
+
+	public Boolean allUnitAlive() {
+		return character.isAlive() && monster.isAlive();
+	}
+
 	// 생성자 사용해서 기본 틀 제공 및 StatusBar, Image 부착하는 메서드 호출
 	private class TopPanel extends JPanel {
 
 		private TopPanel() {
 			setLayout(null);
-			setTopPanel();
+			TopPanel.this.setTopPanel();
 			setBounds(0, 0, 1366, 510);
 		}
 
-		public void setTopPanel() {
+		// TopPanel 생성은 한 번, 이후에는 이 메서드를 통해서 변화
+		private void setTopPanel() {
 			setBackground(Color.white);
 			setStatusBar();
 			setInGameImageUnit();
 		}
 
 		// 직관적으로 보이기 위해 TopPanel.this.add() 사용
-		public void setStatusBar() {
+		private void setStatusBar() {
 			TopPanel.this.add(new CharacterStatusPanel(character));
 			TopPanel.this.add(new MonsterStatusPanel(monster));
 		}
 
 		// 직관적으로 보이기 위해 TopPanel.this.add() 사용
-		public void setInGameImageUnit() {
+		private void setInGameImageUnit() {
 			TopPanel.this.add(new CharacterImageUnit(character));
 			TopPanel.this.add(new MonsterImageUnit(monster));
 		}
