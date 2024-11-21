@@ -20,9 +20,4 @@ public abstract class BottomBox extends JPanel {
 		BottomBox.this.setBounds(16, 3, 1320, 335);
 	}
 
-	public void setBottomBoxPanel(BottomBox bottomBox) {
-		BottomBox.this.removeAll();
-		BottomBox.this.add(bottomBox);
-		BottomBox.this.repaint();
-	}
 }

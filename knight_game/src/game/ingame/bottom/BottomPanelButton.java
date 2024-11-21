@@ -9,7 +9,7 @@ public class BottomPanelButton extends JButton {
 	// MouseEventListener 추가 및 기본 설정 세팅
 	protected BottomPanelButton(String str) {
 		super(str);
-		addMouseListener(new BottomPanelEvent());
+		addMouseListener(new BottomPanelEvent().new BottomMouseListener());
 		setFocusable(false);
 		setFont(new Font("SansSerif", Font.BOLD, 20));
 	}
