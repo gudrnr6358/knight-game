@@ -1,11 +1,10 @@
 package game.ingame.bottom;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import game.GameFrame;
 import game.InGames;
@@ -39,16 +38,20 @@ public class BottomPanelEvent {
 				return;
 			}
 
+			if (src.getText().equals("캐릭터 스킬")) {
+				inGame.characterSkill();
+				bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+				return;
+			}
+
+			if (src.getText().equals("CharSkillButton")) {
+				inGame.charSkill();
+				bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+				return;
+			}
+
 		}
 
 	}
 
-	class BottomKeyListener extends KeyAdapter {
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			super.keyPressed(e);
-		}
-
-	}
 }

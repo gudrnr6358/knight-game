@@ -57,7 +57,7 @@ public class InGames extends JPanel {
 		monster.nowHp -= character.skill();
 	}
 
-	public void charaSkill() {
+	public void charSkill() {
 		monster.nowHp -= character.charSkill();
 	}
 
