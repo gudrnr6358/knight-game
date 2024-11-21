@@ -88,6 +88,8 @@ public class BottomPanelEvent {
 
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
+					
+					
 					GameFrame.setPanel(new Lobby());
 					return;
 				}

@@ -26,7 +26,7 @@ public class InGames extends JPanel {
 		super();
 		this.character = character;
 		this.monsters = monsters;
-		this.monster = monsters[count];
+		this.monster = monsters[count++];
 
 		setLayout(null);
 		setBackground(Color.WHITE);
@@ -70,6 +70,15 @@ public class InGames extends JPanel {
 
 	public Boolean allUnitAlive() {
 		return character.isAlive() && monster.isAlive();
+	}
+
+	public Boolean setMonster() {
+		// monsters 배열의 크기를 넘어가지 않으면 true 반환
+		if (count < monsters.length) {
+			monster = monsters[count++];
+			return true;
+		}
+		return false;
 	}
 
 	// 생성자 사용해서 기본 틀 제공 및 StatusBar, Image 부착하는 메서드 호출
