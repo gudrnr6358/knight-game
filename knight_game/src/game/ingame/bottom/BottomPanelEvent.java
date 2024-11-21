@@ -37,18 +37,21 @@ public class BottomPanelEvent {
 
 				if (src.getText().equals("공격")) {
 					inGame.characterAttack();
+					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
 					inGame.characterSkill();
+					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
 
 				if (src.getText().equals("CharSkillButton")) {
 					inGame.charSkill();
+					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
@@ -60,9 +63,25 @@ public class BottomPanelEvent {
 				JPanel src = (JPanel) e.getSource();
 
 				if (src.getClass().equals(BattleTextPanel.class)) {
-					TextLabel.textLabel.setTextLabel("패널 클릭함");
-					bottomPanel.setBottomBoxPanel(new BattlePanel());
-					return;
+
+					if (!inGame.character.isAlive()) {
+						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
+						TextLabel.textLabel.setTextLabel("캐릭터가 사망했습니다");
+						return;
+					}
+
+					if (!inGame.monster.isAlive()) {
+						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
+						TextLabel.textLabel.setTextLabel("몬스터 처치! " + inGame.monster.getEXP() + "의 경험치 획득!");
+						return;
+					}
+
+					if (inGame.allUnitAlive()) {
+						bottomPanel.setBottomBoxPanel(new BattlePanel());
+						TextLabel.textLabel.setTextLabel("전투 진행중");
+						return;
+					}
+
 				}
 
 			}
