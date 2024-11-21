@@ -73,7 +73,8 @@ public class BottomPanelEvent {
 
 					if (!inGame.monster.isAlive()) {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
-						TextLabel.textLabel.setTextLabel("몬스터 처치! " + inGame.monster.getEXP() + "의 경험치 획득!");
+						TextLabel.textLabel
+								.setTextLabel(inGame.monster.name + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!");
 						return;
 					}
 
