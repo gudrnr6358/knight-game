@@ -23,4 +23,9 @@ public class BossSlime extends Slime {
 	public String getSkillName() {
 		return "슬라임 총공격";
 	}
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }

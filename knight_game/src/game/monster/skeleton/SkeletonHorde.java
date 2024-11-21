@@ -24,4 +24,9 @@ public class SkeletonHorde extends Skeleton {
 	public String getSkillName() {
 		return "집단공격";
 	}
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }

@@ -25,4 +25,9 @@ public class Boss extends Monster {
 		return "아주 짱짱쎈 공격";
 	}
 
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
+
 }

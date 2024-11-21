@@ -24,5 +24,9 @@ public class ArcherSkeleton extends Skeleton{
 	public String getSkillName() {
 		return "불화살 쏘기";
 	}
-	
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }

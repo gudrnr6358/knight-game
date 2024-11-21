@@ -23,4 +23,9 @@ public class WarriorSkeleton extends Skeleton{
 	public String getSkillName() {
 		return "쌍검 휘두르기";
 	}
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }

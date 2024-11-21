@@ -6,8 +6,12 @@ import game.ImageUnit;
 public abstract class Monster extends Combatant implements ImageUnit {
 
 	protected Monster(String name, int hp, int power) {
-		super(name,hp,power);
+		super(name, hp, power);
 	}
+
+	public abstract String getSkillName();
+
+	public abstract Integer getEXP();
 
 	@Override
 	public int attack() {
@@ -32,7 +36,5 @@ public abstract class Monster extends Combatant implements ImageUnit {
 			return false;
 		}
 	}
-
-	public abstract String getSkillName();
 
 }

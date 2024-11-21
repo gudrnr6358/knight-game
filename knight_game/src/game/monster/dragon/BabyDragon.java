@@ -23,5 +23,9 @@ public class BabyDragon extends Dragon {
 	public String getSkillName() {
 		return "할퀴기";
 	}
-	
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }

@@ -23,4 +23,9 @@ public class CombatSlime extends Slime {
 	public String getSkillName() {
 		return "베기";
 	}
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }

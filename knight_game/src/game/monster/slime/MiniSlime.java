@@ -23,4 +23,9 @@ public class MiniSlime extends Slime {
 	public String getSkillName() {
 		return "조약돌 던지기";
 	}
+
+	@Override
+	public Integer getEXP() {
+		return null;
+	}
 }
