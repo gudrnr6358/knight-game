@@ -32,6 +32,7 @@ public class InGames extends JPanel {
 	}
 
 	// 이전 Panel 제거하고 Panel 부착
+	// 몬스터 처치 후에 호출
 	public void setPanel() {
 		InGames.this.removeAll();
 		setTopPanel();
