@@ -31,6 +31,8 @@ public class InGames extends JPanel {
 		setLayout(null);
 		setBackground(Color.WHITE);
 		setPanel();
+		// BottomPanelEvent 클래스에 character monster 정보 공유하기
+		BottomPanelEvent.inGame = InGames.this;
 	}
 
 	// 이전 Panel 제거하고 Panel 부착
@@ -109,7 +111,6 @@ public class InGames extends JPanel {
 			add(new BasicPanel());
 			TextLabel.textLabel.setTextLabel(monster.name + "!!");
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
-			BottomPanelEvent.inGame = InGames.this;
 			BottomPanelEvent.bottomPanel = this;
 		}
 
