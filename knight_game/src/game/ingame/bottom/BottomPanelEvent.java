@@ -62,6 +62,7 @@ public class BottomPanelEvent {
 			if (e.getSource() instanceof JPanel) {
 				JPanel src = (JPanel) e.getSource();
 
+				// BattleTextPanel 클릭
 				if (src.getClass().equals(BattleTextPanel.class)) {
 
 					if (!inGame.character.isAlive()) {
@@ -82,6 +83,11 @@ public class BottomPanelEvent {
 						return;
 					}
 
+				}
+
+				// BattleEndPanel 클릭
+				if (src.getClass().equals(BattleEndPanel.class)) {
+					
 				}
 
 			}
