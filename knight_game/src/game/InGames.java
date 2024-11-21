@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
 import game.ingame.bottom.BottomBox;
+import game.ingame.bottom.BottomPanelEvent;
 import game.ingame.top.ingameimages.CharacterImageUnit;
 import game.ingame.top.ingameimages.MonsterImageUnit;
 import game.ingame.top.statuspanel.CharacterStatusPanel;
@@ -98,13 +99,23 @@ public class InGames extends JPanel {
 	}
 
 	// 생성자 사용해서 기본 틀 제공 및 "기본 BottomBox" 부착하는 메서드 호출
-	private class BottomPanel extends JPanel {
+	public class BottomPanel extends JPanel {
 
 		private BottomPanel() {
 			BottomPanel.this.setLayout(null);
 			setBackground(Color.white);
 			setBounds(0, 510, 1366, 390);
 			add(new BasicPanel());
+			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
+			BottomPanelEvent.bottomPanel = this;
 		}
+
+		public void setBottomBoxPanel(BottomBox bottomBox) {
+			BottomPanel.this.removeAll();
+			BottomPanel.this.add(bottomBox);
+			BottomPanel.this.repaint();
+		}
+
 	}
+
 }

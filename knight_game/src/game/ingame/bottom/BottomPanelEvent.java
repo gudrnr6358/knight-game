@@ -8,9 +8,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 import game.GameFrame;
+import game.InGames;
 import game.Lobby;
 
-public class BottomPanelEvent extends BottomPanel {
+public class BottomPanelEvent {
+	public static InGames.BottomPanel bottomPanel;
 
 	class BottomMouseListener extends MouseAdapter {
 
@@ -20,7 +22,7 @@ public class BottomPanelEvent extends BottomPanel {
 			JButton src = (JButton) e.getSource();
 
 			if (src.getText().equals("싸운다")) {
-				setBottomBoxPanel(new BattlePanel());
+				bottomPanel.setBottomBoxPanel(new BattlePanel());
 			}
 
 			if (src.getText().equals("도망친다")) {
