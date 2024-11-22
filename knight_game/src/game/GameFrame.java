@@ -25,9 +25,6 @@ public class GameFrame extends JFrame {
 		v.add(new MiniSlime());
 		InGames ingamePanel = new InGames(c, m);
 
-		// 여기에다가 본인이 만든 panel 부착하고 테스트 하면 됨
-		setPanel(ingamePanel);
-
 		frame.setContentPane(ingamePanel);
 
 		frame.setSize(1366, 900);
@@ -38,9 +35,9 @@ public class GameFrame extends JFrame {
 	}
 
 	public static void setPanel(JPanel panel) {
-		container.removeAll();
-		container.add(panel);
-		container.repaint();
+		frame.removeAll();
+		frame.setContentPane(panel);
+		frame.repaint();
 	}
 
 }
