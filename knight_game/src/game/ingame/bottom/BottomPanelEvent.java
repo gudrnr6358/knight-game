@@ -82,6 +82,7 @@ public class BottomPanelEvent {
 						return;
 					}
 
+					// 몬스터가 공격을 할 지, 공격 패널로 돌아갈 지 확인
 					if (count == 0) {
 						inGame.monsterAttack();
 						inGame.repaint();
