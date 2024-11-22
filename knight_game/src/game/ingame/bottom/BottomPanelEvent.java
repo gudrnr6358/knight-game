@@ -13,6 +13,7 @@ import game.Lobby;
 public class BottomPanelEvent {
 	public static InGames inGame;
 	public static InGames.BottomPanel bottomPanel;
+	private static Integer count = 0;
 
 	class BottomMouseListener extends MouseAdapter {
 
@@ -61,7 +62,6 @@ public class BottomPanelEvent {
 			// 클릭 소스가 JPanel 인 경우
 			if (e.getSource() instanceof JPanel) {
 				JPanel src = (JPanel) e.getSource();
-
 				// BattleTextPanel 클릭
 				if (src.getClass().equals(BattleTextPanel.class)) {
 
@@ -77,17 +77,22 @@ public class BottomPanelEvent {
 						if (inGame.monsters.length == inGame.count) {
 							str = " 스테이지 클리어!";
 						}
-						TextLabel.textLabel
-								.setTextLabel(inGame.monster.name + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!" + str);
+						TextLabel.textLabel.setTextLabel(
+								inGame.monster.name + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!" + str);
 						return;
 					}
 
-					if (inGame.allUnitAlive()) {
+					if (count == 0) {
+						inGame.monsterAttack();
+						inGame.repaint();
+						bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.monster, inGame.character));
+						count++;
+					} else {
 						bottomPanel.setBottomBoxPanel(new BattlePanel());
 						TextLabel.textLabel.setTextLabel("전투 진행중");
+						count = 0;
 						return;
 					}
-
 				}
 
 				// BattleEndPanel 클릭
