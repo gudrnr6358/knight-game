@@ -27,6 +27,7 @@ public class BottomPanelEvent {
 
 				if (src.getText().equals("싸운다")) {
 					bottomPanel.setBottomBoxPanel(new BattlePanel());
+					TextLabel.textLabel.setTextLabel("");
 					return;
 				}
 
