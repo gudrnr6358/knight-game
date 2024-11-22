@@ -23,7 +23,7 @@ public class GameFrame extends JFrame {
 		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
 		Vector<Monster> v = new Vector<>();
 		v.add(new MiniSlime());
-		InGames ingamePanel = new InGames(c, m);
+		InGame ingamePanel = new InGame(c, m);
 
 		frame.setContentPane(ingamePanel);
 

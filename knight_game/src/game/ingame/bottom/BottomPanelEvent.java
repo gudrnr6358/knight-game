@@ -7,12 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import game.GameFrame;
-import game.InGames;
+import game.InGame;
 import game.Lobby;
 
 public class BottomPanelEvent {
-	public static InGames inGame;
-	public static InGames.BottomPanel bottomPanel;
+	public static InGame inGame;
+	public static InGame.BottomPanel bottomPanel;
 	private static Integer count = 0;
 
 	class BottomMouseListener extends MouseAdapter {

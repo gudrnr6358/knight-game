@@ -5,13 +5,13 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-import game.InGames;
+import game.InGame;
 
 // 전투 종료 후를 관리하는 메서드
 public class BattleEndPanel extends BottomBox {
-	public InGames inGame;
+	public InGame inGame;
 
-	public BattleEndPanel(InGames inGame) {
+	public BattleEndPanel(InGame inGame) {
 		super();
 		this.inGame = inGame;
 		String str = "";

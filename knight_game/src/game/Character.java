@@ -57,4 +57,35 @@ public class Character extends Combatant implements ImageUnit {
 		return false;
 	}
 
+	public void recoveryHp() {
+		nowHp = hp;
+	}
+
+	public void getEXP(Integer exp) {
+		this.exp += exp;
+		checkExp();
+	}
+
+	// EXP 값이 충족되면 레벨업을 진행
+	// 경험치 얻는 메서드마다 실행
+	private void checkExp() {
+		if (level == EXP.length) {
+			System.out.println("최대 레벨입니다.");
+			return;
+		}
+		if (exp >= EXP[level - 1]) {
+			exp -= EXP[level - 1];
+			levelup();
+		}
+	}
+
+	private void levelup() {
+		if (level < EXP.length) {
+			hp += LEVEL_UP_PLUS_HP[level - 1];
+			power += LEVEL_UP_PLUS_POWER[level - 1];
+			nowHp = hp;
+			level++;
+		}
+	}
+
 }
