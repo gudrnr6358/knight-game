@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
 import game.Combatant;
+import game.monster.Monster;
 
 // 전투 상황 텍스트를 출력하는 패널
 // 오직 Text 출력을 위한 패널
@@ -27,6 +28,9 @@ public class BattleTextPanel extends BottomBox {
 		String word = "공격!";
 		if (attackUnit.useSkill) {
 			word = "스킬!";
+			if (attackUnit instanceof Monster) {
+				word = ((Monster) attackUnit).getSkillName();
+			}
 		}
 		TextLabel.textLabel
 				.setTextLabel(attackUnit.name + "의 " + word + " " + attackedUnit.name + " -" + attackUnit.attackValue);

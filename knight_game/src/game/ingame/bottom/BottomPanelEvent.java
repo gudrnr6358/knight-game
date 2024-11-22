@@ -89,6 +89,7 @@ public class BottomPanelEvent {
 						count++;
 					} else {
 						bottomPanel.setBottomBoxPanel(new BattlePanel());
+						TextLabel.textLabel.setTextLabel("");
 						count = 0;
 						return;
 					}
