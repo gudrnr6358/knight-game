@@ -34,13 +34,13 @@ public class Character extends Combatant implements ImageUnit {
 		// 20은 그냥 막 넣어놓은 값임, power 관련 연산 진행하고
 		// 그걸 attackValue 에 넣어서 return 하면 될 듯
 		useSkill = true;
-		attackValue = 20;
+		attackValue = (int) ((power * 1.2) + (Math.random() * 5 + 1));
 		return attackValue;
 	}
 
 	public int charSkill() {
 		useSkill = true;
-		attackValue = 20;
+		attackValue = (int) ((power * 1.3) + (Math.random() * 5 + 1));
 		return attackValue;
 	}
 
