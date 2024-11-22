@@ -13,7 +13,7 @@ public class TextLabel extends JLabel {
 
 	// Label 크기 및 글자 관련 설정 세팅
 	public TextLabel() {
-		setFont(new Font("SansSerif", Font.BOLD, 25));
+		setFont(new Font("NanumGothic", Font.BOLD, 25));
 		setForeground(Color.black);
 		setSize(1300, 60);
 	}

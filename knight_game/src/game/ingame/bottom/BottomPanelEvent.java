@@ -66,15 +66,19 @@ public class BottomPanelEvent {
 				if (src.getClass().equals(BattleTextPanel.class)) {
 
 					if (!inGame.character.isAlive()) {
-						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
+						bottomPanel.setBottomBoxPanel(new BattleEndPanel(inGame));
 						TextLabel.textLabel.setTextLabel(inGame.character.name + " 기사가 사망했습니다");
 						return;
 					}
 
 					if (!inGame.monster.isAlive()) {
-						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
+						String str = "";
+						bottomPanel.setBottomBoxPanel(new BattleEndPanel(inGame));
+						if (inGame.monsters.length == inGame.count) {
+							str = " 스테이지 클리어!";
+						}
 						TextLabel.textLabel
-								.setTextLabel(inGame.monster.name + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!");
+								.setTextLabel(inGame.monster.name + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!" + str);
 						return;
 					}
 
@@ -88,8 +92,10 @@ public class BottomPanelEvent {
 
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
-					
-					
+					if (inGame.setMonster()) {
+						inGame.setPanel();
+						return;
+					}
 					GameFrame.setPanel(new Lobby());
 					return;
 				}

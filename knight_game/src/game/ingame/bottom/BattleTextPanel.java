@@ -18,7 +18,7 @@ public class BattleTextPanel extends BottomBox {
 		attackText(attackUnit, attackedUnit);
 		JLabel nextpage = new JLabel("진행하려면 클릭하세요");
 		nextpage.setForeground(new Color(128, 128, 128));
-		nextpage.setFont(new Font("SansSerif", Font.BOLD, 22));
+		nextpage.setFont(new Font("NanumGothic", Font.BOLD, 22));
 		nextpage.setBounds(1075, 70, 250, 470);
 		add(nextpage);
 	}
