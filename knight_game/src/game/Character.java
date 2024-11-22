@@ -61,7 +61,7 @@ public class Character extends Combatant implements ImageUnit {
 		nowHp = hp;
 	}
 
-	public void getEXP(Integer exp) {
+	public void plusEXP(Integer exp) {
 		this.exp += exp;
 		checkExp();
 	}
