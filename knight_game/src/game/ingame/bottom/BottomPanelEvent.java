@@ -89,7 +89,6 @@ public class BottomPanelEvent {
 						count++;
 					} else {
 						bottomPanel.setBottomBoxPanel(new BattlePanel());
-						TextLabel.textLabel.setTextLabel("전투 진행중");
 						count = 0;
 						return;
 					}
