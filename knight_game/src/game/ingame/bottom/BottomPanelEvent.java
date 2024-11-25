@@ -77,9 +77,10 @@ public class BottomPanelEvent {
 						if (inGame.monsters.length == inGame.count) {
 							str = " 스테이지 클리어!";
 						}
-						TextLabel.textLabel.setTextLabel(
-								inGame.monster.name + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!" + str);
 						inGame.character.plusEXP(inGame.monster.getEXP());
+						TextLabel.textLabel.setTextLabel(
+								inGame.monster.name + " 처치 " + inGame.monster.getEXP() + "의 경험치 획득!    " + "("
+										+ inGame.character.exp + "/" + inGame.character.getLevelExp() + ") " + str);
 						return;
 					}
 

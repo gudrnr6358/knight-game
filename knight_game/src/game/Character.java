@@ -88,4 +88,7 @@ public class Character extends Combatant implements ImageUnit {
 		}
 	}
 
+	public Integer getLevelExp() {
+		return EXP[level - 1];
+	}
 }
