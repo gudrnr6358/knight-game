@@ -26,6 +26,6 @@ public class CowardDragon extends Dragon {
 
 	@Override
 	public Integer getEXP() {
-		return null;
+		return 15;
 	}
 }

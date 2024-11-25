@@ -26,6 +26,6 @@ public class CombatSlime extends Slime {
 
 	@Override
 	public Integer getEXP() {
-		return null;
+		return 7;
 	}
 }

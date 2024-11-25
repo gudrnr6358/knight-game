@@ -27,6 +27,6 @@ public class ArcherSkeleton extends Skeleton{
 
 	@Override
 	public Integer getEXP() {
-		return null;
+		return 15;
 	}
 }

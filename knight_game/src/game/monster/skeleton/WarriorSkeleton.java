@@ -26,6 +26,6 @@ public class WarriorSkeleton extends Skeleton{
 
 	@Override
 	public Integer getEXP() {
-		return null;
+		return 22;
 	}
 }

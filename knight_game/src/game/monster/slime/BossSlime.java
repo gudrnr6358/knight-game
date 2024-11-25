@@ -26,6 +26,6 @@ public class BossSlime extends Slime {
 
 	@Override
 	public Integer getEXP() {
-		return null;
+		return 9;
 	}
 }

@@ -26,6 +26,6 @@ public class BabyDragon extends Dragon {
 
 	@Override
 	public Integer getEXP() {
-		return null;
+		return 12;
 	}
 }

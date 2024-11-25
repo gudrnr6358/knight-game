@@ -26,6 +26,6 @@ public class MiniSlime extends Slime {
 
 	@Override
 	public Integer getEXP() {
-		return 20;
+		return 4;
 	}
 }
