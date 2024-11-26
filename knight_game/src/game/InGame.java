@@ -69,10 +69,6 @@ public class InGame extends JPanel {
 		character.nowHp -= monster.attack();
 	}
 
-	public Boolean allUnitAlive() {
-		return character.isAlive() && monster.isAlive();
-	}
-
 	public Boolean setMonster() {
 		// monsters 배열의 크기를 넘어가지 않으면 true 반환
 		if (count < monsters.length) {
@@ -119,7 +115,7 @@ public class InGame extends JPanel {
 			setBackground(Color.white);
 			setBounds(0, 510, 1366, 390);
 			add(new BasicPanel());
-			TextLabel.textLabel.setTextLabel(monster.name + "!!");
+			TextLabel.textLabel.setTextLabel(monster.name + "을 마주쳤다");
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
 			BottomPanelEvent.bottomPanel = this;
 		}

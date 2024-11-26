@@ -16,7 +16,7 @@ public class ArcherSkeleton extends Skeleton {
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return new ImageIcon("images/monster/archerskeleton.png");
+		return new ImageIcon("images/monster/skeletons/archerskeleton.png");
 	}
 
 	@Override
