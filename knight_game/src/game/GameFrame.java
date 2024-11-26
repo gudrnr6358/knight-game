@@ -32,7 +32,7 @@ public class GameFrame extends JFrame {
 
 		Vector<Monster> v = new Vector<>();
 		v.add(new MiniSlime());
-		InGame ingamePanel = new InGame(c, slimes);
+		InGame ingamePanel = new InGame(c, dragons);
 
 		container.setLayout(null);
 		container.add(ingamePanel);
