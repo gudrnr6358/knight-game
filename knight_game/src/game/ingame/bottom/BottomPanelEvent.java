@@ -100,6 +100,11 @@ public class BottomPanelEvent {
 
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
+					if (!inGame.character.isAlive()) {
+						GameFrame.setPanel(new Lobby());
+						return;
+					}
+
 					if (inGame.setMonster()) {
 						inGame.setPanel();
 						return;

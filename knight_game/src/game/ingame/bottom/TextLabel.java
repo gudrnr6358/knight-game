@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 public class TextLabel extends JLabel {
 
+	// static 선언해서 하나의 TextLabel 을 다른 패널들이 함꼐 사용
 	public static TextLabel textLabel = new TextLabel();
 	private String text = "";
 
