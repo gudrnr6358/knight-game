@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import game.monster.Monster;
+import game.monster.boss.Boss;
 import game.monster.dragon.AncientDragon;
 import game.monster.dragon.BabyDragon;
 import game.monster.dragon.CowardDragon;
@@ -29,10 +30,12 @@ public class GameFrame extends JFrame {
 		Monster[] slimes = { new MiniSlime(), new CombatSlime(), new BossSlime() };
 		Monster[] skeletons = { new WarriorSkeleton(), new ArcherSkeleton(), new SkeletonHorde() };
 		Monster[] dragons = { new BabyDragon(), new CowardDragon(), new AncientDragon() };
-
+		Monster[] boss = {new Boss()};
+		
 		Vector<Monster> v = new Vector<>();
 		v.add(new MiniSlime());
-		InGame ingamePanel = new InGame(c, dragons);
+		
+		InGame ingamePanel = new InGame(c, boss);
 
 		container.setLayout(null);
 		container.add(ingamePanel);
