@@ -12,7 +12,7 @@ public class Boss extends Monster {
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return new ImageIcon("images/boss.png");
+		return new ImageIcon("images/monster/boss.png");
 	}
 
 	@Override
