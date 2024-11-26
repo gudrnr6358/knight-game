@@ -16,7 +16,7 @@ public class BabyDragon extends Dragon {
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return  new ImageIcon("images/monster/babydragon");
+		return  new ImageIcon("images/monster/babydragon.png");
 	}
 
 	@Override

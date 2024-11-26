@@ -7,6 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import game.monster.Monster;
+import game.monster.dragon.AncientDragon;
+import game.monster.dragon.BabyDragon;
+import game.monster.dragon.CowardDragon;
+import game.monster.skeleton.ArcherSkeleton;
+import game.monster.skeleton.SkeletonHorde;
+import game.monster.skeleton.WarriorSkeleton;
 import game.monster.slime.BossSlime;
 import game.monster.slime.CombatSlime;
 import game.monster.slime.MiniSlime;
@@ -20,10 +26,13 @@ public class GameFrame extends JFrame {
 		frame.setLayout(null);
 		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
 		Character c = new Character();
-		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
+		Monster[] slimes = { new MiniSlime(), new CombatSlime(), new BossSlime() };
+		Monster[] skeletons = { new WarriorSkeleton(), new ArcherSkeleton(), new SkeletonHorde() };
+		Monster[] dragons = { new BabyDragon(), new CowardDragon(), new AncientDragon() };
+
 		Vector<Monster> v = new Vector<>();
 		v.add(new MiniSlime());
-		InGame ingamePanel = new InGame(c, m);
+		InGame ingamePanel = new InGame(c, skeletons);
 
 		container.setLayout(null);
 		container.add(ingamePanel);
