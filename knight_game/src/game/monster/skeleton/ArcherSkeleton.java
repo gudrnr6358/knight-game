@@ -2,7 +2,7 @@ package game.monster.skeleton;
 
 import javax.swing.ImageIcon;
 
-public class ArcherSkeleton extends Skeleton{
+public class ArcherSkeleton extends Skeleton {
 
 	public ArcherSkeleton() {
 		super("궁수 스켈레톤", 40, 50);
@@ -16,8 +16,7 @@ public class ArcherSkeleton extends Skeleton{
 
 	@Override
 	public ImageIcon getUnitImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ImageIcon("images/monster/archerskeleton");
 	}
 
 	@Override

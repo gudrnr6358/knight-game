@@ -15,7 +15,7 @@ public class AncientDragon extends Dragon {
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return null;
+		return new ImageIcon("images/monster/ancientdragon");
 	}
 
 	@Override
