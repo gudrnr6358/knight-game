@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class AncientDragon extends Dragon {
 	public AncientDragon() {
-		super("고대 용", 60, 30);
+		super("고대 용", 60, 35);
 	}
 
 	//
