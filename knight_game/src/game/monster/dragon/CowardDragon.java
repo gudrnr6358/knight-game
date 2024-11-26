@@ -11,16 +11,21 @@ public class CowardDragon extends Dragon {
 	//
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
-	
+
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return null;
 	}
 
 	@Override
 	public String getSkillName() {
 		return "옆에 있던 용에게 도움요청하기";
+	}
+
+	@Override
+	public Integer getEXP() {
+		return 15;
 	}
 }

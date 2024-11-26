@@ -10,11 +10,11 @@ public class AncientDragon extends Dragon {
 	//
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
-	
+
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return null;
 	}
 
@@ -22,5 +22,9 @@ public class AncientDragon extends Dragon {
 	public String getSkillName() {
 		return "드래곤 브레스";
 	}
-	
+
+	@Override
+	public Integer getEXP() {
+		return 20;
+	}
 }

@@ -11,16 +11,21 @@ public class CombatSlime extends Slime {
 	// 베기
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/slime.png");
 	}
 
 	@Override
 	public String getSkillName() {
 		return "베기";
+	}
+
+	@Override
+	public Integer getEXP() {
+		return 7;
 	}
 }

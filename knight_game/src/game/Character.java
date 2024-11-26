@@ -2,20 +2,13 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class Character implements Combatant, ImageUnit {
+public class Character extends Combatant implements ImageUnit {
 	public static boolean hadCharacter = false;
-	public String name;
-	public Integer level;
-	public Integer exp;
-	public Integer hp;
-	public Integer nowHp;
-	public Integer power;
-	public Boolean useSkill;
-	public Integer attackValue;
 	private Integer[] EXP = { 20, 30, 35, 40, 45, 70, 80, 90, 110 };
 	private Integer[] LEVEL_UP_PLUS_HP = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
-
+	public Integer exp;
+	public Integer level;
 	/*
 	 * 레벨업 로직 경험치 얻는 메서드
 	 */
@@ -41,18 +34,18 @@ public class Character implements Combatant, ImageUnit {
 		// 20은 그냥 막 넣어놓은 값임, power 관련 연산 진행하고
 		// 그걸 attackValue 에 넣어서 return 하면 될 듯
 		useSkill = true;
-		attackValue = 20;
+		attackValue = (int) ((power * 1.2) + (Math.random() * 5 + 1));
 		return attackValue;
 	}
 
 	public int charSkill() {
 		useSkill = true;
-		attackValue = 20;
+		attackValue = (int) ((power * 1.3) + (Math.random() * 5 + 1));
 		return attackValue;
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/knight.png");
 	}
 
@@ -64,4 +57,38 @@ public class Character implements Combatant, ImageUnit {
 		return false;
 	}
 
+	public void recoveryHp() {
+		nowHp = hp;
+	}
+
+	public void plusEXP(Integer exp) {
+		this.exp += exp;
+		checkExp();
+	}
+
+	// EXP 값이 충족되면 레벨업을 진행
+	// 경험치 얻는 메서드마다 실행
+	private void checkExp() {
+		if (level == EXP.length) {
+			System.out.println("최대 레벨입니다.");
+			return;
+		}
+		if (exp >= EXP[level - 1]) {
+			exp -= EXP[level - 1];
+			levelup();
+		}
+	}
+
+	private void levelup() {
+		if (level < EXP.length) {
+			hp += LEVEL_UP_PLUS_HP[level - 1];
+			power += LEVEL_UP_PLUS_POWER[level - 1];
+			nowHp = hp;
+			level++;
+		}
+	}
+
+	public Integer getLevelExp() {
+		return EXP[level - 1];
+	}
 }

@@ -11,16 +11,21 @@ public class WarriorSkeleton extends Skeleton{
 
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/skeleton.png");
 	}
 
 	@Override
 	public String getSkillName() {
 		return "쌍검 휘두르기";
+	}
+
+	@Override
+	public Integer getEXP() {
+		return 22;
 	}
 }

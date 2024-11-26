@@ -11,11 +11,11 @@ public class ArcherSkeleton extends Skeleton{
 
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -24,5 +24,9 @@ public class ArcherSkeleton extends Skeleton{
 	public String getSkillName() {
 		return "불화살 쏘기";
 	}
-	
+
+	@Override
+	public Integer getEXP() {
+		return 15;
+	}
 }

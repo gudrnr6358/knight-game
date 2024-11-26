@@ -11,16 +11,21 @@ public class MiniSlime extends Slime {
 	// 조약돌 던지기
 	@Override
 	public int skill() {
-		return (int) (POWER * 1.5 + (Math.random() * 3 + 1));
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 
 	@Override
-	public ImageIcon getImage() {
+	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/minislime.png");
 	}
 
 	@Override
 	public String getSkillName() {
 		return "조약돌 던지기";
+	}
+
+	@Override
+	public Integer getEXP() {
+		return 4;
 	}
 }
