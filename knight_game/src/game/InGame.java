@@ -31,6 +31,7 @@ public class InGame extends JPanel {
 		setLayout(null);
 		setBackground(Color.WHITE);
 		setPanel();
+		setBounds(0, 0, 1366, 900);
 		// BottomPanelEvent 클래스에 character monster 정보 공유하기
 		BottomPanelEvent.inGame = InGame.this;
 	}

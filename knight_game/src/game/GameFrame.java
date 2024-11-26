@@ -26,7 +26,6 @@ public class GameFrame extends JFrame {
 		InGame ingamePanel = new InGame(c, m);
 
 		container.setLayout(null);
-		ingamePanel.setBounds(0, 0, 1366, 900);
 		container.add(ingamePanel);
 		container.setVisible(true);
 
@@ -41,7 +40,6 @@ public class GameFrame extends JFrame {
 		container.add(panel);
 		container.revalidate();
 		container.repaint();
-		System.out.println("repaint 했음");
 	}
 
 }
