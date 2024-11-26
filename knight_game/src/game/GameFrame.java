@@ -39,6 +39,7 @@ public class GameFrame extends JFrame {
 	public static void setPanel(JPanel panel) {
 		container.removeAll();
 		container.add(panel);
+		container.revalidate();
 		container.repaint();
 		System.out.println("repaint 했음");
 	}
