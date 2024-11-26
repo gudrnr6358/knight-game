@@ -17,7 +17,7 @@ public class GameFrame extends JFrame {
 
 	public static void main(String[] args) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		frame.setLayout(null);
 		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
 		Character c = new Character();
 		Monster[] m = { new MiniSlime(), new CombatSlime(), new BossSlime() };
@@ -25,19 +25,22 @@ public class GameFrame extends JFrame {
 		v.add(new MiniSlime());
 		InGame ingamePanel = new InGame(c, m);
 
-		frame.setContentPane(ingamePanel);
+		container.setLayout(null);
+		ingamePanel.setBounds(0, 0, 1366, 900);
+		container.add(ingamePanel);
+		container.setVisible(true);
 
 		frame.setSize(1366, 900);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-
 	}
 
 	public static void setPanel(JPanel panel) {
-		frame.removeAll();
-		frame.setContentPane(panel);
-		frame.repaint();
+		container.removeAll();
+		container.add(panel);
+		container.repaint();
+		System.out.println("repaint 했음");
 	}
 
 }
