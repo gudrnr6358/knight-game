@@ -1,10 +1,14 @@
 package game;
 
-import javax.swing.*;
-import java.awt.Image;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 import game.stage.Stage4;
 import game.stage.Stage5;
 import game.stage.Stage6;
@@ -69,4 +73,5 @@ public class Chapter2Stage extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
 	}
+
 }
