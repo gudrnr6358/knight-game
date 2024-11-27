@@ -38,7 +38,7 @@ public class GameFrame extends JFrame {
 		InGame ingamePanel = new InGame(c, boss);
 
 		container.setLayout(null);
-		container.add(ingamePanel);
+		container.add(new Chapter(c));
 		container.setVisible(true);
 
 		frame.setSize(1366, 900);
