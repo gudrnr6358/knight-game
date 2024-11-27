@@ -20,7 +20,7 @@ public class Chapter1Stage extends JPanel {
 
 		setLayout(null);
 		setBounds(0, 0, 1366, 900);
-		backgroundImage = new ImageIcon("/images/Stage1Background.png").getImage();
+		backgroundImage = new ImageIcon("images/Stage1Background.png").getImage();
 
 		// Stage1 버튼
 		buttons[0].setBounds(100, 100, 150, 50);

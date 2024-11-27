@@ -18,7 +18,7 @@ public class Chapter2Stage extends JPanel {
 	public Chapter2Stage(Character character) {
 		this.character = character;
 
-		backgroundImage = new ImageIcon("/images/Stage2Background.png").getImage();
+		backgroundImage = new ImageIcon("images/Stage2Background.png").getImage();
 
 		setLayout(null);
 		setBounds(0, 0, 1366, 900);
