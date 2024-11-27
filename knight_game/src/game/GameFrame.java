@@ -1,22 +1,9 @@
 package game;
 
 import java.awt.Container;
-import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import game.monster.Monster;
-import game.monster.boss.Boss;
-import game.monster.dragon.AncientDragon;
-import game.monster.dragon.BabyDragon;
-import game.monster.dragon.CowardDragon;
-import game.monster.skeleton.ArcherSkeleton;
-import game.monster.skeleton.SkeletonHorde;
-import game.monster.skeleton.WarriorSkeleton;
-import game.monster.slime.BossSlime;
-import game.monster.slime.CombatSlime;
-import game.monster.slime.MiniSlime;
 
 public class GameFrame extends JFrame {
 	public static JFrame frame = new JFrame("기사 키우기");
