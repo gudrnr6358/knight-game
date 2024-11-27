@@ -29,7 +29,7 @@ public class BattleTextPanel extends BottomBox {
 		if (attackUnit.useSkill) {
 			word = "스킬!";
 			if (attackUnit instanceof Monster) {
-				word = ((Monster) attackUnit).getSkillName();
+				word = ((Monster) attackUnit).getSkillName() + "!";
 			}
 		}
 		TextLabel.textLabel

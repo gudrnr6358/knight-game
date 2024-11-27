@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class AncientDragon extends Dragon {
 	public AncientDragon() {
-		super("고대 용", 60, 30);
+		super("고대 용", 60, 35);
 	}
 
 	//
@@ -15,7 +15,7 @@ public class AncientDragon extends Dragon {
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return null;
+		return new ImageIcon("images/monster/dragons/ancientdragon.png");
 	}
 
 	@Override

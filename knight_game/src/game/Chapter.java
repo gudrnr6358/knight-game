@@ -1,67 +1,58 @@
 package game;
 
-import java.awt.CardLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Chapter extends JPanel {
+	private Image backgroundImage;
 	private JButton[] buttons = { new JButton("CHAPTER 1"), new JButton("CHAPTER 2"), new JButton("돌아가기") };
-	private CardLayout cardLayout;
-	private JPanel cardPanel;
-	private MyListener listener;
-	private boolean[] stageClear = new boolean[3];
+	private Character character;
 
-	public Chapter(CardLayout cardLayout, JPanel cardPanel) {
-		this.cardLayout = cardLayout;
-		this.cardPanel = cardPanel;
+	public Chapter(Character character) {
+		this.character = character;
+		setBounds(0, 0, 1366, 900);
 		setLayout(null);
-		listener = new MyListener();
-		stageClear = new boolean[3];
-
+		backgroundImage = new ImageIcon("images/ChapterBackground.png").getImage();
 		// Chapter 1 버튼
 		buttons[0].setBounds(200, 200, 100, 100);
 		add(buttons[0]);
-		buttons[0].addActionListener(listener);
-
+		buttons[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameFrame.setPanel(new Chapter1Stage(character));
+			}
+		});
 		// Chapter 2 버튼
-		buttons[1].setBounds(400, 200, 100, 100);
+		buttons[1].setBounds(400, 400, 100, 100);
+
 		add(buttons[1]);
-		buttons[1].addActionListener(listener);
-		buttons[1].setEnabled(false);
+		buttons[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameFrame.setPanel(new Chapter2Stage(character));
+			}
+		});
 
 		// 돌아가기 버튼
-		buttons[2].setBounds(600, 200, 100, 100);
+		buttons[2].setBounds(500, 500, 100, 100);
 		add(buttons[2]);
-		buttons[2].addActionListener(listener);
+		buttons[2].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GameFrame.setPanel(new Lobby());
+			}
+		});
 	}
 
-	public void updateStageClear(int stageIndex, boolean isClear) {
-		stageClear[stageIndex] = isClear;
-		updateChapter();
-	}
-
-	// chapter2 버튼 활성화
-	public void updateChapter() {
-		if (stageClear[0] && stageClear[1] && stageClear[2]) {
-			buttons[1].setEnabled(true);
-		}
-	}
-
-	class MyListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (buttons[0] == (JButton) e.getSource()) {
-				cardLayout.show(cardPanel, "Chapter1Stage");
-			}
-			if (buttons[1] == (JButton) e.getSource()) {
-				cardLayout.show(cardPanel, "Chapter2Stage");
-			}
-			if (buttons[2] == (JButton) e.getSource()) {
-				cardLayout.show(cardPanel, "Lobby");
-			}
-		}
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
 	}
 }

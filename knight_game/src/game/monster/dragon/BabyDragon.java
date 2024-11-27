@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class BabyDragon extends Dragon {
 
 	public BabyDragon() {
-		super("아기 용", 30, 15);
+		super("아기 용", 30, 17);
 	}
 
 	//
@@ -16,7 +16,7 @@ public class BabyDragon extends Dragon {
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return null;
+		return  new ImageIcon("images/monster/dragons/babydragon.png");
 	}
 
 	@Override

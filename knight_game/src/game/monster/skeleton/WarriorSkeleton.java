@@ -2,7 +2,7 @@ package game.monster.skeleton;
 
 import javax.swing.ImageIcon;
 
-public class WarriorSkeleton extends Skeleton{
+public class WarriorSkeleton extends Skeleton {
 
 	public WarriorSkeleton() {
 		super("전사 스켈레톤", 70, 40);
@@ -16,7 +16,7 @@ public class WarriorSkeleton extends Skeleton{
 
 	@Override
 	public ImageIcon getUnitImage() {
-		return new ImageIcon("images/skeleton.png");
+		return new ImageIcon("images/monster/skeletons/warriorskeleton.png");
 	}
 
 	@Override
