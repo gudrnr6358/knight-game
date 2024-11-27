@@ -27,16 +27,7 @@ public class GameFrame extends JFrame {
 		frame.setLayout(null);
 		// home에서 게임 시작 누른 이후에 캐릭터 객체 생성
 		Character c = new Character();
-		Monster[] slimes = { new MiniSlime(), new CombatSlime(), new BossSlime() };
-		Monster[] skeletons = { new WarriorSkeleton(), new ArcherSkeleton(), new SkeletonHorde() };
-		Monster[] dragons = { new BabyDragon(), new CowardDragon(), new AncientDragon() };
-		Monster[] boss = {new Boss()};
 		
-		Vector<Monster> v = new Vector<>();
-		v.add(new MiniSlime());
-		
-		InGame ingamePanel = new InGame(c, boss);
-
 		container.setLayout(null);
 		container.add(new Chapter(c));
 		container.setVisible(true);
