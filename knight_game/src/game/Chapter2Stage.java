@@ -29,7 +29,7 @@ public class Chapter2Stage extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new InGame(character, new Stage4().getMonsters());
+				GameFrame.setPanel(new InGame(character, new Stage4().getMonsters()));
 			}
 		});
 

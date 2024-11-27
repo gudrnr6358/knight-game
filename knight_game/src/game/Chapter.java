@@ -29,7 +29,7 @@ public class Chapter extends JPanel {
 			}
 		});
 		// Chapter 2 버튼
-		buttons[1].setBounds(200, 200, 100, 100);
+		buttons[1].setBounds(400, 400, 100, 100);
 
 		add(buttons[1]);
 		buttons[1].addActionListener(new ActionListener() {
@@ -40,7 +40,7 @@ public class Chapter extends JPanel {
 		});
 
 		// 돌아가기 버튼
-		buttons[2].setBounds(200, 200, 100, 100);
+		buttons[2].setBounds(500, 500, 100, 100);
 		add(buttons[2]);
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
