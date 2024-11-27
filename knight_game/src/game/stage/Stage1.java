@@ -6,17 +6,13 @@ import game.monster.slime.BossSlime;
 import game.monster.Monster;
 
 public class Stage1 {
-    private static Monster[] monsters;
+	private Monster[] monsters;
 
-    public Stage1() {
-        monsters = new Monster[] {
-                new MiniSlime(),
-                new CombatSlime(),
-                new BossSlime()
-        };
-    }
+	public Stage1() {
+		monsters = new Monster[] { new MiniSlime(), new CombatSlime(), new BossSlime() };
+	}
 
-    public Monster[] getMonsters() {
-        return monsters;
-    }
+	public Monster[] getMonsters() {
+		return monsters;
+	}
 }
