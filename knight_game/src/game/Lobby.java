@@ -10,11 +10,8 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class Lobby extends JPanel {
-	private Character character;
 
 	public Lobby(Character character) {
-		this.character = character;
-
 		setLayout(null);
 
 		Player la = new Player(character);
