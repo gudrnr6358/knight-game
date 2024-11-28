@@ -37,6 +37,7 @@ public class InGame extends JPanel {
 		setLayout(null);
 		setPanel();
 		setBounds(0, 0, 1366, 900);
+		character.setSkillCount();
 		// BottomPanelEvent, BattlePanel character, monster 정보 공유
 		BottomPanelEvent.inGame = InGame.this;
 		BattlePanel.inGame = InGame.this;

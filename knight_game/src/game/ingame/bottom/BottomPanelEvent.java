@@ -54,7 +54,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("CharSkillButton")) {
+				if (src.getText().equals("두번 베기")) {
 					if (!inGame.character.canUsecharSkill()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;

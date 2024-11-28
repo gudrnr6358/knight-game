@@ -11,11 +11,11 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	private Integer level;
 
 	// 고정 스킬 사용 횟수
-	private final Integer fixedCharSkillCount = 3;
 	private final Integer fixedSkillCount = 3;
+	private final Integer fixedCharSkillCount = 1;
 	// 가변 스킬 사용 횟수
-	private Integer currentCharSkillCount = fixedCharSkillCount;
 	private Integer currentSkillCount = fixedSkillCount;
+	private Integer currentCharSkillCount = fixedCharSkillCount;
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
@@ -44,7 +44,7 @@ public class Character extends AbstractCombatant implements ImageUnit {
 
 	public int charSkill() {
 		useSkill = true;
-		attackValue = (int) ((power * 1.3) + (Math.random() * 5 + 1));
+		attackValue = (int) ((power * 2.0) + (Math.random() * 3 + 1));
 		return attackValue;
 	}
 
