@@ -23,7 +23,7 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		this.exp = 0;
 		this.hp = 100;
 		this.nowHp = 100;
-		this.power = 10;
+		this.power = 110;
 		name = "하이";
 	}
 
