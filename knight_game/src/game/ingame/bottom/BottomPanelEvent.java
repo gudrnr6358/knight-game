@@ -32,7 +32,7 @@ public class BottomPanelEvent {
 				}
 
 				if (src.getText().equals("도망친다")) {
-					GameFrame.setPanel(new Lobby());
+					GameFrame.setPanel(new Lobby(inGame.character));
 					return;
 				}
 
@@ -44,13 +44,21 @@ public class BottomPanelEvent {
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
+					if (!inGame.character.canUseSkill()) {
+						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
+						return;
+					}
 					inGame.characterSkill();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
 
-				if (src.getText().equals("CharSkillButton")) {
+				if (src.getText().equals("두번 베기")) {
+					if (!inGame.character.canUsecharSkill()) {
+						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
+						return;
+					}
 					inGame.charSkill();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
@@ -78,9 +86,9 @@ public class BottomPanelEvent {
 							str = " 스테이지 클리어!";
 						}
 						inGame.character.plusEXP(inGame.monster.getEXP());
-						TextLabel.textLabel.setTextLabel(
-								inGame.monster.name + " 처치 " + inGame.monster.getEXP() + "의 경험치 획득!    " + "("
-										+ inGame.character.exp + "/" + inGame.character.getLevelExp() + ") " + str);
+						TextLabel.textLabel.setTextLabel(inGame.monster.name + " 처치 " + inGame.monster.getEXP()
+								+ "의 경험치 획득!    " + "(" + inGame.character.getExp() + "/"
+								+ inGame.character.getLevelExp() + ") " + str);
 						return;
 					}
 
@@ -101,7 +109,7 @@ public class BottomPanelEvent {
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
 					if (!inGame.character.isAlive()) {
-						GameFrame.setPanel(new Lobby());
+						GameFrame.setPanel(new Lobby(inGame.character));
 						return;
 					}
 
@@ -109,7 +117,7 @@ public class BottomPanelEvent {
 						inGame.setPanel();
 						return;
 					}
-					GameFrame.setPanel(new Lobby());
+					GameFrame.setPanel(new Lobby(inGame.character));
 					return;
 				}
 

@@ -24,6 +24,15 @@ public class BattleTextPanel extends BottomBox {
 		add(nextpage);
 	}
 
+	public BattleTextPanel() {
+		super();
+		JLabel nextpage = new JLabel("진행하려면 클릭하세요");
+		nextpage.setForeground(new Color(128, 128, 128));
+		nextpage.setFont(new Font("NanumGothic", Font.BOLD, 22));
+		nextpage.setBounds(1075, 70, 250, 470);
+		add(nextpage);
+	}
+
 	public void attackText(AbstractCombatant attackUnit, AbstractCombatant attackedUnit) {
 		String word = "공격!";
 		if (attackUnit.useSkill) {
@@ -34,16 +43,6 @@ public class BattleTextPanel extends BottomBox {
 		}
 		TextLabel.textLabel
 				.setTextLabel(attackUnit.name + "의 " + word + " " + attackedUnit.name + " -" + attackUnit.attackValue);
-	}
-
-	private class BattleTextPanelListener extends MouseAdapter {
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			super.mousePressed(e);
-		}
-
 	}
 
 }

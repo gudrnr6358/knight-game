@@ -8,6 +8,7 @@ import java.awt.Image;
 import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
+import game.ingame.bottom.BattlePanel;
 import game.ingame.bottom.BottomBox;
 import game.ingame.bottom.BottomPanelEvent;
 import game.ingame.bottom.TextLabel;
@@ -36,8 +37,10 @@ public class InGame extends JPanel {
 		setLayout(null);
 		setPanel();
 		setBounds(0, 0, 1366, 900);
-		// BottomPanelEvent 클래스에 character monster 정보 공유하기
+		character.setSkillCount();
+		// BottomPanelEvent, BattlePanel character, monster 정보 공유
 		BottomPanelEvent.inGame = InGame.this;
+		BattlePanel.inGame = InGame.this;
 	}
 
 	// 이전 Panel 제거하고 Panel 부착
