@@ -1,7 +1,10 @@
 package game.ingame.bottom;
 
-public class BattlePanel extends BottomBox {
+import game.InGame;
 
+public class BattlePanel extends BottomBox {
+	public static InGame inGame;
+	
 	// 크기, 위치 설정 및 버튼 부착
 	public BattlePanel() {
 		add(new AttackButton());

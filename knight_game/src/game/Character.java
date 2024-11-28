@@ -9,8 +9,13 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer exp;
 	private Integer level;
-	private Integer charSkillCount = 3;
-	private Integer skillCount = 3;
+
+	// 고정 스킬 사용 횟수
+	private final Integer fixedCharSkillCount = 3;
+	private final Integer fixedSkillCount = 3;
+	// 가변 스킬 사용 횟수
+	private Integer currentCharSkillCount = fixedCharSkillCount;
+	private Integer currentSkillCount = fixedSkillCount;
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
@@ -96,19 +101,40 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	}
 
 	public Boolean canUseSkill() {
-		if (skillCount > 0) {
-			skillCount--;
+		if (currentSkillCount > 0) {
+			currentSkillCount--;
 			return Boolean.TRUE;
 		}
 		return Boolean.FALSE;
 	}
 
 	public Boolean canUsecharSkill() {
-		if (charSkillCount > 0) {
-			charSkillCount--;
+		if (currentCharSkillCount > 0) {
+			currentCharSkillCount--;
 			return Boolean.TRUE;
 		}
 		return Boolean.FALSE;
+	}
+
+	public void setSkillCount() {
+		currentCharSkillCount = fixedCharSkillCount;
+		currentSkillCount = fixedSkillCount;
+	}
+
+	public Integer getFixedCharSkillCount() {
+		return fixedCharSkillCount;
+	}
+
+	public Integer getFixedSkillCount() {
+		return fixedSkillCount;
+	}
+
+	public Integer getCurrentCharSkillCount() {
+		return currentCharSkillCount;
+	}
+
+	public Integer getCurrentSkillCount() {
+		return currentSkillCount;
 	}
 
 }
