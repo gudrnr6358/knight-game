@@ -75,7 +75,8 @@ public class BottomPanelEvent {
 
 					if (!inGame.character.isAlive()) {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel(inGame));
-						TextLabel.textLabel.setTextLabel(inGame.character.getName() + " 기사가 사망했습니다");
+						TextLabel.textLabel.setTextLabel(
+								inGame.character.getName() + " 기사가 사망했습니다. 경험치 - " + inGame.character.getExp());
 						return;
 					}
 
@@ -109,6 +110,7 @@ public class BottomPanelEvent {
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
 					if (!inGame.character.isAlive()) {
+						inGame.character.characterDead();
 						GameFrame.setPanel(new Lobby(inGame.character));
 						return;
 					}
