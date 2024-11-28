@@ -7,8 +7,8 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	private Integer[] EXP = { 20, 30, 35, 40, 45, 70, 80, 90, 110 };
 	private Integer[] LEVEL_UP_PLUS_HP = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
-	public Integer exp;
-	public Integer level;
+	private Integer exp;
+	private Integer level;
 	/*
 	 * 레벨업 로직 경험치 얻는 메서드
 	 */
@@ -91,4 +91,9 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	public Integer getLevelExp() {
 		return EXP[level - 1];
 	}
+
+	public Integer getExp() {
+		return exp;
+	}
+	
 }
