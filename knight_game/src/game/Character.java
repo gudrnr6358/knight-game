@@ -24,7 +24,6 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		this.hp = 100;
 		this.nowHp = 100;
 		this.power = 10;
-		name = "하이";
 	}
 
 	@Override
