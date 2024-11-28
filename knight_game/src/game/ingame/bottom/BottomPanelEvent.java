@@ -87,8 +87,8 @@ public class BottomPanelEvent {
 						}
 						inGame.character.plusEXP(inGame.monster.getEXP());
 						TextLabel.textLabel.setTextLabel(inGame.monster.getName() + " 처치 " + inGame.monster.getEXP()
-								+ "의 경험치 획득!    " + "(" + inGame.character.getExp() + "/"
-								+ inGame.character.getLevelExp() + ") " + str);
+								+ "의 경험치 획득!    " + "Lv" + inGame.character.getLevel() + " ("
+								+ inGame.character.getExp() + "/" + inGame.character.getLevelExp() + ") " + str);
 						return;
 					}
 
