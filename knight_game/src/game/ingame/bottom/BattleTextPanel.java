@@ -45,14 +45,4 @@ public class BattleTextPanel extends BottomBox {
 				.setTextLabel(attackUnit.name + "의 " + word + " " + attackedUnit.name + " -" + attackUnit.attackValue);
 	}
 
-	private class BattleTextPanelListener extends MouseAdapter {
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			super.mousePressed(e);
-		}
-
-	}
-
 }
