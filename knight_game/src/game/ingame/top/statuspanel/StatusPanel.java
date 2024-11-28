@@ -1,8 +1,10 @@
 package game.ingame.top.statuspanel;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -22,6 +24,15 @@ public abstract class StatusPanel extends JPanel {
 		add(new PowerLabel());
 		add(new HealthPanel());
 		setSize(350, 100);
+	}
+
+	// BorderRadius 공백 채우기용 paintComponent
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D) g.create();
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+		g2d.drawRect(0, 0, getWidth(), getHeight());
 	}
 
 	private class NameLabel extends JLabel {
