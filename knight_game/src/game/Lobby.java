@@ -61,6 +61,7 @@ class Player extends JPanel {
 	private final int FRAME_HEIGHT = 800;
 
 	public Player(Character character) {
+		this.character = character;
 		img2 = new ImageIcon("images/player.jpeg").getImage();
 		x = 350;
 		y = 250;
