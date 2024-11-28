@@ -1,9 +1,10 @@
 package game;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
@@ -88,12 +89,15 @@ public class InGame extends JPanel {
 			setLayout(null);
 			TopPanel.this.setTopPanel();
 			setBounds(0, 0, 1366, 510);
+			setOpaque(false);
 		}
 
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			g.drawImage(backgroundImage, 0, 0, 1366, 510, 0, 0, 1366, 510, null);
+			Graphics2D g2d = (Graphics2D) g.create();
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 510, 0, 0, 1366, 510, null);
 		}
 
 		// TopPanel 생성은 한 번, 이후에는 이 메서드를 통해서 변화
@@ -130,7 +134,9 @@ public class InGame extends JPanel {
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			g.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 510, 1366, 900, null);
+			Graphics2D g2d = (Graphics2D) g.create();
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 510, 1366, 900, null);
 		}
 
 		public void setBottomBoxPanel(BottomBox bottomBox) {
