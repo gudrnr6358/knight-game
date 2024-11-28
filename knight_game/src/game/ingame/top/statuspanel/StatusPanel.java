@@ -8,13 +8,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import game.Combatant;
+import game.AbstractCombatant;
 
 public abstract class StatusPanel extends JPanel {
 	private Font FONT = new Font("SansSerif", Font.BOLD, 20);
-	private Combatant c;
+	private AbstractCombatant c;
 
-	protected StatusPanel(Combatant c) {
+	protected StatusPanel(AbstractCombatant c) {
 		this.c = c;
 		setLayout(null);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
@@ -41,6 +41,7 @@ public abstract class StatusPanel extends JPanel {
 	}
 
 	private class HealthPanel extends JPanel {
+		private final Integer cornerRadius = 10;
 
 		private HealthPanel() {
 			super();
@@ -49,9 +50,10 @@ public abstract class StatusPanel extends JPanel {
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+
 			// 체력의 경계를 나타내줄 기본 틀 그리기
 			g.setColor(Color.LIGHT_GRAY);
-			g.fillRoundRect(0, 0, 230, 20, 10, 10);
+			g.fillRoundRect(0, 0, 230, 20, cornerRadius, cornerRadius);
 
 			g.setColor(Color.green);
 			// 체력이 15% 이하일 경우 빨간색으로 체력 표시
@@ -59,7 +61,7 @@ public abstract class StatusPanel extends JPanel {
 				g.setColor(Color.red);
 			}
 			// 현재 체력만큼 RoundRect 채우기
-			g.fillRoundRect(0, 0, (int) ((c.nowHp / (double) c.hp) * 230), 20, 10, 10);
+			g.fillRoundRect(0, 0, (int) ((c.nowHp / (double) c.hp) * 230), 20, cornerRadius, cornerRadius);
 			// 현재 체력 수치(문자열) 표시
 			String str = new String(c.nowHp + " / " + c.hp);
 			super.setFont(FONT);

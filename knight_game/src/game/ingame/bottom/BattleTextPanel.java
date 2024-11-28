@@ -7,14 +7,14 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 
-import game.Combatant;
+import game.AbstractCombatant;
 import game.monster.Monster;
 
 // 전투 상황 텍스트를 출력하는 패널
 // 오직 Text 출력을 위한 패널
 public class BattleTextPanel extends BottomBox {
 
-	public BattleTextPanel(Combatant attackUnit, Combatant attackedUnit) {
+	public BattleTextPanel(AbstractCombatant attackUnit, AbstractCombatant attackedUnit) {
 		super();
 		attackText(attackUnit, attackedUnit);
 		JLabel nextpage = new JLabel("진행하려면 클릭하세요");
@@ -24,7 +24,7 @@ public class BattleTextPanel extends BottomBox {
 		add(nextpage);
 	}
 
-	public void attackText(Combatant attackUnit, Combatant attackedUnit) {
+	public void attackText(AbstractCombatant attackUnit, AbstractCombatant attackedUnit) {
 		String word = "공격!";
 		if (attackUnit.useSkill) {
 			word = "스킬!";

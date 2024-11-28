@@ -16,11 +16,6 @@ public class Boss extends Monster {
 	}
 
 	@Override
-	public int skill() {
-		return (int) (power * 1.5 + (Math.random() * 3 + 1));
-	}
-
-	@Override
 	public String getSkillName() {
 		return "아주 짱짱쎈 공격";
 	}

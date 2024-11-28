@@ -1,10 +1,10 @@
 package game.ingame.top.statuspanel;
 
-import game.Combatant;
+import game.AbstractCombatant;
 
 public class MonsterStatusPanel extends StatusPanel {
 
-	public MonsterStatusPanel(Combatant c) {
+	public MonsterStatusPanel(AbstractCombatant c) {
 		super(c);
 		setLocation(25, 25);
 	}

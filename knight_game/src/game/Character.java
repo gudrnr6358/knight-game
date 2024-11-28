@@ -2,7 +2,7 @@ package game;
 
 import javax.swing.ImageIcon;
 
-public class Character extends Combatant implements ImageUnit {
+public class Character extends AbstractCombatant implements ImageUnit {
 	public static boolean hadCharacter = false;
 	private Integer[] EXP = { 20, 30, 35, 40, 45, 70, 80, 90, 110 };
 	private Integer[] LEVEL_UP_PLUS_HP = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };

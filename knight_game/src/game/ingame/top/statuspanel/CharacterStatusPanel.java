@@ -1,10 +1,10 @@
 package game.ingame.top.statuspanel;
 
-import game.Combatant;
+import game.AbstractCombatant;
 
 public class CharacterStatusPanel extends StatusPanel {
 
-	public CharacterStatusPanel(Combatant c) {
+	public CharacterStatusPanel(AbstractCombatant c) {
 		super(c);
 		setLocation(986, 400);
 	}

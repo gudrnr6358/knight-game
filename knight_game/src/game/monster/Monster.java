@@ -1,9 +1,9 @@
 package game.monster;
 
-import game.Combatant;
+import game.AbstractCombatant;
 import game.ImageUnit;
 
-public abstract class Monster extends Combatant implements ImageUnit {
+public abstract class Monster extends AbstractCombatant implements ImageUnit {
 
 	protected Monster(String name, int hp, int power) {
 		super(name, hp, power);
@@ -28,6 +28,11 @@ public abstract class Monster extends Combatant implements ImageUnit {
 		return attackValue;
 	}
 
+	@Override
+	public int skill() {
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
+	}
+	
 	@Override
 	public boolean isAlive() {
 		if (nowHp > 0) {

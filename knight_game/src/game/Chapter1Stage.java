@@ -28,7 +28,7 @@ public class Chapter1Stage extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage1().getMonsters()));
+				GameFrame.setPanel(new InGame(character, new Stage1().getMonsters(), backgroundImage));
 			}
 		});
 
@@ -38,7 +38,7 @@ public class Chapter1Stage extends JPanel {
 		buttons[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage2().getMonsters()));
+				GameFrame.setPanel(new InGame(character, new Stage2().getMonsters(), backgroundImage));
 			}
 		});
 
@@ -48,7 +48,7 @@ public class Chapter1Stage extends JPanel {
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage3().getMonsters()));
+				GameFrame.setPanel(new InGame(character, new Stage3().getMonsters(), backgroundImage));
 			}
 		});
 

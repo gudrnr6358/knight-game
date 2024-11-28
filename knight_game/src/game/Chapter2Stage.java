@@ -33,7 +33,7 @@ public class Chapter2Stage extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage4().getMonsters()));
+				GameFrame.setPanel(new InGame(character, new Stage4().getMonsters(), backgroundImage));
 			}
 		});
 
@@ -43,7 +43,7 @@ public class Chapter2Stage extends JPanel {
 		buttons[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage5().getMonsters()));
+				GameFrame.setPanel(new InGame(character, new Stage5().getMonsters(), backgroundImage));
 			}
 		});
 
@@ -53,7 +53,7 @@ public class Chapter2Stage extends JPanel {
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage6().getMonsters()));
+				GameFrame.setPanel(new InGame(character, new Stage6().getMonsters(), backgroundImage));
 			}
 		});
 

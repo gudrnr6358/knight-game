@@ -1,6 +1,9 @@
 package game;
 
-import java.awt.Color;
+import java.awt.AlphaComposite;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 
 import javax.swing.JPanel;
 
@@ -20,16 +23,17 @@ public class InGame extends JPanel {
 	public Monster[] monsters;
 	public Monster monster;
 	public Integer count = 0;
+	private Image backgroundImage;
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
-	public InGame(Character character, Monster[] monsters) {
+	public InGame(Character character, Monster[] monsters, Image backgroundImage) {
 		super();
 		this.character = character;
 		this.monsters = monsters;
 		this.monster = monsters[count++];
+		this.backgroundImage = backgroundImage;
 
 		setLayout(null);
-		setBackground(Color.WHITE);
 		setPanel();
 		setBounds(0, 0, 1366, 900);
 		// BottomPanelEvent 클래스에 character monster 정보 공유하기
@@ -85,11 +89,19 @@ public class InGame extends JPanel {
 			setLayout(null);
 			TopPanel.this.setTopPanel();
 			setBounds(0, 0, 1366, 510);
+			setOpaque(false);
+		}
+
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Graphics2D g2d = (Graphics2D) g.create();
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 510, 0, 0, 1366, 510, null);
 		}
 
 		// TopPanel 생성은 한 번, 이후에는 이 메서드를 통해서 변화
 		private void setTopPanel() {
-			setBackground(Color.white);
 			setStatusBar();
 			setInGameImageUnit();
 		}
@@ -112,12 +124,19 @@ public class InGame extends JPanel {
 
 		private BottomPanel() {
 			BottomPanel.this.setLayout(null);
-			setBackground(Color.white);
 			setBounds(0, 510, 1366, 390);
 			add(new BasicPanel());
 			TextLabel.textLabel.setTextLabel(monster.name + "을 마주쳤다");
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
 			BottomPanelEvent.bottomPanel = this;
+		}
+
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Graphics2D g2d = (Graphics2D) g.create();
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 510, 1366, 900, null);
 		}
 
 		public void setBottomBoxPanel(BottomBox bottomBox) {
