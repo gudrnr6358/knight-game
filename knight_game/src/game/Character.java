@@ -9,9 +9,6 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer exp;
 	private Integer level;
-	/*
-	 * 레벨업 로직 경험치 얻는 메서드
-	 */
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
