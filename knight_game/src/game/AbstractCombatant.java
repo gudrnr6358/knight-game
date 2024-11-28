@@ -3,11 +3,11 @@ package game;
 public abstract class AbstractCombatant implements Combatant {
 
 	protected String name;
-	public Integer hp;
-	public Integer nowHp;
-	public Integer power;
-	public Boolean useSkill = false;
-	public Integer attackValue;
+	protected Integer hp;
+	protected Integer nowHp;
+	protected Integer power;
+	protected Boolean useSkill = false;
+	protected Integer attackValue;
 
 	protected AbstractCombatant(String name, Integer hp, Integer power) {
 		super();

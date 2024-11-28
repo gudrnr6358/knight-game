@@ -33,14 +33,14 @@ public class BattleTextPanel extends BottomBox {
 
 	public void attackText(AbstractCombatant attackUnit, AbstractCombatant attackedUnit) {
 		String word = "공격!";
-		if (attackUnit.useSkill) {
+		if (attackUnit.getUseSkill()) {
 			word = "스킬!";
 			if (attackUnit instanceof Monster) {
 				word = ((Monster) attackUnit).getSkillName() + "!";
 			}
 		}
-		TextLabel.textLabel
-				.setTextLabel(attackUnit.getName() + "의 " + word + " " + attackedUnit.getName() + " -" + attackUnit.attackValue);
+		TextLabel.textLabel.setTextLabel(
+				attackUnit.getName() + "의 " + word + " " + attackedUnit.getName() + " -" + attackUnit.getAttackValue());
 	}
 
 }

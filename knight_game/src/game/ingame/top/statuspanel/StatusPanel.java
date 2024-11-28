@@ -45,7 +45,7 @@ public abstract class StatusPanel extends JPanel {
 
 	private class PowerLabel extends JLabel {
 		private PowerLabel() {
-			super("전투력 : " + c.power);
+			super("전투력 : " + c.getPower());
 			super.setFont(FONT);
 			setBounds(195, 10, 200, 30);
 		}
@@ -68,13 +68,13 @@ public abstract class StatusPanel extends JPanel {
 
 			g.setColor(Color.green);
 			// 체력이 15% 이하일 경우 빨간색으로 체력 표시
-			if ((int) ((c.nowHp / (double) c.hp) * 100) <= 15) {
+			if ((int) ((c.getNowHp() / (double) c.getHp()) * 100) <= 15) {
 				g.setColor(Color.red);
 			}
 			// 현재 체력만큼 RoundRect 채우기
-			g.fillRoundRect(0, 0, (int) ((c.nowHp / (double) c.hp) * 230), 20, cornerRadius, cornerRadius);
+			g.fillRoundRect(0, 0, (int) ((c.getNowHp() / (double) c.getHp()) * 230), 20, cornerRadius, cornerRadius);
 			// 현재 체력 수치(문자열) 표시
-			String str = new String(c.nowHp + " / " + c.hp);
+			String str = new String(c.getNowHp() + " / " + c.getHp());
 			super.setFont(FONT);
 			g.setColor(Color.black);
 			g.drawString(str, 235, 15);
