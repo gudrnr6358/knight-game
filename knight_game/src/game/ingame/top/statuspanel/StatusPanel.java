@@ -8,13 +8,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import game.Combatant;
+import game.AbstractCombatant;
 
 public abstract class StatusPanel extends JPanel {
 	private Font FONT = new Font("SansSerif", Font.BOLD, 20);
-	private Combatant c;
+	private AbstractCombatant c;
 
-	protected StatusPanel(Combatant c) {
+	protected StatusPanel(AbstractCombatant c) {
 		this.c = c;
 		setLayout(null);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));

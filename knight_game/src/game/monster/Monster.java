@@ -1,9 +1,9 @@
 package game.monster;
 
-import game.Combatant;
+import game.AbstractCombatant;
 import game.ImageUnit;
 
-public abstract class Monster extends Combatant implements ImageUnit {
+public abstract class Monster extends AbstractCombatant implements ImageUnit {
 
 	protected Monster(String name, int hp, int power) {
 		super(name, hp, power);
