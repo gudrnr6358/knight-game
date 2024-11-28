@@ -37,7 +37,7 @@ public abstract class StatusPanel extends JPanel {
 
 	private class NameLabel extends JLabel {
 		private NameLabel() {
-			super(c.name);
+			super(c.getName());
 			super.setFont(FONT);
 			setBounds(15, 10, 500, 30);
 		}

@@ -75,7 +75,7 @@ public class BottomPanelEvent {
 
 					if (!inGame.character.isAlive()) {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel(inGame));
-						TextLabel.textLabel.setTextLabel(inGame.character.name + " 기사가 사망했습니다");
+						TextLabel.textLabel.setTextLabel(inGame.character.getName() + " 기사가 사망했습니다");
 						return;
 					}
 
@@ -86,7 +86,7 @@ public class BottomPanelEvent {
 							str = " 스테이지 클리어!";
 						}
 						inGame.character.plusEXP(inGame.monster.getEXP());
-						TextLabel.textLabel.setTextLabel(inGame.monster.name + " 처치 " + inGame.monster.getEXP()
+						TextLabel.textLabel.setTextLabel(inGame.monster.getName() + " 처치 " + inGame.monster.getEXP()
 								+ "의 경험치 획득!    " + "(" + inGame.character.getExp() + "/"
 								+ inGame.character.getLevelExp() + ") " + str);
 						return;

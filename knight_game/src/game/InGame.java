@@ -129,7 +129,7 @@ public class InGame extends JPanel {
 			BottomPanel.this.setLayout(null);
 			setBounds(0, 510, 1366, 390);
 			add(new BasicPanel());
-			TextLabel.textLabel.setTextLabel(monster.name + "을 마주쳤다");
+			TextLabel.textLabel.setTextLabel(monster.getName() + "을 마주쳤다");
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
 			BottomPanelEvent.bottomPanel = this;
 		}

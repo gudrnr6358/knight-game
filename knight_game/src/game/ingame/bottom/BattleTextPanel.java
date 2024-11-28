@@ -2,8 +2,6 @@ package game.ingame.bottom;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 
@@ -42,7 +40,7 @@ public class BattleTextPanel extends BottomBox {
 			}
 		}
 		TextLabel.textLabel
-				.setTextLabel(attackUnit.name + "의 " + word + " " + attackedUnit.name + " -" + attackUnit.attackValue);
+				.setTextLabel(attackUnit.getName() + "의 " + word + " " + attackedUnit.getName() + " -" + attackUnit.attackValue);
 	}
 
 }

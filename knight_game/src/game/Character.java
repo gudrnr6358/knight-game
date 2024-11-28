@@ -79,6 +79,10 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		if (exp >= EXP[level - 1]) {
 			exp -= EXP[level - 1];
 			levelup();
+			if (exp >= EXP[level - 1]) {
+				checkExp();
+			}
+			return;
 		}
 	}
 
@@ -97,6 +101,10 @@ public class Character extends AbstractCombatant implements ImageUnit {
 
 	public Integer getExp() {
 		return exp;
+	}
+
+	public Integer getLevel() {
+		return level;
 	}
 
 	public Boolean canUseSkill() {
