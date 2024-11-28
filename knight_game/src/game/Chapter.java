@@ -45,7 +45,7 @@ public class Chapter extends JPanel {
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new Lobby());
+				GameFrame.setPanel(new Lobby(character));
 			}
 		});
 	}

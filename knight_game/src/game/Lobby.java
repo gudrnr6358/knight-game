@@ -10,11 +10,14 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class Lobby extends JPanel {
+	private Character character;
 
-	public Lobby() {
+	public Lobby(Character character) {
+		this.character = character;
+
 		setLayout(null);
 
-		Player la = new Player();
+		Player la = new Player(character);
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setSize(1366, 900);
 
@@ -51,12 +54,13 @@ class Background extends JPanel {
 class Player extends JPanel {
 	private Image img2;
 	private int x, y;
+	private Character character;
 	private final int WIDTH = 100;
 	private final int HEIGHT = 100;
 	private final int FRAME_WIDTH = 1200;
 	private final int FRAME_HEIGHT = 800;
 
-	public Player() {
+	public Player(Character character) {
 		img2 = new ImageIcon("images/player.jpeg").getImage();
 		x = 350;
 		y = 250;
@@ -126,6 +130,7 @@ class Player extends JPanel {
 		}
 
 		private void Method3() {
+			GameFrame.setPanel(new Chapter(character));
 			System.out.println("특정 구역에 도달했습니다!3");
 		}
 	}

@@ -32,7 +32,7 @@ public class BottomPanelEvent {
 				}
 
 				if (src.getText().equals("도망친다")) {
-					GameFrame.setPanel(new Lobby());
+					GameFrame.setPanel(new Lobby(inGame.character));
 					return;
 				}
 
@@ -109,7 +109,7 @@ public class BottomPanelEvent {
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
 					if (!inGame.character.isAlive()) {
-						GameFrame.setPanel(new Lobby());
+						GameFrame.setPanel(new Lobby(inGame.character));
 						return;
 					}
 
@@ -117,7 +117,7 @@ public class BottomPanelEvent {
 						inGame.setPanel();
 						return;
 					}
-					GameFrame.setPanel(new Lobby());
+					GameFrame.setPanel(new Lobby(inGame.character));
 					return;
 				}
 
