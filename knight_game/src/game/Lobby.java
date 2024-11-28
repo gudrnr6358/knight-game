@@ -127,6 +127,7 @@ class Player extends JPanel {
 			System.out.println("특정 구역에 도달했습니다!2");
 		}
 
+		// 테스트용으로 동쪽에 setPanel 메서드 추가
 		private void Method3() {
 			GameFrame.setPanel(new Chapter(character));
 			System.out.println("특정 구역에 도달했습니다!3");
