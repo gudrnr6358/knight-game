@@ -23,7 +23,7 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		this.exp = 0;
 		this.hp = 100;
 		this.nowHp = 100;
-		this.power = 110;
+		this.power = 10;
 		name = "하이";
 	}
 
@@ -87,12 +87,10 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	}
 
 	private void levelup() {
-		if (level < EXP.length) {
-			hp += LEVEL_UP_PLUS_HP[level - 1];
-			power += LEVEL_UP_PLUS_POWER[level - 1];
-			nowHp = hp;
-			level++;
-		}
+		hp += LEVEL_UP_PLUS_HP[level - 1];
+		power += LEVEL_UP_PLUS_POWER[level - 1];
+		nowHp = hp;
+		level++;
 	}
 
 	public Integer getLevelExp() {

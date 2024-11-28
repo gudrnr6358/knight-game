@@ -16,7 +16,7 @@ public class GameFrame extends JFrame {
 		Character c = new Character();
 		
 		container.setLayout(null);
-		container.add(new Chapter(c));
+		container.add(new Lobby(c));
 		container.setVisible(true);
 
 		frame.setSize(1366, 900);
