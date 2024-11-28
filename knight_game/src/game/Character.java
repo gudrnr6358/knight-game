@@ -9,6 +9,8 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer exp;
 	private Integer level;
+	private Integer charSkillCount = 3;
+	private Integer skillCount = 3;
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
@@ -92,5 +94,21 @@ public class Character extends AbstractCombatant implements ImageUnit {
 	public Integer getExp() {
 		return exp;
 	}
-	
+
+	public Boolean canUseSkill() {
+		if (skillCount > 0) {
+			skillCount--;
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
+	public Boolean canUsecharSkill() {
+		if (charSkillCount > 0) {
+			charSkillCount--;
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
 }

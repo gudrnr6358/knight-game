@@ -44,6 +44,11 @@ public class BottomPanelEvent {
 				}
 
 				if (src.getText().equals("캐릭터 스킬")) {
+					if (!inGame.character.canUseSkill()) {
+						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
+						return;
+					}
+					
 					inGame.characterSkill();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
@@ -80,7 +85,8 @@ public class BottomPanelEvent {
 						inGame.character.plusEXP(inGame.monster.getEXP());
 						TextLabel.textLabel.setTextLabel(
 								inGame.monster.name + " 처치 " + inGame.monster.getEXP() + "의 경험치 획득!    " + "("
-										+ inGame.character.getExp() + "/" + inGame.character.getLevelExp() + ") " + str);
+										+ inGame.character.getExp() + "/"
+										+ inGame.character.getLevelExp() + ") " + str);
 						return;
 					}
 
