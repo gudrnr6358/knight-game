@@ -19,7 +19,7 @@ public abstract class BottomBox extends JPanel {
 		setLayout(null);
 		BottomBox.this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, cornerRadius, true));
 		BottomBox.this.add(TextLabel.textLabel);
-		BottomBox.this.setBounds(16, 3, 1320, 335);
+		BottomBox.this.setBounds(16, cornerRadius, 1320, 335);
 		addMouseListener(new BottomPanelEvent().new BottomMouseListener());
 		setOpaque(false);
 	}
