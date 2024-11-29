@@ -17,11 +17,6 @@ public abstract class AbstractCombatant implements Combatant {
 		this.power = power;
 	}
 
-	// Character 생성자를 위한 기본 생성자
-	protected AbstractCombatant() {
-
-	}
-
 	public String getName() {
 		return name;
 	}
