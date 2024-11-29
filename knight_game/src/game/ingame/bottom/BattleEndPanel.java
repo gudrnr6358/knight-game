@@ -2,6 +2,7 @@ package game.ingame.bottom;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.JLabel;
 
@@ -9,29 +10,40 @@ import game.InGamePanel;
 
 // 전투 종료 후를 관리하는 메서드
 public class BattleEndPanel extends BottomBox {
-	public InGamePanel inGame;
 
-	public BattleEndPanel(InGamePanel inGame) {
+	public BattleEndPanel() {
 		super();
-		this.inGame = inGame;
-		String str = "";
+		add(new NextPageInfoLabel().setString());
+	}
 
-		if (!inGame.character.isAlive()) {
-			str = "클릭 시 로비로 돌아갑니다";
+	private class NextPageInfoLabel extends JLabel {
+
+		private static String str;
+
+		private NextPageInfoLabel() {
+			super(str);
+			setForeground(new Color(128, 128, 128));
+			setFont(new Font("SansSerif", Font.BOLD, 22));
+			setBounds(1040, 70, 300, 470);
 		}
-		if (inGame.monsters.length == inGame.count) {
-			str = "클릭 시 로비로 돌아갑니다";
-		}
-		if (inGame.monsters.length != inGame.count) {
+
+		// 우측 하단 출력할 문자열 정하는 메서드
+		// this 반환을 통해 객체 생성 후, 한번에 처리
+		private NextPageInfoLabel setString() {
+
+			// 캐릭터 사망
+			if (!INGAME.character.isAlive()) {
+				str = "클릭 시 로비로 돌아갑니다";
+				return this;
+			}
+			// 마지막 몬스터 처치
+			if (!INGAME.monsters[INGAME.monsters.length - 1].isAlive()) {
+				str = "클릭 시 로비로 돌아갑니다";
+				return this;
+			}
 			str = "진행하려면 클릭하세요";
+			return this;
 		}
-
-		JLabel nextpage = new JLabel(str);
-		nextpage.setForeground(new Color(128, 128, 128));
-		nextpage.setFont(new Font("SansSerif", Font.BOLD, 22));
-		nextpage.setBounds(1040, 70, 300, 470);
-
-		add(nextpage);
 	}
 
 }
