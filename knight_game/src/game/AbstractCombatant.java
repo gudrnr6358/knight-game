@@ -33,7 +33,6 @@ public abstract class AbstractCombatant implements Combatant, Serializable {
 	}
 
 	public Integer getNowHp() {
-
 		return nowHp;
 	}
 
