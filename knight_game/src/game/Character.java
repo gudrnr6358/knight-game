@@ -1,8 +1,10 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
-public class Character extends AbstractCombatant implements ImageUnit {
+public class Character extends AbstractCombatant implements ImageUnit, Serializable {
 	public static boolean hadCharacter = false;
 	private Integer[] EXP = { 20, 30, 35, 40, 45, 70, 80, 90, 110 };
 	private Integer[] LEVEL_UP_PLUS_HP = { 5, 10, 15, 15, 15, 20, 20, 25, 30 };
@@ -23,7 +25,8 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		this.exp = 0;
 		this.hp = 100;
 		this.nowHp = 100;
-		this.power = 5;
+		this.power = 10;
+		name = "???";
 	}
 
 	@Override
@@ -141,9 +144,4 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		return currentSkillCount;
 	}
 
-	public void characterDead() {
-		nowHp = 75;
-		exp = 0;
-	}
-	
 }

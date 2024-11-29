@@ -8,6 +8,12 @@ public class BossSlime extends Slime {
 		super("슬라임 대장", 35, 20);
 	}
 
+	// 슬라임 총공격
+	@Override
+	public int skill() {
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
+	}
+
 	@Override
 	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/monster/slimes/bossslime.png");

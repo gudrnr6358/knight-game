@@ -1,6 +1,8 @@
 package game;
 
-public abstract class AbstractCombatant implements Combatant {
+import java.io.Serializable;
+
+public abstract class AbstractCombatant implements Combatant, Serializable {
 
 	protected String name;
 	protected Integer hp;
@@ -31,6 +33,7 @@ public abstract class AbstractCombatant implements Combatant {
 	}
 
 	public Integer getNowHp() {
+
 		return nowHp;
 	}
 

@@ -5,13 +5,19 @@ import javax.swing.ImageIcon;
 public class SkeletonHorde extends Skeleton {
 
 	public SkeletonHorde() {
-		super("스켈레톤 무리", 80, 50);
+		super("스켈레톤 무리", 30, 30);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
+	public int skill() {
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
+	}
+
+	@Override
 	public ImageIcon getUnitImage() {
-		return new ImageIcon("images/monster/skeletons/skeletonhorde.png");
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

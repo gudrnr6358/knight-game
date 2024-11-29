@@ -51,7 +51,7 @@ public class SetNamePanel extends JPanel {
 	JPanel btnPanel = new JPanel();
 
 	public void paintComponent(Graphics g) {
-		ImageIcon image = new ImageIcon("knight_game/src/game/img/setNameImage.jpg");
+		ImageIcon image = new ImageIcon("images/setNameImage.jpg");
 		g.drawImage(image.getImage(), 0, 0, this);
 	}
 
@@ -245,7 +245,9 @@ public class SetNamePanel extends JPanel {
 
 				JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
-				HomePanel.padeOut(bgPanel, new Lobby(character), frame);
+				HomePanel.padeOut(bgPanel, new LobbyPanel(character), frame);
+				remove(popUp);
+				repaint();
 				System.out.println(textField.getText() + " 캐릭터 생성 완료");
 
 			} else if (btn.getText().equals("다시입력")) {

@@ -18,16 +18,17 @@ import game.ingame.top.statuspanel.CharacterStatusPanel;
 import game.ingame.top.statuspanel.MonsterStatusPanel;
 import game.monster.Monster;
 
-public class InGame extends JPanel {
+public class InGamePanel extends JPanel {
 
 	public Character character;
 	public Monster[] monsters;
 	public Monster monster;
 	public Integer count = 0;
 	private Image backgroundImage;
+	JPanel bgPanel = new JPanel();
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
-	public InGame(Character character, Monster[] monsters, Image backgroundImage) {
+	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage) {
 		super();
 		this.character = character;
 		this.monsters = monsters;
@@ -39,17 +40,18 @@ public class InGame extends JPanel {
 		setBounds(0, 0, 1366, 900);
 		character.setSkillCount();
 		// BottomPanelEvent, BattlePanel character, monster 정보 공유
-		BottomPanelEvent.inGame = InGame.this;
-		BattlePanel.inGame = InGame.this;
+		BottomPanelEvent.inGame = InGamePanel.this;
+		BattlePanel.inGame = InGamePanel.this;
 	}
 
 	// 이전 Panel 제거하고 Panel 부착
 	// 몬스터 처치 후에 호출
 	public void setPanel() {
-		InGame.this.removeAll();
+		InGamePanel.this.removeAll();
+		add(bgPanel);
 		setTopPanel();
 		setBottomPanel();
-		InGame.this.repaint();
+		InGamePanel.this.repaint();
 	}
 
 	private void setTopPanel() {

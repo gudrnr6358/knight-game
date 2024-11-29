@@ -15,13 +15,13 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class HomePanel extends JPanel {
-	List<JButton> btns = new ArrayList<>();
+	List btns = new ArrayList<>();
 	JPanel bgPanel = new JPanel();
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		// g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.05f));
-		ImageIcon image = new ImageIcon("knight_game/src/game/img/main1.jpg");
+		ImageIcon image = new ImageIcon("images/main1.jpg");
 		System.out.println(image.getIconWidth());
 		g.drawImage(image.getImage(), 0, 0, this);
 
@@ -45,7 +45,6 @@ public class HomePanel extends JPanel {
 		setButtonBounds((JButton) btns.get(0), 500, 500, 350, 60);
 		setButtonBounds((JButton) btns.get(1), 500, 580, 350, 60);
 		setButtonBounds((JButton) btns.get(2), 500, 660, 350, 60);
-		setButtonBounds((JButton) btns.get(3), 500, 740, 350, 60);
 
 	}
 
@@ -54,8 +53,9 @@ public class HomePanel extends JPanel {
 		JButton startBtn = new JButton("게임시작");
 		startBtn.addActionListener(new MyEvent());
 		JButton loadBtn = new JButton("불러오기");
-		JButton exitBtn = new JButton("게임방법");
-		JButton gameGuide = new JButton("종료");
+		loadBtn.addActionListener(new MyEvent());
+		JButton exitBtn = new JButton("종료");
+		exitBtn.addActionListener(new MyEvent());
 
 		startBtn.setBounds(100, 100, 70, 50);
 		// btn2.setBounds(140, 100, 50, 50);
@@ -64,12 +64,10 @@ public class HomePanel extends JPanel {
 		btns.add(startBtn);
 		btns.add(loadBtn);
 		btns.add(exitBtn);
-		btns.add(gameGuide);
 
 		add(startBtn);
 		add(loadBtn);
 		add(exitBtn);
-		add(gameGuide);
 
 		startBtn.setBorderPainted(false);
 		return btns;
@@ -88,10 +86,17 @@ public class HomePanel extends JPanel {
 
 			if (btnText.equals("게임시작")) {
 				padeOut(bgPanel, new SetNamePanel(), frame);
+				remove((JButton) btns.get(0));
+				remove((JButton) btns.get(1));
+				remove((JButton) btns.get(2));
+				repaint();
 			} else if (btnText.equals("불러오기")) {
-
-			} else if (btnText.equals("게임방법")) {
-
+				remove((JButton) btns.get(0));
+				remove((JButton) btns.get(1));
+				remove((JButton) btns.get(2));
+				repaint();
+				Character character = GameLoad.loadCharacter("saveData.dat");
+				padeOut(bgPanel, new LobbyPanel(character), frame);
 			} else {
 				System.exit(0);
 			}

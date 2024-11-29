@@ -1,21 +1,28 @@
 package game;
 
-import java.awt.Image;
 import java.awt.Graphics;
-import javax.swing.*;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import game.stage.Stage1;
 import game.stage.Stage2;
 import game.stage.Stage3;
 
-public class Chapter1Stage extends JPanel {
+public class Chapter1Panel extends JPanel {
 	private JButton[] buttons = { new JButton("Stage 1"), new JButton("Stage 2"), new JButton("Stage 3"),
 			new JButton("돌아가기") };
 	private Image backgroundImage;
 	private Character character;
+	JPanel bgPanel = new JPanel();
 
-	public Chapter1Stage(Character character) {
+	public Chapter1Panel(Character character) {
+		add(bgPanel);
 		this.character = character;
 
 		setLayout(null);
@@ -28,7 +35,11 @@ public class Chapter1Stage extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage1().getMonsters(), backgroundImage));
+				System.out.println("클릭");
+				JButton a = (JButton) e.getSource();
+				JFrame frame = (JFrame) a.getTopLevelAncestor();
+				HomePanel.padeOut(bgPanel, new InGamePanel(character, new Stage1().getMonsters(), backgroundImage),
+						frame);
 			}
 		});
 
@@ -38,7 +49,10 @@ public class Chapter1Stage extends JPanel {
 		buttons[1].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage2().getMonsters(), backgroundImage));
+				JButton a = (JButton) e.getSource();
+				JFrame frame = (JFrame) a.getTopLevelAncestor();
+				HomePanel.padeOut(bgPanel, new InGamePanel(character, new Stage2().getMonsters(), backgroundImage),
+						frame);
 			}
 		});
 
@@ -48,7 +62,10 @@ public class Chapter1Stage extends JPanel {
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new InGame(character, new Stage3().getMonsters(), backgroundImage));
+				JButton a = (JButton) e.getSource();
+				JFrame frame = (JFrame) a.getTopLevelAncestor();
+				HomePanel.padeOut(bgPanel, new InGamePanel(character, new Stage3().getMonsters(), backgroundImage),
+						frame);
 			}
 		});
 
@@ -58,7 +75,13 @@ public class Chapter1Stage extends JPanel {
 		buttons[3].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameFrame.setPanel(new Chapter(character));
+				System.out.println("돌아가기 클릭");
+				JButton a = (JButton) e.getSource();
+				JFrame frame = (JFrame) a.getTopLevelAncestor();
+				frame.getContentPane().removeAll();
+				frame.add(new ChapterPanel(character));
+				frame.revalidate();
+				frame.repaint();
 			}
 		});
 	}
