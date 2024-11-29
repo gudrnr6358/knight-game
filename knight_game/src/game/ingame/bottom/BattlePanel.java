@@ -4,10 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import game.InGame;
-
 public class BattlePanel extends BottomBox {
-	public static InGame inGame;
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BattlePanel() {
@@ -31,12 +28,13 @@ public class BattlePanel extends BottomBox {
 			setLocation(505, 100);
 		}
 
+		// 스킬 횟수 그리기
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.setFont(new Font("NanumGothic", Font.BOLD, 20));
 			g.setColor(Color.RED);
-			g.drawString(inGame.character.getCurrentSkillCount() + "/" + inGame.character.getFixedSkillCount(),
+			g.drawString(INGAME.character.getCurrentSkillCount() + "/" + INGAME.character.getFixedSkillCount(),
 					getWidth() / 2 - 10, getHeight() - 25);
 		}
 
@@ -49,12 +47,13 @@ public class BattlePanel extends BottomBox {
 			setLocation(905, 100);
 		}
 
+		// 스킬 횟수 그리기
 		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.setFont(new Font("NanumGothic", Font.BOLD, 20));
 			g.setColor(Color.RED);
-			g.drawString(inGame.character.getCurrentCharSkillCount() + "/" + inGame.character.getFixedCharSkillCount(),
+			g.drawString(INGAME.character.getCurrentCharSkillCount() + "/" + INGAME.character.getFixedCharSkillCount(),
 					getWidth() / 2 - 10, getHeight() - 25);
 		}
 

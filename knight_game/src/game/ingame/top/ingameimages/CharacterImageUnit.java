@@ -6,7 +6,7 @@ public class CharacterImageUnit extends InGameImageUnit {
 
 	public CharacterImageUnit(ImageUnit i) {
 		super(i);
-		setLocation(130, 200);
+		setLocation(140, 160);
 	}
 
 }

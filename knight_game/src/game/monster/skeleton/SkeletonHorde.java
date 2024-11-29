@@ -10,6 +10,11 @@ public class SkeletonHorde extends Skeleton {
 	}
 
 	@Override
+	public int skill() {
+		return (int) (power * 1.5 + (Math.random() * 3 + 1));
+	}
+
+	@Override
 	public ImageIcon getUnitImage() {
 		// TODO Auto-generated method stub
 		return null;

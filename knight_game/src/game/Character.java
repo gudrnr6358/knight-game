@@ -1,12 +1,14 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
-public class Character extends AbstractCombatant implements ImageUnit {
+public class Character extends AbstractCombatant implements ImageUnit, Serializable {
 	public static boolean hadCharacter = false;
 	private Integer[] EXP = { 20, 30, 35, 40, 45, 70, 80, 90, 110 };
-	private Integer[] LEVEL_UP_PLUS_HP = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
-	private Integer[] LEVEL_UP_PLUS_POWER = { 10, 10, 15, 15, 15, 20, 20, 25, 30 };
+	private Integer[] LEVEL_UP_PLUS_HP = { 5, 10, 15, 15, 15, 20, 20, 25, 30 };
+	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 10, 15, 15, 15, 20, 20, 25, 30 };
 	private Integer exp;
 	private Integer level;
 
@@ -24,7 +26,7 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		this.hp = 100;
 		this.nowHp = 100;
 		this.power = 10;
-		name = "하이";
+		name = "???";
 	}
 
 	@Override
@@ -36,10 +38,8 @@ public class Character extends AbstractCombatant implements ImageUnit {
 
 	@Override
 	public int skill() {
-		// 20은 그냥 막 넣어놓은 값임, power 관련 연산 진행하고
-		// 그걸 attackValue 에 넣어서 return 하면 될 듯
 		useSkill = true;
-		attackValue = (int) ((power * 1.2) + (Math.random() * 5 + 1));
+		attackValue = (int) ((power * 1.2) + (Math.random() * 3 + 1));
 		return attackValue;
 	}
 
@@ -81,16 +81,18 @@ public class Character extends AbstractCombatant implements ImageUnit {
 		if (exp >= EXP[level - 1]) {
 			exp -= EXP[level - 1];
 			levelup();
+			if (exp >= EXP[level - 1]) {
+				checkExp();
+			}
+			return;
 		}
 	}
 
 	private void levelup() {
-		if (level < EXP.length) {
-			hp += LEVEL_UP_PLUS_HP[level - 1];
-			power += LEVEL_UP_PLUS_POWER[level - 1];
-			nowHp = hp;
-			level++;
-		}
+		hp += LEVEL_UP_PLUS_HP[level - 1];
+		power += LEVEL_UP_PLUS_POWER[level - 1];
+		nowHp = hp;
+		level++;
 	}
 
 	public Integer getLevelExp() {
@@ -99,6 +101,10 @@ public class Character extends AbstractCombatant implements ImageUnit {
 
 	public Integer getExp() {
 		return exp;
+	}
+
+	public Integer getLevel() {
+		return level;
 	}
 
 	public Boolean canUseSkill() {
@@ -136,6 +142,11 @@ public class Character extends AbstractCombatant implements ImageUnit {
 
 	public Integer getCurrentSkillCount() {
 		return currentSkillCount;
+	}
+
+	public void dead() {
+		nowHp = 50;
+		exp = 0;
 	}
 
 }
