@@ -16,7 +16,7 @@ public abstract class BottomBox extends JPanel {
 
 	private static final Integer cornerRadius = 3;
 	public static InGamePanel INGAME;
-	
+
 	// TextLabel 부착 및 Border, Size, Location 제공
 	protected BottomBox() {
 		setLayout(null);
