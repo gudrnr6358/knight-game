@@ -11,7 +11,7 @@ public class BottomPanelButton extends JButton {
 		super(str);
 		addMouseListener(new BottomPanelEvent().new BottomMouseListener());
 		setFocusable(false);
-		setFont(new Font("NanumGothic", Font.BOLD, 20));
+		setFont(new Font("SansSerif", Font.BOLD, 20));
 	}
 
 }
