@@ -10,11 +10,6 @@ public class ArcherSkeleton extends Skeleton {
 	}
 
 	@Override
-	public int skill() {
-		return (int) (power * 1.5 + (Math.random() * 3 + 1));
-	}
-
-	@Override
 	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/monster/skeletons/archerskeleton.png");
 	}
