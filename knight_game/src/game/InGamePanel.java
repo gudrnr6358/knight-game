@@ -8,7 +8,6 @@ import java.awt.Image;
 import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
-import game.ingame.bottom.BattlePanel;
 import game.ingame.bottom.BottomBox;
 import game.ingame.bottom.BottomPanelEvent;
 import game.ingame.bottom.TextLabel;
@@ -25,7 +24,7 @@ public class InGamePanel extends JPanel {
 	public Monster monster;
 	public Integer count = 0;
 	private Image backgroundImage;
-	JPanel bgPanel = new JPanel();
+	private JPanel bgPanel = new JPanel();
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
 	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage) {
@@ -34,11 +33,11 @@ public class InGamePanel extends JPanel {
 		this.monsters = monsters;
 		this.monster = monsters[count++];
 		this.backgroundImage = backgroundImage;
+		character.setSkillCount();
 
 		setLayout(null);
 		setPanel();
 		setBounds(0, 0, 1366, 900);
-		character.setSkillCount();
 		// BottomPanelEvent, BottomBox character, monster 정보 공유
 		BottomPanelEvent.inGame = InGamePanel.this;
 		BottomBox.INGAME = this;
