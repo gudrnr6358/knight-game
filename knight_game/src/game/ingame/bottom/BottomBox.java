@@ -30,7 +30,7 @@ public abstract class BottomBox extends JPanel {
 		// BorderRadius 공백 채우기용
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 		g2d.drawRect(0, 0, getWidth(), getHeight());
-		
+
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.85f));
 		g2d.setColor(Color.WHITE);
 		g2d.fillRoundRect(0, 0, getWidth(), getHeight(), cornerRadius, cornerRadius);

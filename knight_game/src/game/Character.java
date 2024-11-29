@@ -144,4 +144,9 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 		return currentSkillCount;
 	}
 
+	public void dead() {
+		nowHp = 50;
+		exp = 0;
+	}
+
 }

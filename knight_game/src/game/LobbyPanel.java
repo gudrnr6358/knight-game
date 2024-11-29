@@ -41,9 +41,6 @@ public class LobbyPanel extends JPanel {
 		characterStatusPanel = new CharacterStatusPanel(character);
 		this.character = character;
 
-		if (character.nowHp <= 0)
-			character.nowHp = 10;
-
 		add(bgPanel);
 		characterStatusPanel.setLocation(20, 20);
 		add(characterStatusPanel);
