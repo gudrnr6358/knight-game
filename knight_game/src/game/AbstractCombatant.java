@@ -1,8 +1,6 @@
 package game;
 
-import java.io.Serializable;
-
-public abstract class AbstractCombatant implements Combatant, Serializable {
+public abstract class AbstractCombatant implements Combatant {
 
 	protected String name;
 	protected Integer hp;
