@@ -35,16 +35,9 @@ public class BottomPanelEvent {
 				}
 
 				if (src.getText().equals("도망친다")) {
-
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
 					HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
-					JPanel b = (JPanel) a.getComponent(1);
-					JPanel c = (JPanel) b.getComponent(0);
-					JPanel d = (JPanel) b.getComponent(1);
-					b.remove(c);
-					b.remove(d);
-					a.repaint();
 					return;
 				}
 
@@ -81,6 +74,7 @@ public class BottomPanelEvent {
 
 			// 클릭 소스가 JPanel 인 경우
 			if (e.getSource() instanceof JPanel) {
+
 				JPanel src = (JPanel) e.getSource();
 				JFrame frame = (JFrame) src.getTopLevelAncestor();
 
@@ -88,7 +82,7 @@ public class BottomPanelEvent {
 				if (src.getClass().equals(BattleTextPanel.class)) {
 
 					if (!inGame.character.isAlive()) {
-						bottomPanel.setBottomBoxPanel(new BattleEndPanel(inGame));
+						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						TextLabel.textLabel.setTextLabel(
 								inGame.character.getName() + " 기사가 사망했습니다 경험치 - " + inGame.character.getExp());
 						inGame.character.dead();
@@ -97,7 +91,7 @@ public class BottomPanelEvent {
 
 					if (!inGame.monster.isAlive()) {
 						String str = "";
-						bottomPanel.setBottomBoxPanel(new BattleEndPanel(inGame));
+						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						if (inGame.monsters.length == inGame.count) {
 							str = " 스테이지 클리어!";
 						}
@@ -128,16 +122,7 @@ public class BottomPanelEvent {
 					if (!inGame.character.isAlive()) {
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						JPanel b = (JPanel) a.getComponent(1);
-						JPanel c = (JPanel) b.getComponent(0);
-						JPanel d = (JPanel) b.getComponent(1);
 						HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
-						b.remove(c);
-						b.remove(d);
-						JPanel bottomPanel = (JPanel) a.getComponent(2);
-						JPanel bottomEndPanel = (JPanel) bottomPanel.getComponent(0);
-						bottomEndPanel.setVisible(false);
-						a.repaint();
 						return;
 					}
 
