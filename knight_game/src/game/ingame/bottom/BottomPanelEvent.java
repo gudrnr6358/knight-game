@@ -40,7 +40,7 @@ public class BottomPanelEvent {
 
           JPanel a = (JPanel) src.getParent().getParent().getParent();
           JPanel bgPanel = (JPanel) a.getComponent(0);
-          HomePanel.padeOut(bgPanel, new LobbyPanel(inGame.character), frame);
+          HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
           JPanel b = (JPanel) a.getComponent(1);
           JPanel c = (JPanel) b.getComponent(0);
           JPanel d = (JPanel) b.getComponent(1);
@@ -132,7 +132,7 @@ public class BottomPanelEvent {
             JPanel c = (JPanel) b.getComponent(0);
             JPanel d = (JPanel) b.getComponent(1);
             System.out.println(a);
-            HomePanel.padeOut(bgPanel, new LobbyPanel(inGame.character), frame);
+            HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
             b.remove(c);
             b.remove(d);
             JPanel bottomPanel = (JPanel) a.getComponent(2);
@@ -144,7 +144,7 @@ public class BottomPanelEvent {
           if (!inGame.monsters[2].isAlive()) {
             JPanel a = (JPanel) src.getParent().getParent();
             JPanel bgPanel = (JPanel) a.getComponent(0);
-            HomePanel.padeOut(bgPanel, new LobbyPanel(inGame.character), frame);
+            HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
             return;
           }
 

@@ -1,9 +1,9 @@
 package game;
 
 public interface Combatant {
-	int attack();
+  int attack();
 
-	int skill();
+  int skill();
 
-	boolean isAlive();
+  boolean isAlive();
 }
