@@ -14,13 +14,10 @@ import game.AbstractCombatant;
 import game.Character;
 
 public abstract class StatusPanel extends JPanel {
-	private Font FONT = new Font("SansSerif", Font.BOLD, 20);
+	private final Font FONT = new Font("SansSerif", Font.BOLD, 20);
 	private AbstractCombatant c;
-	private Character character;
-	private JLabel levelLabel = new JLabel("");
-	private JLabel expLabel = new JLabel("");
 
-	protected StatusPanel(AbstractCombatant c, int a) {
+	protected StatusPanel(AbstractCombatant c) {
 		this.c = c;
 		setLayout(null);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
@@ -28,22 +25,10 @@ public abstract class StatusPanel extends JPanel {
 		add(new PowerLabel());
 		add(new HealthPanel());
 
-		System.out.println(c.getName());
-
-		if (a == 0) {
-			character = (Character) c;
-			levelLabel.setBounds(100, 65, 80, 50);
-			levelLabel.setFont(new Font(levelLabel.getText(), Font.BOLD, 20));
-			levelLabel.setText("Lv" + character.getLevel());
-
-			expLabel.setBounds(140, 65, 80, 50);
-			expLabel.setFont(new Font(expLabel.getText(), Font.BOLD, 20));
-			expLabel.setText("(" + character.getExp() + "/" + character.getLevelExp() + ")");
-
-			add(levelLabel);
-			add(expLabel);
+		if (c instanceof Character) {
+			add(new LevelLabel((Character) c));
+			add(new ExpLabel((Character) c));
 		}
-
 		setSize(350, 110);
 	}
 
@@ -57,19 +42,23 @@ public abstract class StatusPanel extends JPanel {
 	}
 
 	private class NameLabel extends JLabel {
+
 		private NameLabel() {
 			super(c.getName());
 			super.setFont(FONT);
 			setBounds(15, 10, 500, 30);
 		}
+
 	}
 
 	private class PowerLabel extends JLabel {
+
 		private PowerLabel() {
 			super("전투력 : " + c.getPower());
 			super.setFont(FONT);
 			setBounds(195, 10, 200, 30);
 		}
+
 	}
 
 	private class HealthPanel extends JPanel {
@@ -88,8 +77,8 @@ public abstract class StatusPanel extends JPanel {
 			g.fillRoundRect(0, 0, 230, 20, cornerRadius, cornerRadius);
 
 			g.setColor(Color.green);
-			// 체력이 15% 이하일 경우 빨간색으로 체력 표시
-			if ((int) ((c.getNowHp() / (double) c.getHp()) * 100) <= 15) {
+			// 체력이 20% 이하일 경우 빨간색으로 체력 표시
+			if ((int) ((c.getNowHp() / (double) c.getHp()) * 100) <= 20) {
 				g.setColor(Color.red);
 			}
 			// 현재 체력만큼 RoundRect 채우기
@@ -99,6 +88,25 @@ public abstract class StatusPanel extends JPanel {
 			super.setFont(FONT);
 			g.setColor(Color.black);
 			g.drawString(str, 235, 15);
+		}
+	}
+
+	private class LevelLabel extends JLabel {
+
+		private LevelLabel(Character c) {
+			setBounds(100, 65, 80, 50);
+			setFont(FONT);
+			setText("Lv" + c.getLevel());
+		}
+
+	}
+
+	private class ExpLabel extends JLabel {
+
+		private ExpLabel(Character c) {
+			setBounds(140, 65, 80, 50);
+			setFont(FONT);
+			setText("(" + c.getExp() + "/" + c.getLevelExp() + ")");
 		}
 	}
 
