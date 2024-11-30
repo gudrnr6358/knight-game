@@ -30,7 +30,7 @@ public class Chapter1Panel extends JPanel {
 		backgroundImage = new ImageIcon("images/Stage1Background.png").getImage();
 
 		// Stage1 버튼
-		buttons[0].setBounds(100, 100, 150, 50);
+		buttons[0].setBounds(730, 700, 180, 80);
 		add(buttons[0]);
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
@@ -44,7 +44,7 @@ public class Chapter1Panel extends JPanel {
 		});
 
 		// Stage2 버튼
-		buttons[1].setBounds(100, 200, 150, 50);
+		buttons[1].setBounds(450, 580, 180, 80);
 		add(buttons[1]);
 		buttons[1].addActionListener(new ActionListener() {
 			@Override
@@ -57,7 +57,7 @@ public class Chapter1Panel extends JPanel {
 		});
 
 		// Stage3 버튼
-		buttons[2].setBounds(100, 300, 150, 50);
+		buttons[2].setBounds(530, 410, 180, 80);
 		add(buttons[2]);
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
@@ -70,7 +70,7 @@ public class Chapter1Panel extends JPanel {
 		});
 
 		// 돌아가기 버튼
-		buttons[3].setBounds(100, 400, 150, 50);
+		buttons[2].setBounds(0, 0, 180, 80);
 		add(buttons[3]);
 		buttons[3].addActionListener(new ActionListener() {
 			@Override
