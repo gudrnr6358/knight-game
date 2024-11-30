@@ -31,7 +31,7 @@ public class Chapter2Panel extends JPanel {
 		setBounds(0, 0, 1366, 900);
 
 		// Stage4 버튼
-		buttons[0].setBounds(100, 100, 150, 50);
+		buttons[0].setBounds(200, 550, 180, 80);
 		add(buttons[0]);
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
@@ -45,7 +45,7 @@ public class Chapter2Panel extends JPanel {
 		});
 
 		// Stage5 버튼
-		buttons[1].setBounds(100, 200, 150, 50);
+		buttons[1].setBounds(450, 720, 180, 80);
 		add(buttons[1]);
 		buttons[1].addActionListener(new ActionListener() {
 			@Override
@@ -58,7 +58,7 @@ public class Chapter2Panel extends JPanel {
 		});
 
 		// Stage6 버튼
-		buttons[2].setBounds(100, 300, 150, 50);
+		buttons[2].setBounds(650, 550, 180, 80);
 		add(buttons[2]);
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
@@ -72,7 +72,7 @@ public class Chapter2Panel extends JPanel {
 		});
 
 		// 돌아가기 버튼
-		buttons[3].setBounds(100, 400, 150, 50);
+		buttons[3].setBounds(0, 0, 180, 80);
 		add(buttons[3]);
 		buttons[3].addActionListener(new ActionListener() {
 			@Override
