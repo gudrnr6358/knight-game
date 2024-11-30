@@ -35,7 +35,6 @@ public class Chapter1Panel extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("클릭");
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
 				HomePanel.fadeout(bgPanel, new InGamePanel(character, new Stage1().getMonsters(), backgroundImage),
@@ -75,7 +74,6 @@ public class Chapter1Panel extends JPanel {
 		buttons[3].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("돌아가기 클릭");
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
 				frame.getContentPane().removeAll();
