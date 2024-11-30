@@ -70,7 +70,7 @@ public class Chapter1Panel extends JPanel {
 		});
 
 		// 돌아가기 버튼
-		buttons[2].setBounds(0, 0, 180, 80);
+		buttons[3].setBounds(0, 0, 180, 80);
 		add(buttons[3]);
 		buttons[3].addActionListener(new ActionListener() {
 			@Override
