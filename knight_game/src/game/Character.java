@@ -72,7 +72,6 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	// 경험치 얻는 메서드마다 실행
 	private void checkExp() {
 		if (level == EXP.length) {
-			System.out.println("최대 레벨입니다.");
 			return;
 		}
 		if (exp >= EXP[level - 1]) {

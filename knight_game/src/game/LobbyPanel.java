@@ -185,7 +185,6 @@ public class LobbyPanel extends JPanel {
 					layeredPane.repaint();
 				}
 				if (x >= 600 && x <= 630 && y >= 600 && y <= 650) {
-					System.out.println("남남");
 					popUpPanel.setVisible(true);
 					popUpLabel.setText("종료시 데이터가 유실될 수 있습니다");
 					popUpBtn1.setText("종료");
