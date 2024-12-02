@@ -17,7 +17,7 @@ public class BottomPanelButton extends JButton {
 	
 	protected BottomPanelButton(ImageIcon img) {
 		super(img);
-		addMouseListener(new BottomPanelEvent(img).new BottomMouseListener());
+		addMouseListener(new BottomPanelEvent().new BottomMouseListener());
 		setFocusable(false);
 	}
 

@@ -18,15 +18,9 @@ public class BottomPanelEvent {
 	private static Integer count = 0;
 	private final ImageIcon attackImage = BattlePanel.attackImage;
 	private final ImageIcon skillImage = BattlePanel.skillImage;
-	private ImageIcon image;
 
 	public BottomPanelEvent() {
 		super();
-	}
-
-	public BottomPanelEvent(ImageIcon image) {
-		super();
-		this.image = image;
 	}
 
 	class BottomMouseListener extends MouseAdapter {
@@ -108,6 +102,7 @@ public class BottomPanelEvent {
 
 				if (src.getClass().equals(BattleSkillPanel.class)) {
 					bottomPanel.setBottomBoxPanel(new BattlePanel());
+					TextLabel.textLabel.setTextLabel("");
 				}
 
 				// BattleTextPanel 클릭

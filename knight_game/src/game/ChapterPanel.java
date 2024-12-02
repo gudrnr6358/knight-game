@@ -15,7 +15,7 @@ public class ChapterPanel extends JPanel {
 	private Image backgroundImage;
 	private JButton[] buttons = { new JButton("CHAPTER 1"), new JButton("CHAPTER 2"), new JButton("돌아가기") };
 	private Character character;
-	Boolean chapter2Warning = false;
+	private static Boolean chapter2Warning = false;
 	JPanel bgPanel = new JPanel();
 
 	public ChapterPanel(Character character) {
