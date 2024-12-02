@@ -32,14 +32,5 @@ public abstract class Monster extends AbstractCombatant implements ImageUnit {
 	public int skill() {
 		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
-	
-	@Override
-	public boolean isAlive() {
-		if (nowHp > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 }

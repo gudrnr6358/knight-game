@@ -51,14 +51,6 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 		return new ImageIcon("images/knight.png");
 	}
 
-	@Override
-	public boolean isAlive() {
-		if (nowHp > 0) {
-			return true;
-		}
-		return false;
-	}
-
 	public void plusEXP(Integer exp) {
 		this.exp += exp;
 		checkExp();

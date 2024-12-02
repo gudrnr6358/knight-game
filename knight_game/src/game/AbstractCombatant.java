@@ -20,9 +20,9 @@ public abstract class AbstractCombatant implements Combatant, Serializable {
 	}
 
 	protected AbstractCombatant() {
-		
+
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -45,6 +45,14 @@ public abstract class AbstractCombatant implements Combatant, Serializable {
 
 	public Integer getAttackValue() {
 		return attackValue;
+	}
+
+	@Override
+	public boolean isAlive() {
+		if (nowHp > 0) {
+			return true;
+		}
+		return false;
 	}
 
 }
