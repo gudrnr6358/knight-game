@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import game.HomePanel;
 import game.InGamePanel;
 import game.LobbyPanel;
-import game.monster.boss.Boss;
 
 public class BottomPanelEvent {
 	public static InGamePanel inGame;

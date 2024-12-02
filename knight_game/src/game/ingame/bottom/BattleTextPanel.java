@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 import game.AbstractCombatant;
+import game.ingame.top.ingameimages.InGameImageUnit;
 import game.monster.Monster;
 
 // 전투 상황 텍스트를 출력하는 패널

@@ -13,7 +13,6 @@ public class BattleSkillPanel extends BottomBox {
 		add(new DoubleAttack());
 		add(new HeavenlyStrike());
 		add(new NextPageInfoLabel());
-		repaint();
 	}
 
 	private class NextPageInfoLabel extends JLabel {
