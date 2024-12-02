@@ -3,6 +3,7 @@ package game.ingame.bottom;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,18 @@ public class BottomPanelEvent {
 	public static InGamePanel inGame;
 	public static InGamePanel.BottomPanel bottomPanel;
 	private static Integer count = 0;
+	private final ImageIcon attackImage = BattlePanel.attackImage;
+	private final ImageIcon skillImage = BattlePanel.skillImage;
+	private ImageIcon image;
+
+	public BottomPanelEvent() {
+		super();
+	}
+
+	public BottomPanelEvent(ImageIcon image) {
+		super();
+		this.image = image;
+	}
 
 	class BottomMouseListener extends MouseAdapter {
 
@@ -40,14 +53,14 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("공격")) {
+				if (src.getIcon() != null && src.getIcon().equals(attackImage)) {
 					inGame.characterAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
 
-				if (src.getText().equals("스킬")) {
+				if (src.getIcon() != null && src.getIcon().equals(skillImage)) {
 					bottomPanel.setBottomBoxPanel(new BattleSkillPanel());
 					return;
 				}

@@ -1,10 +1,11 @@
 package game.ingame.bottom;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 public class BattlePanel extends BottomBox {
+
+	public static final ImageIcon attackImage = new ImageIcon("images/ingame_attack_image.jpg");
+	public static final ImageIcon skillImage = new ImageIcon("images/ingame_skill_image.jpg");
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BattlePanel() {
@@ -15,16 +16,16 @@ public class BattlePanel extends BottomBox {
 	private class AttackButton extends BattlePanelButton {
 
 		private AttackButton() {
-			super("공격");
-			setLocation(285, 100);
+			super(attackImage);
+			setLocation(285, 90);
 		}
 	}
 
 	private class SkillButton extends BattlePanelButton {
 
 		private SkillButton() {
-			super("스킬");
-			setLocation(785, 100);
+			super(skillImage);
+			setLocation(785, 90);
 		}
 
 	}
