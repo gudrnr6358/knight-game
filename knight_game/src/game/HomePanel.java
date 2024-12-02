@@ -41,9 +41,9 @@ public class HomePanel extends JPanel {
 		// 2 : 게임방법
 		// 3 : 종료
 		// 버튼의 종류와 좌표,크기 지정 하여 사용
-		setButtonBounds((JButton) btns.get(0), 500, 500, 350, 60);
-		setButtonBounds((JButton) btns.get(1), 500, 580, 350, 60);
-		setButtonBounds((JButton) btns.get(2), 500, 660, 350, 60);
+		setButtonBounds((JButton) btns.get(0), 515, 540, 350, 60);
+		setButtonBounds((JButton) btns.get(1), 515, 620, 350, 60);
+		setButtonBounds((JButton) btns.get(2), 515, 700, 350, 60);
 
 	}
 
@@ -104,7 +104,7 @@ public class HomePanel extends JPanel {
 
 	public static void fadeout(JPanel bgPanel, JPanel panel, JFrame frame) {
 		Timer timer;
-		bgPanel.setSize(1350, 860);
+		bgPanel.setSize(1366, 899);
 		bgPanel.setBackground(new Color(0, 0, 0, 0));
 
 		timer = new Timer(20, new ActionListener() {

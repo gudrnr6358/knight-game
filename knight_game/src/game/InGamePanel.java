@@ -96,7 +96,7 @@ public class InGamePanel extends JPanel {
 		private TopPanel() {
 			setLayout(null);
 			TopPanel.this.setTopPanel();
-			setBounds(0, 0, 1366, 510);
+			setBounds(0, 0, 1366, 530);
 			setOpaque(false);
 		}
 
@@ -105,7 +105,7 @@ public class InGamePanel extends JPanel {
 			super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D) g.create();
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
-			g2d.drawImage(backgroundImage, 0, 0, 1366, 510, 0, 0, 1366, 510, null);
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 530, 0, 0, 1366, 510, null);
 		}
 
 		// TopPanel 생성은 한 번, 이후에는 이 메서드를 통해서 변화
@@ -132,7 +132,7 @@ public class InGamePanel extends JPanel {
 
 		private BottomPanel() {
 			BottomPanel.this.setLayout(null);
-			setBounds(0, 510, 1366, 390);
+			setBounds(0, 530, 1366, 390);
 			add(new BasicPanel());
 			TextLabel.textLabel.setTextLabel(monster.getName() + "을 마주쳤다");
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
@@ -144,7 +144,7 @@ public class InGamePanel extends JPanel {
 			super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D) g.create();
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
-			g2d.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 510, 1366, 900, null);
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 530, 1366, 900, null);
 		}
 
 		public void setBottomBoxPanel(BottomBox bottomBox) {

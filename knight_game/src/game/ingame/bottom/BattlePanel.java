@@ -16,7 +16,7 @@ public class BattlePanel extends BottomBox {
 
 		private AttackButton() {
 			super("공격");
-			setLocation(105, 100);
+			setLocation(285, 100);
 		}
 	}
 
@@ -24,7 +24,7 @@ public class BattlePanel extends BottomBox {
 
 		private SkillButton() {
 			super("스킬");
-			setLocation(505, 100);
+			setLocation(785, 100);
 		}
 
 	}

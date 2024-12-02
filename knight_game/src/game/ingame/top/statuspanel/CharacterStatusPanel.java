@@ -6,7 +6,7 @@ public class CharacterStatusPanel extends StatusPanel {
 
 	public CharacterStatusPanel(AbstractCombatant c) {
 		super(c);
-		setLocation(986, 400);
+		setLocation(990, 420);
 	}
 
 }
