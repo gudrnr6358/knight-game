@@ -38,6 +38,11 @@ public class LobbyPanel extends JPanel {
 	}
 
 	public LobbyPanel(Character character) {
+
+		if (!character.isAlive()) {
+			character.dead();
+		}
+		
 		characterStatusPanel = new CharacterStatusPanel(character);
 		this.character = character;
 

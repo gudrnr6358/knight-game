@@ -112,7 +112,6 @@ public class BottomPanelEvent {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						TextLabel.textLabel.setTextLabel(
 								inGame.character.getName() + " 기사가 사망했습니다 경험치 - " + inGame.character.getExp());
-						inGame.character.dead();
 						return;
 					}
 
