@@ -14,7 +14,7 @@ public abstract class Monster extends AbstractCombatant implements ImageUnit {
 	public abstract Integer getEXP();
 
 	@Override
-	public int attack() {
+	public Integer attack() {
 		useSkill = false;
 		int random = (int) ((Math.random() * 10) + 1);
 
@@ -29,7 +29,7 @@ public abstract class Monster extends AbstractCombatant implements ImageUnit {
 	}
 
 	@Override
-	public int skill() {
+	public Integer skill() {
 		return (int) (power * 1.5 + (Math.random() * 3 + 1));
 	}
 

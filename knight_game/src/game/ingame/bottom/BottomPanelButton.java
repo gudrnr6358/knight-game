@@ -33,3 +33,11 @@ class BattlePanelButton extends BottomPanelButton {
 		setSize(250, 120);
 	}
 }
+
+class SkillPanelButton extends BottomPanelButton {
+	// SkillPanelButton size 세팅 (230, 120)
+	protected SkillPanelButton(String str) {
+		super(str);
+		setSize(230, 120);
+	}
+}

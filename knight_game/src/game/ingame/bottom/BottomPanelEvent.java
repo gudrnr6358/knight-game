@@ -48,23 +48,39 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("캐릭터 스킬")) {
-					if (!inGame.character.canUseSkill()) {
+				if (src.getText().equals("스킬")) {
+					bottomPanel.setBottomBoxPanel(new BattleSkillPanel());
+					return;
+				}
+
+				if (src.getText().equals("크리티컬 어택")) {
+					if (!inGame.character.canUseCriticalAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
 					}
-					inGame.characterSkill();
+					inGame.characterCriticalAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
 
-				if (src.getText().equals("두번 베기")) {
-					if (!inGame.character.canUsecharSkill()) {
+				if (src.getText().equals("더블 어택")) {
+					if (!inGame.character.canUseDoubleAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
 					}
-					inGame.charSkill();
+					inGame.characterDoubleAttack();
+					inGame.repaint();
+					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					return;
+				}
+
+				if (src.getText().equals("천상의 일격")) {
+					if (!inGame.character.canUseHeavenlyStrike()) {
+						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
+						return;
+					}
+					inGame.characterHeavenlyStrike();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;

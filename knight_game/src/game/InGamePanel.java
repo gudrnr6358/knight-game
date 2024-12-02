@@ -65,12 +65,16 @@ public class InGamePanel extends JPanel {
 		monster.nowHp -= character.attack();
 	}
 
-	public void characterSkill() {
+	public void characterCriticalAttack() {
 		monster.nowHp -= character.skill();
 	}
 
-	public void charSkill() {
-		monster.nowHp -= character.charSkill();
+	public void characterDoubleAttack() {
+		monster.nowHp -= character.doubleAttack();
+	}
+	
+	public void characterHeavenlyStrike() {
+		monster.nowHp -= character.heavenlyStrike();
 	}
 
 	public void monsterAttack() {
