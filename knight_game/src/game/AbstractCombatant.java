@@ -48,11 +48,11 @@ public abstract class AbstractCombatant implements Combatant, Serializable {
 	}
 
 	@Override
-	public boolean isAlive() {
+	public Boolean isAlive() {
 		if (nowHp > 0) {
-			return true;
+			return Boolean.TRUE;
 		}
-		return false;
+		return Boolean.FALSE;
 	}
 
 }

@@ -5,5 +5,5 @@ public interface Combatant {
 
 	int skill();
 
-	boolean isAlive();
+	Boolean isAlive();
 }
