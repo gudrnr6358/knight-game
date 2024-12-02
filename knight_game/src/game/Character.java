@@ -59,10 +59,6 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 		return false;
 	}
 
-	public void recoveryHp() {
-		nowHp = hp;
-	}
-
 	public void plusEXP(Integer exp) {
 		this.exp += exp;
 		checkExp();
