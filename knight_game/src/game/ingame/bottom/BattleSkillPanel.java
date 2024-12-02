@@ -4,12 +4,29 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import javax.swing.JLabel;
+
 public class BattleSkillPanel extends BottomBox {
 
 	public BattleSkillPanel() {
 		add(new CriticalAttack());
 		add(new DoubleAttack());
 		add(new HeavenlyStrike());
+		add(new NextPageInfoLabel());
+		repaint();
+	}
+
+	private class NextPageInfoLabel extends JLabel {
+
+		private static String str = "패널 클릭시 이전 페이지로 돌아갑니다";
+
+		private NextPageInfoLabel() {
+			super(str);
+			setForeground(new Color(128, 128, 128));
+			setFont(new Font("SansSerif", Font.BOLD, 22));
+			setBounds(920, 70, 430, 470);
+		}
+
 	}
 
 	private class CriticalAttack extends SkillPanelButton {

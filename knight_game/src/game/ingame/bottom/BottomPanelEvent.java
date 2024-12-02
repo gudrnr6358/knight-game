@@ -94,6 +94,10 @@ public class BottomPanelEvent {
 				JPanel src = (JPanel) e.getSource();
 				JFrame frame = (JFrame) src.getTopLevelAncestor();
 
+				if (src.getClass().equals(BattleSkillPanel.class)) {
+					bottomPanel.setBottomBoxPanel(new BattlePanel());
+				}
+
 				// BattleTextPanel 클릭
 				if (src.getClass().equals(BattleTextPanel.class)) {
 
