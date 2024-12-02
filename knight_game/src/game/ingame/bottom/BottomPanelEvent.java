@@ -15,7 +15,7 @@ import game.LobbyPanel;
 public class BottomPanelEvent {
 	public static InGamePanel inGame;
 	public static InGamePanel.BottomPanel bottomPanel;
-	private static Integer count = 0;
+	private static Integer textPanelCount = 0;
 	private final ImageIcon attackImage = BattlePanel.attackImage;
 	private final ImageIcon skillImage = BattlePanel.skillImage;
 
@@ -112,6 +112,7 @@ public class BottomPanelEvent {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						TextLabel.textLabel.setTextLabel(
 								inGame.character.getName() + " 기사가 사망했습니다 경험치 - " + inGame.character.getExp());
+						textPanelCount = 0;
 						return;
 					}
 
@@ -129,15 +130,15 @@ public class BottomPanelEvent {
 					}
 
 					// 몬스터가 공격을 할 지, 공격 패널로 돌아갈 지 확인
-					if (count == 0) {
+					if (textPanelCount == 0) {
 						inGame.monsterAttack();
 						inGame.repaint();
 						bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.monster, inGame.character));
-						count++;
+						textPanelCount++;
 					} else {
 						bottomPanel.setBottomBoxPanel(new BattlePanel());
 						TextLabel.textLabel.setTextLabel("");
-						count = 0;
+						textPanelCount = 0;
 						return;
 					}
 				}
