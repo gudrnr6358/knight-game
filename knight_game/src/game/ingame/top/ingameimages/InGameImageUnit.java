@@ -43,7 +43,7 @@ public abstract class InGameImageUnit extends JLabel {
 		JLabel effect = setEffectImage(useSkill);
 		effect.setBounds(20, -20, 340, 340);
 		effect.setVisible(true);
-		add(effect);
+		add(effect); 
 
 		Timer timer = new Timer(15, new ActionListener() {
 			private int count = 0;
