@@ -28,7 +28,7 @@ public abstract class InGameImageUnit extends JLabel {
 
 	// 공격 당했을 때 깜빡이는 이펙트 출력
 	public void attackedEffect() {
-		Timer timer = new Timer(10, new ActionListener() {
+		Timer timer = new Timer(15, new ActionListener() {
 			private int count = 0;
 			private boolean isFadingOut = true;
 
