@@ -43,6 +43,7 @@ public class BattleEndPanel extends BottomBox {
 				return this;
 			}
 			setText("진행하려면 클릭하세요");
+			// 글자 수가 달라 위치가 달라져서 x 값 수정
 			x = 1040 + 35;
 			setBounds(x, y, width, height);
 			return this;
