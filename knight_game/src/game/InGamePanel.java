@@ -93,12 +93,14 @@ public class InGamePanel extends JPanel {
 		return false;
 	}
 
+	// 캐릭터가 공격 당했을 때
 	public void characterAttackedEffect() {
-		inGameImageCharacter.attackedEffect();
+		inGameImageCharacter.attackedEffect(monster.useSkill);
 	}
 
+	// 몬스터가 공격 당했을 때
 	public void monsterAttackedEffect() {
-		inGameImageMonster.attackedEffect();
+		inGameImageMonster.attackedEffect(character.useSkill);
 	}
 
 	// 생성자 사용해서 기본 틀 제공 및 StatusBar, Image 부착하는 메서드 호출

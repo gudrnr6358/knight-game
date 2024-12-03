@@ -14,15 +14,11 @@ import game.ImageUnit;
 
 public abstract class InGameImageUnit extends JLabel {
 	private float alpha = 1f;
-	private JLabel effect = new JLabel(new ImageIcon("images/attack_effect.png"));
 
 	protected InGameImageUnit(ImageUnit i) {
 		super(i.getUnitImage());
 		setSize(340, 340);
-		setLayout(null); // 레이아웃을 null로 설정하여 자유 배치
-		effect.setBounds(20, -20, 340, 340);
-		effect.setVisible(false); // 초기에는 보이지 않도록 설정
-		add(effect);
+		setLayout(null);
 	}
 
 	@Override
@@ -33,9 +29,22 @@ public abstract class InGameImageUnit extends JLabel {
 		g2.dispose();
 	}
 
+	private JLabel setEffectImage(Boolean useSkill) {
+		// 스킬 사용 시, 스킬 이펙트 이미지 담은 JLabel 생성해서 return
+		if (useSkill) {
+			return new JLabel(new ImageIcon("images/skill_effect.png"));
+		}
+		return new JLabel(new ImageIcon("images/attack_effect.png"));
+	}
+
 	// 공격 당했을 때 깜빡이는 이펙트 및 타격 이미지 출력
-	public void attackedEffect() {
+	public void attackedEffect(Boolean useSkill) {
+
+		JLabel effect = setEffectImage(useSkill);
+		effect.setBounds(20, -20, 340, 340);
 		effect.setVisible(true);
+		add(effect);
+
 		Timer timer = new Timer(15, new ActionListener() {
 			private int count = 0;
 			private boolean isFadingOut = true;
