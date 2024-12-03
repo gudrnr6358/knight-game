@@ -16,8 +16,8 @@ public class BottomPanelEvent {
 	public static InGamePanel inGame;
 	public static InGamePanel.BottomPanel bottomPanel;
 	private static Integer textPanelCount = 0;
-	private final ImageIcon attackImage = BattlePanel.attackImage;
-	private final ImageIcon skillImage = BattlePanel.skillImage;
+	private final ImageIcon ATTACK_BUTTON_IMAGE = BattlePanel.ATTACK_BUTTON_IMAGE;
+	private final ImageIcon SKILL_BUTTON_IMAGE = BattlePanel.SKILL_BUTTON_IMAGE;
 
 	public BottomPanelEvent() {
 		super();
@@ -47,14 +47,14 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getIcon() != null && src.getIcon().equals(attackImage)) {
+				if (src.getIcon() != null && src.getIcon().equals(ATTACK_BUTTON_IMAGE)) {
 					inGame.characterAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
 					return;
 				}
 
-				if (src.getIcon() != null && src.getIcon().equals(skillImage)) {
+				if (src.getIcon() != null && src.getIcon().equals(SKILL_BUTTON_IMAGE)) {
 					bottomPanel.setBottomBoxPanel(new BattleSkillPanel());
 					return;
 				}
