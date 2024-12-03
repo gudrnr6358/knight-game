@@ -15,6 +15,9 @@ public class GameFrame extends JFrame {
 		// 프레임 크기조절 false : 불가, true : 허용
 		setResizable(false);
 
+		// 프레임 테두리 제거
+		setUndecorated(true);
+		
 		// 프레임 화면 가운데 정렬
 		setLocationRelativeTo(null);
 

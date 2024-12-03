@@ -13,11 +13,13 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	private Integer level;
 
 	// 고정 스킬 사용 횟수
-	private final Integer fixedSkillCount = 3;
-	private final Integer fixedCharSkillCount = 1;
+	private final Integer FIXED_CRTICAL_ATTACK_COUNT = 3;
+	private final Integer FIXED_DOUBLE_ATTACK_COUNT = 1;
+	private final Integer FIXED_HEAVENTLY_STRIKE_COUNT = 1;
 	// 가변 스킬 사용 횟수
-	private Integer currentSkillCount = fixedSkillCount;
-	private Integer currentCharSkillCount = fixedCharSkillCount;
+	private Integer currentCriticalAttackCount = FIXED_CRTICAL_ATTACK_COUNT;
+	private Integer currentDoubleAttackCount = FIXED_DOUBLE_ATTACK_COUNT;
+	private Integer currentHeaventlyStrikeCount = FIXED_HEAVENTLY_STRIKE_COUNT;
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
@@ -27,40 +29,34 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	}
 
 	@Override
-	public int attack() {
+	public Integer attack() {
 		useSkill = false;
 		attackValue = power + (int) (Math.random() * 5 + 1);
 		return attackValue;
 	}
 
 	@Override
-	public int skill() {
+	public Integer skill() {
 		useSkill = true;
 		attackValue = (int) ((power * 1.2) + (Math.random() * 3 + 1));
 		return attackValue;
 	}
 
-	public int charSkill() {
+	public Integer doubleAttack() {
 		useSkill = true;
 		attackValue = (int) ((power * 2.0) + (Math.random() * 3 + 1));
+		return attackValue;
+	}
+
+	public Integer heavenlyStrike() {
+		useSkill = true;
+		attackValue = (int) ((power * 2.5) + (Math.random() * 3 + 1));
 		return attackValue;
 	}
 
 	@Override
 	public ImageIcon getUnitImage() {
 		return new ImageIcon("images/knight.png");
-	}
-
-	@Override
-	public boolean isAlive() {
-		if (nowHp > 0) {
-			return true;
-		}
-		return false;
-	}
-
-	public void recoveryHp() {
-		nowHp = hp;
 	}
 
 	public void plusEXP(Integer exp) {
@@ -72,7 +68,6 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	// 경험치 얻는 메서드마다 실행
 	private void checkExp() {
 		if (level == EXP.length) {
-			System.out.println("최대 레벨입니다.");
 			return;
 		}
 		if (exp >= EXP[level - 1]) {
@@ -104,41 +99,59 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 		return level;
 	}
 
-	public Boolean canUseSkill() {
-		if (currentSkillCount > 0) {
-			currentSkillCount--;
+	public Boolean canUseCriticalAttack() {
+		if (currentCriticalAttackCount > 0) {
+			currentCriticalAttackCount--;
 			return Boolean.TRUE;
 		}
 		return Boolean.FALSE;
 	}
 
-	public Boolean canUsecharSkill() {
-		if (currentCharSkillCount > 0) {
-			currentCharSkillCount--;
+	public Boolean canUseDoubleAttack() {
+		if (currentDoubleAttackCount > 0) {
+			currentDoubleAttackCount--;
 			return Boolean.TRUE;
 		}
 		return Boolean.FALSE;
 	}
 
+	public Boolean canUseHeavenlyStrike() {
+		if (currentHeaventlyStrikeCount > 0) {
+			currentHeaventlyStrikeCount--;
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
+	}
+
+	// 스킬 횟수 세팅
 	public void setSkillCount() {
-		currentCharSkillCount = fixedCharSkillCount;
-		currentSkillCount = fixedSkillCount;
+		currentHeaventlyStrikeCount = FIXED_HEAVENTLY_STRIKE_COUNT;
+		currentDoubleAttackCount = FIXED_DOUBLE_ATTACK_COUNT;
+		currentCriticalAttackCount = FIXED_CRTICAL_ATTACK_COUNT;
 	}
 
-	public Integer getFixedCharSkillCount() {
-		return fixedCharSkillCount;
+	public Integer getFIXED_CRTICAL_ATTACK_COUNT() {
+		return FIXED_CRTICAL_ATTACK_COUNT;
 	}
 
-	public Integer getFixedSkillCount() {
-		return fixedSkillCount;
+	public Integer getFIXED_DOUBLE_ATTACK_COUNT() {
+		return FIXED_DOUBLE_ATTACK_COUNT;
 	}
 
-	public Integer getCurrentCharSkillCount() {
-		return currentCharSkillCount;
+	public Integer getFIXED_HEAVENTLY_STRIKE_COUNT() {
+		return FIXED_HEAVENTLY_STRIKE_COUNT;
 	}
 
-	public Integer getCurrentSkillCount() {
-		return currentSkillCount;
+	public Integer getCurrentCriticalCount() {
+		return currentCriticalAttackCount;
+	}
+
+	public Integer getCurrentDoubleAttackCount() {
+		return currentDoubleAttackCount;
+	}
+
+	public Integer getCurrentHeaventlyStrikeCount() {
+		return currentHeaventlyStrikeCount;
 	}
 
 	public void dead() {

@@ -12,6 +12,7 @@ import game.ingame.bottom.BottomBox;
 import game.ingame.bottom.BottomPanelEvent;
 import game.ingame.bottom.TextLabel;
 import game.ingame.top.ingameimages.CharacterImageUnit;
+import game.ingame.top.ingameimages.InGameImageUnit;
 import game.ingame.top.ingameimages.MonsterImageUnit;
 import game.ingame.top.statuspanel.CharacterStatusPanel;
 import game.ingame.top.statuspanel.MonsterStatusPanel;
@@ -25,6 +26,8 @@ public class InGamePanel extends JPanel {
 	public Integer count = 0;
 	private Image backgroundImage;
 	private JPanel bgPanel = new JPanel();
+	private InGameImageUnit inGameImageCharacter;
+	private InGameImageUnit inGameImageMonster;
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
 	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage) {
@@ -65,12 +68,16 @@ public class InGamePanel extends JPanel {
 		monster.nowHp -= character.attack();
 	}
 
-	public void characterSkill() {
+	public void characterCriticalAttack() {
 		monster.nowHp -= character.skill();
 	}
 
-	public void charSkill() {
-		monster.nowHp -= character.charSkill();
+	public void characterDoubleAttack() {
+		monster.nowHp -= character.doubleAttack();
+	}
+
+	public void characterHeavenlyStrike() {
+		monster.nowHp -= character.heavenlyStrike();
 	}
 
 	public void monsterAttack() {
@@ -86,13 +93,21 @@ public class InGamePanel extends JPanel {
 		return false;
 	}
 
+	public void characterAttackedEffect() {
+		inGameImageCharacter.attackedEffect();
+	}
+
+	public void monsterAttackedEffect() {
+		inGameImageMonster.attackedEffect();
+	}
+
 	// 생성자 사용해서 기본 틀 제공 및 StatusBar, Image 부착하는 메서드 호출
 	private class TopPanel extends JPanel {
 
 		private TopPanel() {
 			setLayout(null);
 			TopPanel.this.setTopPanel();
-			setBounds(0, 0, 1366, 510);
+			setBounds(0, 0, 1366, 530);
 			setOpaque(false);
 		}
 
@@ -101,7 +116,7 @@ public class InGamePanel extends JPanel {
 			super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D) g.create();
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
-			g2d.drawImage(backgroundImage, 0, 0, 1366, 510, 0, 0, 1366, 510, null);
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 530, 0, 0, 1366, 510, null);
 		}
 
 		// TopPanel 생성은 한 번, 이후에는 이 메서드를 통해서 변화
@@ -118,8 +133,11 @@ public class InGamePanel extends JPanel {
 
 		// 직관적으로 보이기 위해 TopPanel.this.add() 사용
 		private void setInGameImageUnit() {
-			TopPanel.this.add(new CharacterImageUnit(character));
-			TopPanel.this.add(new MonsterImageUnit(monster));
+			inGameImageCharacter = new CharacterImageUnit(character);
+			inGameImageMonster = new MonsterImageUnit(monster);
+
+			TopPanel.this.add(inGameImageCharacter);
+			TopPanel.this.add(inGameImageMonster);
 		}
 	}
 
@@ -128,7 +146,7 @@ public class InGamePanel extends JPanel {
 
 		private BottomPanel() {
 			BottomPanel.this.setLayout(null);
-			setBounds(0, 510, 1366, 390);
+			setBounds(0, 530, 1366, 390);
 			add(new BasicPanel());
 			TextLabel.textLabel.setTextLabel(monster.getName() + "을 마주쳤다");
 			// BottomPanelEvent 클래스에 BottomBox 전환을 위한 BottomPanel 정보 넘겨주기
@@ -140,7 +158,7 @@ public class InGamePanel extends JPanel {
 			super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D) g.create();
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
-			g2d.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 510, 1366, 900, null);
+			g2d.drawImage(backgroundImage, 0, 0, 1366, 390, 0, 530, 1366, 900, null);
 		}
 
 		public void setBottomBoxPanel(BottomBox bottomBox) {

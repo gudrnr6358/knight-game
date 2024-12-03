@@ -3,6 +3,7 @@ package game.ingame.bottom;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,12 +11,17 @@ import javax.swing.JPanel;
 import game.HomePanel;
 import game.InGamePanel;
 import game.LobbyPanel;
-import game.monster.boss.Boss;
 
 public class BottomPanelEvent {
 	public static InGamePanel inGame;
 	public static InGamePanel.BottomPanel bottomPanel;
-	private static Integer count = 0;
+	private static Integer textPanelCount = 0;
+	private final ImageIcon ATTACK_BUTTON_IMAGE = BattlePanel.ATTACK_BUTTON_IMAGE;
+	private final ImageIcon SKILL_BUTTON_IMAGE = BattlePanel.SKILL_BUTTON_IMAGE;
+
+	public BottomPanelEvent() {
+		super();
+	}
 
 	class BottomMouseListener extends MouseAdapter {
 
@@ -41,32 +47,52 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("공격")) {
+				if (src.getIcon() != null && src.getIcon().equals(ATTACK_BUTTON_IMAGE)) {
 					inGame.characterAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
 					return;
 				}
 
-				if (src.getText().equals("캐릭터 스킬")) {
-					if (!inGame.character.canUseSkill()) {
-						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
-						return;
-					}
-					inGame.characterSkill();
-					inGame.repaint();
-					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+				if (src.getIcon() != null && src.getIcon().equals(SKILL_BUTTON_IMAGE)) {
+					bottomPanel.setBottomBoxPanel(new BattleSkillPanel());
 					return;
 				}
 
-				if (src.getText().equals("두번 베기")) {
-					if (!inGame.character.canUsecharSkill()) {
+				if (src.getText().equals("크리티컬 어택")) {
+					if (!inGame.character.canUseCriticalAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
 					}
-					inGame.charSkill();
+					inGame.characterCriticalAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
+					return;
+				}
+
+				if (src.getText().equals("더블 어택")) {
+					if (!inGame.character.canUseDoubleAttack()) {
+						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
+						return;
+					}
+					inGame.characterDoubleAttack();
+					inGame.repaint();
+					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
+					return;
+				}
+
+				if (src.getText().equals("천상의 일격")) {
+					if (!inGame.character.canUseHeavenlyStrike()) {
+						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
+						return;
+					}
+					inGame.characterHeavenlyStrike();
+					inGame.repaint();
+					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
 					return;
 				}
 
@@ -78,6 +104,11 @@ public class BottomPanelEvent {
 				JPanel src = (JPanel) e.getSource();
 				JFrame frame = (JFrame) src.getTopLevelAncestor();
 
+				if (src.getClass().equals(BattleSkillPanel.class)) {
+					bottomPanel.setBottomBoxPanel(new BattlePanel());
+					TextLabel.textLabel.setTextLabel("");
+				}
+
 				// BattleTextPanel 클릭
 				if (src.getClass().equals(BattleTextPanel.class)) {
 
@@ -85,7 +116,7 @@ public class BottomPanelEvent {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						TextLabel.textLabel.setTextLabel(
 								inGame.character.getName() + " 기사가 사망했습니다 경험치 - " + inGame.character.getExp());
-						inGame.character.dead();
+						textPanelCount = 0;
 						return;
 					}
 
@@ -103,15 +134,16 @@ public class BottomPanelEvent {
 					}
 
 					// 몬스터가 공격을 할 지, 공격 패널로 돌아갈 지 확인
-					if (count == 0) {
+					if (textPanelCount == 0) {
 						inGame.monsterAttack();
 						inGame.repaint();
 						bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.monster, inGame.character));
-						count++;
+						inGame.characterAttackedEffect();
+						textPanelCount++;
 					} else {
 						bottomPanel.setBottomBoxPanel(new BattlePanel());
 						TextLabel.textLabel.setTextLabel("");
-						count = 0;
+						textPanelCount = 0;
 						return;
 					}
 				}

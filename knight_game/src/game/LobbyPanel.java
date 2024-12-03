@@ -38,6 +38,11 @@ public class LobbyPanel extends JPanel {
 	}
 
 	public LobbyPanel(Character character) {
+
+		if (!character.isAlive()) {
+			character.dead();
+		}
+		
 		characterStatusPanel = new CharacterStatusPanel(character);
 		this.character = character;
 
@@ -161,7 +166,6 @@ public class LobbyPanel extends JPanel {
 
 				// 특정 구역 도달 시 메서드 호출
 				if (x >= 160 && x <= 260 && y >= 390 && y <= 440) {
-					Method1();// 서
 					if (character.nowHp < character.hp) {
 						character.nowHp += 10;
 						if (character.nowHp >= character.hp) {
@@ -174,7 +178,6 @@ public class LobbyPanel extends JPanel {
 					HomePanel.fadeout(bgPanel, new LobbyPanel(character), frame);
 				}
 				if (x >= 600 && x <= 630 && y >= 120 && y <= 230) {
-					Method2();// 북
 					popUpLabel.setText("저장하시겠습니까?");
 					popUpBtn1.setText("저장");
 					popUpPanel.setVisible(true);
@@ -185,29 +188,14 @@ public class LobbyPanel extends JPanel {
 					HomePanel.fadeout(bgPanel, new ChapterPanel(character), frame);
 					layeredPane.remove(la);
 					layeredPane.repaint();
-					Method3();// 동
 				}
 				if (x >= 600 && x <= 630 && y >= 600 && y <= 650) {
-					System.out.println("남남");
 					popUpPanel.setVisible(true);
 					popUpLabel.setText("종료시 데이터가 유실될 수 있습니다");
 					popUpBtn1.setText("종료");
 				}
 				setLocation(x, y);
 				repaint(); // 위치를 변경한 후 다시 그리기
-			}
-
-			// 특정 구역에 도달했을 때 실행할 메서드
-			private void Method1() {
-				System.out.println("특정 구역에 도달했습니다!1");
-			}
-
-			private void Method2() {
-				System.out.println("특정 구역에 도달했습니다!2");
-			}
-
-			private void Method3() {
-				System.out.println("특정 구역에 도달했습니다!3");
 			}
 		}
 

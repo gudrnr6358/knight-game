@@ -75,7 +75,7 @@ public class SetNamePanel extends JPanel {
 		};
 
 		barConPanel.setLayout(null);
-		barConPanel.setBounds(16, 448, 1320, 400);
+		barConPanel.setBounds(23, 480, 1320, 400);
 		barConPanel.setOpaque(false);
 
 		bar.setLayout(null);
@@ -94,7 +94,7 @@ public class SetNamePanel extends JPanel {
 
 		namePanel.add(charNameLabel, BorderLayout.CENTER);
 
-		textArea.setBounds(20, 20, 500, 500);
+		textArea.setBounds(20, 30, 500, 500);
 		textArea.setFont(new Font(textArea.getText(), Font.BOLD, 30));
 		textArea.setForeground(Color.WHITE);
 		textArea.setEditable(false);
@@ -133,7 +133,7 @@ public class SetNamePanel extends JPanel {
 
 		warning.setFont(new Font(name.getText(), Font.BOLD, 20));
 		warning.setForeground(new Color(173, 116, 96));
-		warning.setBounds(20, 50, 300, 50);
+		warning.setBounds(20, 120, 300, 50);
 		warning.setVisible(false);
 
 		popUp.setLayout(new BorderLayout());
@@ -163,7 +163,7 @@ public class SetNamePanel extends JPanel {
 		bar.add(name);
 		bar.add(textArea);
 		bar.add(warning);
-		bar.addMouseListener(new MyEvent());
+		bar.addMouseListener(new MyMouseEvent());
 
 		barConPanel.add(namePanel);
 		barConPanel.add(bar);
@@ -173,9 +173,8 @@ public class SetNamePanel extends JPanel {
 		add(barConPanel);
 	}
 
-	class MyEvent extends MouseAdapter {
-		public void mouseClicked(MouseEvent e) {
-			System.out.println("패널");
+	class MyMouseEvent extends MouseAdapter {
+		public void mousePressed(MouseEvent e) {
 			if (textArea.getText().equals(storyText[0])) {
 				textArea.setText(storyText[1]);
 				bar.add(textField);
@@ -190,7 +189,6 @@ public class SetNamePanel extends JPanel {
 	class MyKeyEvent extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
 			repaint();
-			System.out.println("키이벤트");
 			warning.setVisible(false);
 			if (textArea.getText().equals(storyText[0]) && e.getKeyCode() == 10) {
 				textArea.setText(storyText[1]);
@@ -215,14 +213,12 @@ public class SetNamePanel extends JPanel {
 
 		@Override
 		public void insertUpdate(DocumentEvent e) {
-			System.out.println("입력 텍스트 " + textField.getText());
 			name.setText("<html><u>" + textField.getText() + "</u></html>\t");
 			repaint();
 		}
 
 		@Override
 		public void removeUpdate(DocumentEvent e) {
-			System.out.println("삭제된 텍스트" + textField.getText());
 			name.setText("<html><u>" + textField.getText() + "</u></html>\t");
 			repaint();
 		}
@@ -248,10 +244,8 @@ public class SetNamePanel extends JPanel {
 				HomePanel.fadeout(bgPanel, new LobbyPanel(character), frame);
 				remove(popUp);
 				repaint();
-				System.out.println(textField.getText() + " 캐릭터 생성 완료");
 
 			} else if (btn.getText().equals("다시입력")) {
-				System.out.println("다시입력");
 				popUp.setVisible(false);
 				textField.setText("");
 				textField.setFocusable(true);

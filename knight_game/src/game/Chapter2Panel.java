@@ -36,7 +36,6 @@ public class Chapter2Panel extends JPanel {
 		buttons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("클릭");
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
 				HomePanel.fadeout(bgPanel, new InGamePanel(character, new Stage4().getMonsters(), backgroundImage),
@@ -63,7 +62,6 @@ public class Chapter2Panel extends JPanel {
 		buttons[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("클릭");
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
 				HomePanel.fadeout(bgPanel, new InGamePanel(character, new Stage6().getMonsters(), backgroundImage),
@@ -77,7 +75,6 @@ public class Chapter2Panel extends JPanel {
 		buttons[3].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("챕터 2클릭");
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
 				System.out.println(frame);
