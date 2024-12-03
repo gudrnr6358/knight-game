@@ -51,6 +51,7 @@ public class BottomPanelEvent {
 					inGame.characterAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
 					return;
 				}
 
@@ -67,6 +68,7 @@ public class BottomPanelEvent {
 					inGame.characterCriticalAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
 					return;
 				}
 
@@ -78,6 +80,7 @@ public class BottomPanelEvent {
 					inGame.characterDoubleAttack();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
 					return;
 				}
 
@@ -89,6 +92,7 @@ public class BottomPanelEvent {
 					inGame.characterHeavenlyStrike();
 					inGame.repaint();
 					bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.character, inGame.monster));
+					inGame.monsterAttackedEffect();
 					return;
 				}
 
@@ -134,6 +138,7 @@ public class BottomPanelEvent {
 						inGame.monsterAttack();
 						inGame.repaint();
 						bottomPanel.setBottomBoxPanel(new BattleTextPanel(inGame.monster, inGame.character));
+						inGame.characterAttackedEffect();
 						textPanelCount++;
 					} else {
 						bottomPanel.setBottomBoxPanel(new BattlePanel());
