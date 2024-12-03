@@ -7,8 +7,8 @@ import javax.swing.ImageIcon;
 public class Character extends AbstractCombatant implements ImageUnit, Serializable {
 	public static boolean hadCharacter = false;
 	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 500 };
-	private Integer[] LEVEL_UP_PLUS_HP = { 3, 4, 5, 5, 5, 10, 10, 15, 50 };
-	private Integer[] LEVEL_UP_PLUS_POWER = { 3, 4, 5, 5, 5, 10, 10, 15, 50 };
+	private Integer[] LEVEL_UP_PLUS_HP = { 5, 5, 5, 10, 10, 15, 15, 15, 50 };
+	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 5, 5, 10, 10, 15, 15, 15, 50 };
 	private Integer exp;
 	private Integer level;
 

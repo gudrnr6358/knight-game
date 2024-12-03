@@ -18,8 +18,8 @@ public abstract class Monster extends AbstractCombatant implements ImageUnit {
 		useSkill = false;
 		int random = (int) ((Math.random() * 10) + 1);
 
-		// 몬스터 스킬 발동 확률 40%
-		if (random < 5) {
+		// 몬스터 스킬 발동 확률 30%
+		if (random < 3) {
 			useSkill = true;
 			attackValue = skill();
 			return attackValue;
