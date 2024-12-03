@@ -163,7 +163,7 @@ public class SetNamePanel extends JPanel {
 		bar.add(name);
 		bar.add(textArea);
 		bar.add(warning);
-		bar.addMouseListener(new MyEvent());
+		bar.addMouseListener(new MyMouseEvent());
 
 		barConPanel.add(namePanel);
 		barConPanel.add(bar);
@@ -173,8 +173,8 @@ public class SetNamePanel extends JPanel {
 		add(barConPanel);
 	}
 
-	class MyEvent extends MouseAdapter {
-		public void mouseClicked(MouseEvent e) {
+	class MyMouseEvent extends MouseAdapter {
+		public void mousePressed(MouseEvent e) {
 			if (textArea.getText().equals(storyText[0])) {
 				textArea.setText(storyText[1]);
 				bar.add(textField);
