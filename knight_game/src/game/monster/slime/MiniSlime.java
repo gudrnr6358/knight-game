@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class MiniSlime extends Slime {
 
   public MiniSlime() {
-    super("작은 슬라임", 20, 12);
+    super("미니 슬라임", 20, 12);
   }
 
   @Override

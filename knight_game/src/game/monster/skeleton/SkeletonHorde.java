@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class SkeletonHorde extends Skeleton {
 
 	public SkeletonHorde() {
-		super("스켈레톤 무리", 30, 30);
+		super("스켈레톤 무리", 150, 60);
 	}
 
 	@Override

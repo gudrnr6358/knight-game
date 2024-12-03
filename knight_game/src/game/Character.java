@@ -6,14 +6,14 @@ import javax.swing.ImageIcon;
 
 public class Character extends AbstractCombatant implements ImageUnit, Serializable {
 	public static boolean hadCharacter = false;
-	private Integer[] EXP = { 20, 30, 35, 40, 45, 70, 80, 90, 110 };
-	private Integer[] LEVEL_UP_PLUS_HP = { 5, 10, 15, 15, 15, 20, 20, 25, 30 };
-	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 10, 15, 15, 15, 20, 20, 25, 30 };
+	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 500 };
+	private Integer[] LEVEL_UP_PLUS_HP = { 3, 4, 5, 5, 5, 10, 10, 15, 50 };
+	private Integer[] LEVEL_UP_PLUS_POWER = { 3, 4, 5, 5, 5, 10, 10, 15, 50 };
 	private Integer exp;
 	private Integer level;
 
 	// 고정 스킬 사용 횟수
-	private final Integer FIXED_CRTICAL_ATTACK_COUNT = 3;
+	private final Integer FIXED_CRTICAL_ATTACK_COUNT = 2;
 	private final Integer FIXED_DOUBLE_ATTACK_COUNT = 1;
 	private final Integer FIXED_HEAVENTLY_STRIKE_COUNT = 1;
 	// 가변 스킬 사용 횟수
@@ -31,7 +31,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	@Override
 	public Integer attack() {
 		useSkill = false;
-		attackValue = power + (int) (Math.random() * 5 + 1);
+		attackValue = power + (int) (Math.random() * 3 + 1);
 		return attackValue;
 	}
 
@@ -44,13 +44,13 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 
 	public Integer doubleAttack() {
 		useSkill = true;
-		attackValue = (int) ((power * 2.0) + (Math.random() * 3 + 1));
+		attackValue = (int) ((power * 1.5) + (Math.random() * 3 + 1));
 		return attackValue;
 	}
 
 	public Integer heavenlyStrike() {
 		useSkill = true;
-		attackValue = (int) ((power * 2.5) + (Math.random() * 3 + 1));
+		attackValue = (int) ((power * 1.7) + (Math.random() * 3 + 1));
 		return attackValue;
 	}
 

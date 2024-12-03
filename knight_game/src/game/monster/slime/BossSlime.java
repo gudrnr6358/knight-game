@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class BossSlime extends Slime {
 
 	public BossSlime() {
-		super("슬라임 대장", 35, 20);
+		super("슬라임 대장", 35, 25);
 	}
 
 	@Override

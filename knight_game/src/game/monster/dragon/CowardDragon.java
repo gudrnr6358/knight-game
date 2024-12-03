@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class CowardDragon extends Dragon {
 
 	public CowardDragon() {
-		super("겁쟁이 용", 20, 38);
+		super("겁쟁이 용", 50, 38);
 	}
 
 	@Override

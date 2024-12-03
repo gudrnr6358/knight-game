@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class CombatSlime extends Slime {
 
 	public CombatSlime() {
-		super("전투병 슬라임", 25, 15);
+		super("전투병 슬라임", 25, 17);
 	}
 
 	@Override
