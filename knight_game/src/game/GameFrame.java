@@ -17,7 +17,7 @@ public class GameFrame extends JFrame {
 
 		// 프레임 테두리 제거
 		setUndecorated(true);
-		
+
 		// 프레임 화면 가운데 정렬
 		setLocationRelativeTo(null);
 
