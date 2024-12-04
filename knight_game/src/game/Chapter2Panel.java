@@ -38,7 +38,7 @@ public class Chapter2Panel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
-				HomePanel.fadeout(bgPanel, new InGamePanel(character, new Stage4().getMonsters(), backgroundImage),
+				Function.fadeout(bgPanel, new InGamePanel(character, new Stage4().getMonsters(), backgroundImage),
 						frame);
 			}
 		});
@@ -51,7 +51,7 @@ public class Chapter2Panel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
-				HomePanel.fadeout(bgPanel, new InGamePanel(character, new Stage5().getMonsters(), backgroundImage),
+				Function.fadeout(bgPanel, new InGamePanel(character, new Stage5().getMonsters(), backgroundImage),
 						frame);
 			}
 		});
@@ -64,7 +64,7 @@ public class Chapter2Panel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
-				HomePanel.fadeout(bgPanel, new InGamePanel(character, new Stage6().getMonsters(), backgroundImage),
+				Function.fadeout(bgPanel, new InGamePanel(character, new Stage6().getMonsters(), backgroundImage),
 						frame);
 			}
 		});
