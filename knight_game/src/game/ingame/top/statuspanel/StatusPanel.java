@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import game.AbstractCombatant;
 import game.Character;
+import game.monster.Monster;
 
 public abstract class StatusPanel extends JPanel {
 	private final Font FONT = new Font("SansSerif", Font.BOLD, 20);
@@ -45,6 +46,9 @@ public abstract class StatusPanel extends JPanel {
 
 		private NameLabel() {
 			super(c.getName());
+			if (c instanceof Monster) {
+				setForeground(new Color(16 * 15, 56, 50));
+			}
 			super.setFont(FONT);
 			setBounds(15, 10, 500, 30);
 		}

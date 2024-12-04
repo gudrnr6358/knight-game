@@ -17,7 +17,7 @@ public abstract class InGameImageUnit extends JLabel {
 
 	protected InGameImageUnit(ImageUnit i) {
 		super(i.getUnitImage());
-		setSize(340, 340);
+		setSize(400, 400);
 		setLayout(null);
 	}
 
