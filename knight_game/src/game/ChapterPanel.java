@@ -70,7 +70,7 @@ public class ChapterPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
-				HomePanel.fadeout(bgPanel, new LobbyPanel(character), frame);
+				Function.fadeout(bgPanel, new LobbyPanel(character), frame);
 			}
 		});
 	}
