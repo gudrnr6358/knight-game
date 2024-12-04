@@ -41,7 +41,7 @@ public abstract class InGameImageUnit extends JLabel {
 	public void attackedEffect(Boolean useSkill) {
 
 		JLabel effect = setEffectImage(useSkill);
-		effect.setBounds(20, -20, 340, 340);
+		effect.setBounds(0, 0, 340, 340);
 		effect.setVisible(true);
 		add(effect); 
 
