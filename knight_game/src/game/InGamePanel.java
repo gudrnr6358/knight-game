@@ -43,7 +43,7 @@ public class InGamePanel extends JPanel {
 		setBounds(0, 0, 1366, 900);
 		// BottomPanelEvent, BottomBox character, monster 정보 공유
 		BottomPanelEvent.inGame = InGamePanel.this;
-		BottomBox.INGAME = this;
+		BottomBox.inGame = this;
 	}
 
 	// 이전 Panel 제거하고 Panel 부착

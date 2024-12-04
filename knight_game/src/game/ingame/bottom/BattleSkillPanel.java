@@ -42,7 +42,7 @@ public class BattleSkillPanel extends BottomBox {
 			g.setFont(new Font("NanumGothic", Font.BOLD, 20));
 			g.setColor(Color.RED);
 			g.drawString(
-					INGAME.character.getCurrentCriticalCount() + "/" + INGAME.character.getFIXED_CRTICAL_ATTACK_COUNT(),
+					inGame.character.getCurrentCriticalCount() + "/" + inGame.character.getFIXED_CRTICAL_ATTACK_COUNT(),
 					getWidth() / 2 - 10, getHeight() - 25);
 		}
 
@@ -61,8 +61,8 @@ public class BattleSkillPanel extends BottomBox {
 			super.paintComponent(g);
 			g.setFont(new Font("NanumGothic", Font.BOLD, 20));
 			g.setColor(Color.RED);
-			g.drawString(INGAME.character.getCurrentDoubleAttackCount() + "/"
-					+ INGAME.character.getFIXED_DOUBLE_ATTACK_COUNT(), getWidth() / 2 - 10, getHeight() - 25);
+			g.drawString(inGame.character.getCurrentDoubleAttackCount() + "/"
+					+ inGame.character.getFIXED_DOUBLE_ATTACK_COUNT(), getWidth() / 2 - 10, getHeight() - 25);
 		}
 
 	}
@@ -81,8 +81,8 @@ public class BattleSkillPanel extends BottomBox {
 			g.setFont(new Font("NanumGothic", Font.BOLD, 20));
 			g.setColor(Color.RED);
 			g.drawString(
-					INGAME.character.getCurrentHeaventlyStrikeCount() + "/"
-							+ INGAME.character.getFIXED_HEAVENTLY_STRIKE_COUNT(),
+					inGame.character.getCurrentHeaventlyStrikeCount() + "/"
+							+ inGame.character.getFIXED_HEAVENTLY_STRIKE_COUNT(),
 					getWidth() / 2 - 10, getHeight() - 25);
 		}
 
