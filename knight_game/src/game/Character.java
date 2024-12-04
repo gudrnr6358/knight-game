@@ -25,7 +25,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
-		super("???", 100, 1000);
+		super("???", 100, 10);
 		this.level = 1;
 		this.exp = 0;
 	}
@@ -69,18 +69,14 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	// EXP 값이 충족되면 레벨업을 진행
 	// 경험치 얻는 메서드마다 실행
 	private void checkExp() {
-		// 최대 레벨의 경우
-		if (level > EXP.length) {
-			exp = 0;
-			return;
-		}
-		if (exp >= EXP[level - 1]) {
+		// 최대 레벨이 아니면서 경험치가 충족될 때 반복 실행
+		while (level < EXP.length && exp >= EXP[level - 1]) {
 			exp -= EXP[level - 1];
 			levelup();
-			if (level < EXP.length && exp >= EXP[level - 1]) {
-				checkExp();
-			}
-			return;
+		}
+		// 최대 레벨일 경우 exp = 0 세팅
+		if (level == EXP.length) {
+			exp = 0;
 		}
 	}
 
@@ -167,6 +163,10 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	public void dead() {
 		nowHp = 30;
 		exp = 0;
+	}
+
+	public Integer getEXPArrayLength() {
+		return EXP.length;
 	}
 
 }

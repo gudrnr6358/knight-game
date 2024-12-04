@@ -22,7 +22,7 @@ public class Boss extends Monster {
 
 	@Override
 	public Integer getEXP() {
-		return 150;
+		return 300;
 	}
 
 }

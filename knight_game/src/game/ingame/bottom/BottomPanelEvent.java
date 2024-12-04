@@ -126,10 +126,14 @@ public class BottomPanelEvent {
 						if (inGame.monsters.length == inGame.count) {
 							str = " 스테이지 클리어!";
 						}
+						// 최대 레벨에서 몬스터 처치시의 텍스트
+						if (inGame.character.getLevel() == inGame.character.getEXPArrayLength()) {
+							TextLabel.textLabel.setTextLabel(inGame.monster.getName() + " 처치! 최대 레벨입니다!");
+							return;
+						}
 						inGame.character.plusEXP(inGame.monster.getEXP());
-						TextLabel.textLabel.setTextLabel(inGame.monster.getName() + " 처치 " + inGame.monster.getEXP()
-								+ "의 경험치 획득!    " + "Lv" + inGame.character.getLevel() + " ("
-								+ inGame.character.getExp() + "/" + inGame.character.getLevelExp() + ") " + str);
+						TextLabel.textLabel.setTextLabel(
+								inGame.monster.getName() + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!");
 						return;
 					}
 
