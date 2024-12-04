@@ -78,6 +78,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 		// 최대 레벨일 경우 exp = 0 세팅
 		if (level > EXP.length) {
 			exp = 0;
+			return;
 		}
 	}
 
