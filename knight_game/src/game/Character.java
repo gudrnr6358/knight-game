@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 public class Character extends AbstractCombatant implements ImageUnit, Serializable {
 	public static boolean hadCharacter = false;
 	// 각 레벨별 요구 경험치
-	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 300 };
+	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 300, 0 };
 	// 레벨업시에 추가되는 능력치
 	private Integer[] LEVEL_UP_PLUS_HP = { 5, 5, 5, 10, 10, 15, 25, 25, 300 };
 	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 5, 5, 10, 10, 15, 25, 25, 90 };
@@ -70,7 +70,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	// 경험치 얻는 메서드마다 실행
 	private void checkExp() {
 		// 최대 레벨이 아니면서 경험치가 충족될 때 반복 실행
-		while (level <= EXP.length && exp >= EXP[level - 1]) {
+		while (level < EXP.length && exp >= EXP[level - 1]) {
 			exp -= EXP[level - 1];
 			System.out.println("레벨업 전 레벨 : " + level);
 			levelup();

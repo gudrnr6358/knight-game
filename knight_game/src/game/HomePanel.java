@@ -52,9 +52,9 @@ public class HomePanel extends JPanel {
 
 		JButton startBtn = new JButton("게임시작", image1);
 		startBtn.addActionListener(new MyEvent());
-		JButton loadBtn = new JButton("불러오기", image1);
+		JButton loadBtn = new JButton("불러오기", image2);
 		loadBtn.addActionListener(new MyEvent());
-		JButton exitBtn = new JButton("종료", image1);
+		JButton exitBtn = new JButton("종료", image3);
 		exitBtn.addActionListener(new MyEvent());
 
 		btns.add(startBtn);
