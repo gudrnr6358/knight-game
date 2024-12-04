@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import game.Function;
 import game.HomePanel;
 import game.InGamePanel;
 import game.LobbyPanel;
@@ -43,7 +44,7 @@ public class BottomPanelEvent {
 				if (src.getText().equals("도망친다")) {
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
-					HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
 					return;
 				}
 
@@ -158,7 +159,7 @@ public class BottomPanelEvent {
 					if (!inGame.character.isAlive()) {
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
 						return;
 					}
 
@@ -171,7 +172,7 @@ public class BottomPanelEvent {
 					if (!inGame.setMonster()) {
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
 						return;
 					}
 				}
