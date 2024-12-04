@@ -94,7 +94,7 @@ public abstract class StatusPanel extends JPanel {
 	private class LevelLabel extends JLabel {
 
 		private LevelLabel(Character c) {
-			setBounds(100, 65, 80, 50);
+			setBounds(100, 65, 100, 50);
 			setFont(FONT);
 			setText("Lv" + c.getLevel());
 		}
@@ -104,7 +104,7 @@ public abstract class StatusPanel extends JPanel {
 	private class ExpLabel extends JLabel {
 
 		private ExpLabel(Character c) {
-			setBounds(140, 65, 80, 50);
+			setBounds(160, 65, 200, 50);
 			setFont(FONT);
 			setText("(" + c.getExp() + "/" + c.getLevelExp() + ")");
 		}

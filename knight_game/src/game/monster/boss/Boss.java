@@ -7,7 +7,7 @@ import game.monster.Monster;
 public class Boss extends Monster {
 
 	public Boss() {
-		super("마왕", 300, 80);
+		super("마왕", 500, 100);
 	}
 
 	@Override

@@ -20,6 +20,6 @@ public class SkeletonHorde extends Skeleton {
 
 	@Override
 	public Integer getEXP() {
-		return 13;
+		return 35;
 	}
 }

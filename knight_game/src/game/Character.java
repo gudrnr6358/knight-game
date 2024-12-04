@@ -6,9 +6,11 @@ import javax.swing.ImageIcon;
 
 public class Character extends AbstractCombatant implements ImageUnit, Serializable {
 	public static boolean hadCharacter = false;
-	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 500 };
-	private Integer[] LEVEL_UP_PLUS_HP = { 5, 5, 5, 10, 10, 15, 15, 15, 50 };
-	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 5, 5, 10, 10, 15, 15, 15, 50 };
+	// 각 레벨별 요구 경험치
+	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 300, 0 };
+	// 레벨업시에 추가되는 능력치
+	private Integer[] LEVEL_UP_PLUS_HP = { 5, 5, 5, 10, 10, 15, 15, 15, 70 };
+	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 5, 5, 10, 10, 15, 15, 15, 70 };
 	private Integer exp;
 	private Integer level;
 
@@ -23,7 +25,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 
 	// 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
 	public Character() {
-		super("???", 100, 10);
+		super("???", 100, 1000);
 		this.level = 1;
 		this.exp = 0;
 	}
@@ -67,13 +69,15 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	// EXP 값이 충족되면 레벨업을 진행
 	// 경험치 얻는 메서드마다 실행
 	private void checkExp() {
-		if (level == EXP.length) {
+		// 최대 레벨의 경우
+		if (level > EXP.length) {
+			exp = 0;
 			return;
 		}
 		if (exp >= EXP[level - 1]) {
 			exp -= EXP[level - 1];
 			levelup();
-			if (exp >= EXP[level - 1]) {
+			if (level < EXP.length && exp >= EXP[level - 1]) {
 				checkExp();
 			}
 			return;
@@ -88,10 +92,16 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	}
 
 	public Integer getLevelExp() {
+		if (level > EXP.length) {
+			return 0;
+		}
 		return EXP[level - 1];
 	}
 
 	public Integer getExp() {
+		if (level > EXP.length) {
+			return 0;
+		}
 		return exp;
 	}
 
