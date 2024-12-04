@@ -6,7 +6,7 @@ import game.monster.dragon.Dragon;
 
 public class DarkAncientDragon extends Dragon {
 	public DarkAncientDragon() {
-		super("어둠의 고대 용", 100, 35);
+		super("어둠의 고대 용", 185, 75);
 	}
 
 	@Override
@@ -21,6 +21,6 @@ public class DarkAncientDragon extends Dragon {
 
 	@Override
 	public Integer getEXP() {
-		return 25;
+		return 51;
 	}
 }

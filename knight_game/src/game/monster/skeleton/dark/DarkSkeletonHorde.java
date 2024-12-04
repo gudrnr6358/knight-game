@@ -7,7 +7,7 @@ import game.monster.skeleton.Skeleton;
 public class DarkSkeletonHorde extends Skeleton {
 
 	public DarkSkeletonHorde() {
-		super("어둠의 스켈레톤 무리", 120, 60);
+		super("어둠의 스켈레톤 무리", 200, 90);
 	}
 
 	@Override
@@ -22,6 +22,6 @@ public class DarkSkeletonHorde extends Skeleton {
 
 	@Override
 	public Integer getEXP() {
-		return 35;
+		return 62;
 	}
 }

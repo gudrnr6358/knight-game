@@ -7,8 +7,7 @@ import game.monster.skeleton.Skeleton;
 public class DarkArcherSkeleton extends Skeleton {
 
 	public DarkArcherSkeleton() {
-		super("어둠의 궁수 스켈레톤", 60, 70);
-		// TODO Auto-generated constructor stub
+		super("어둠의 궁수 스켈레톤", 150, 90);
 	}
 
 	@Override
@@ -23,6 +22,6 @@ public class DarkArcherSkeleton extends Skeleton {
 
 	@Override
 	public Integer getEXP() {
-		return 25;
+		return 42;
 	}
 }

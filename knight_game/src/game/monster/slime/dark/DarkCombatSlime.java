@@ -7,7 +7,7 @@ import game.monster.slime.Slime;
 public class DarkCombatSlime extends Slime {
 
 	public DarkCombatSlime() {
-		super("어둠의 전투병 슬라임", 25, 17);
+		super("어둠의 전투병 슬라임", 100, 45);
 	}
 
 	@Override
@@ -22,6 +22,6 @@ public class DarkCombatSlime extends Slime {
 
 	@Override
 	public Integer getEXP() {
-		return 7;
+		return 30;
 	}
 }
