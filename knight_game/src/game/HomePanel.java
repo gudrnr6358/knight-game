@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -12,11 +11,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class HomePanel extends JPanel {
 	List btns = new ArrayList<>();
 	JPanel bgPanel = new JPanel();
+	ImageIcon image1 = new ImageIcon("images/시작하기.png");
+	ImageIcon image2 = new ImageIcon("images/불러오기.png");
+	ImageIcon image3 = new ImageIcon("images/종료.png");
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
@@ -49,16 +50,12 @@ public class HomePanel extends JPanel {
 
 	public List getButtonList() {
 
-		JButton startBtn = new JButton("게임시작");
+		JButton startBtn = new JButton("게임시작", image1);
 		startBtn.addActionListener(new MyEvent());
-		JButton loadBtn = new JButton("불러오기");
+		JButton loadBtn = new JButton("불러오기", image1);
 		loadBtn.addActionListener(new MyEvent());
-		JButton exitBtn = new JButton("종료");
+		JButton exitBtn = new JButton("종료", image1);
 		exitBtn.addActionListener(new MyEvent());
-
-		startBtn.setBounds(100, 100, 70, 50);
-		// btn2.setBounds(140, 100, 50, 50);
-		// btn3.setBounds(180, 100, 50, 50);
 
 		btns.add(startBtn);
 		btns.add(loadBtn);
@@ -69,6 +66,8 @@ public class HomePanel extends JPanel {
 		add(exitBtn);
 
 		startBtn.setBorderPainted(false);
+		loadBtn.setBorderPainted(false);
+		exitBtn.setBorderPainted(false);
 		return btns;
 	}
 
@@ -84,7 +83,7 @@ public class HomePanel extends JPanel {
 			JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
 			if (btnText.equals("게임시작")) {
-				fadeout(bgPanel, new SetNamePanel(), frame);
+				Function.fadeout(bgPanel, new SetNamePanel(), frame);
 				remove((JButton) btns.get(0));
 				remove((JButton) btns.get(1));
 				remove((JButton) btns.get(2));
@@ -95,37 +94,11 @@ public class HomePanel extends JPanel {
 				remove((JButton) btns.get(2));
 				repaint();
 				Character character = GameLoad.loadCharacter("saveData.dat");
-				fadeout(bgPanel, new LobbyPanel(character), frame);
+				Function.fadeout(bgPanel, new LobbyPanel(character), frame);
 			} else {
 				System.exit(0);
 			}
 		}
-	}
-
-	public static void fadeout(JPanel bgPanel, JPanel panel, JFrame frame) {
-		Timer timer;
-		bgPanel.setSize(1366, 899);
-		bgPanel.setBackground(new Color(0, 0, 0, 0));
-
-		timer = new Timer(20, new ActionListener() {
-			int b = 0;
-
-			public void actionPerformed(ActionEvent e) {
-				bgPanel.setBackground(new Color(0, 0, 0, b));
-				b += 5;
-				if (b > 255) {
-					frame.getContentPane().removeAll();
-					((Timer) e.getSource()).stop();
-					b = 255;
-					frame.add(panel);
-					frame.revalidate();
-					frame.repaint();
-				}
-				frame.repaint();
-			}
-		});
-
-		timer.start();
 	}
 
 }
