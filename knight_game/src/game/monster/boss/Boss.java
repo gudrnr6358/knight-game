@@ -20,10 +20,10 @@ public class Boss extends Monster {
 		return "아주 짱짱쎈 공격";
 	}
 
-	// 보스는 특별히 2.5배 데미지
+	// 보스는 특별히 2배 데미지
 	@Override
 	public Integer skill() {
-		return (int) (power * 2.5 + (Math.random() * 3 + 1));
+		return (int) (power * 2 + (Math.random() * 3 + 1));
 	}
 
 	@Override

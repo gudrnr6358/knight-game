@@ -9,8 +9,8 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	// 각 레벨별 요구 경험치
 	private Integer[] EXP = { 20, 50, 80, 120, 150, 175, 200, 250, 300 };
 	// 레벨업시에 추가되는 능력치
-	private Integer[] LEVEL_UP_PLUS_HP = { 5, 5, 5, 10, 10, 15, 25, 25, 50 };
-	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 5, 5, 10, 10, 15, 25, 25, 50 };
+	private Integer[] LEVEL_UP_PLUS_HP = { 5, 5, 5, 10, 10, 15, 25, 25, 300 };
+	private Integer[] LEVEL_UP_PLUS_POWER = { 5, 5, 5, 10, 10, 15, 25, 25, 90 };
 	private Integer exp;
 	private Integer level;
 
