@@ -56,7 +56,7 @@ public abstract class StatusPanel extends JPanel {
 		private PowerLabel() {
 			super("전투력 : " + c.getPower());
 			super.setFont(FONT);
-			setBounds(195, 10, 200, 30);
+			setBounds(215, 10, 200, 30);
 		}
 
 	}

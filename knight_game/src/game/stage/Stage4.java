@@ -9,7 +9,7 @@ public class Stage4 {
 	private Monster[] monsters;
 
 	public Stage4() {
-		monsters = new Monster[] { new CombatSlime(), new CowardDragon(), new ArcherSkeleton() };
+		monsters = new Monster[] { new CombatSlime(Boolean.TRUE), new CowardDragon(), new ArcherSkeleton() };
 	}
 
 	public Monster[] getMonsters() {

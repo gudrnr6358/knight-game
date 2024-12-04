@@ -7,6 +7,10 @@ public class CombatSlime extends Slime {
 	public CombatSlime() {
 		super("전투병 슬라임", 25, 17);
 	}
+	
+	public CombatSlime(Boolean ch2) {
+		super("타락한 전투병 슬라임", 50, 30);
+	}
 
 	@Override
 	public ImageIcon getUnitImage() {
