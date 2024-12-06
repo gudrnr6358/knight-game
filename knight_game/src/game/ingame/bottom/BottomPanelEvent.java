@@ -19,6 +19,7 @@ public class BottomPanelEvent {
 	private static Integer textPanelCount = 0;
 	private final ImageIcon ATTACK_BUTTON_IMAGE = BattlePanel.ATTACK_BUTTON_IMAGE;
 	private final ImageIcon SKILL_BUTTON_IMAGE = BattlePanel.SKILL_BUTTON_IMAGE;
+	private boolean fadeoutCalled = false;
 
 	public BottomPanelEvent() {
 		super();
@@ -169,9 +170,11 @@ public class BottomPanelEvent {
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
 					// 캐릭터 사망시
-					if (!inGame.character.isAlive()) {
+					if (!inGame.character.isAlive() && !fadeoutCalled) {
+						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
+						((BottomBox) src).removBottomBoxEventListener();
 						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
 						return;
 					}
@@ -181,10 +184,13 @@ public class BottomPanelEvent {
 						inGame.setPanel();
 						return;
 					}
+
 					// 다음 몬스터가 없을 때
-					if (!inGame.setMonster()) {
+					if (!inGame.setMonster() && !fadeoutCalled) {
+						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
+						((BottomBox) src).removBottomBoxEventListener();
 						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
 						return;
 					}
