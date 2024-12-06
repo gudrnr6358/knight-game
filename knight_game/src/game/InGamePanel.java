@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
@@ -24,20 +26,23 @@ public class InGamePanel extends JPanel {
 	public Monster[] monsters;
 	public Monster monster;
 	public Integer count = 0;
+	private JLabel backgroundImageLabel;
 	private Image backgroundImage;
 	private JPanel bgPanel = new JPanel();
 	private InGameImageUnit inGameImageCharacter;
 	private InGameImageUnit inGameImageMonster;
+	public String stage;
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
-	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage) {
+	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage, String stage) {
 		super();
+		this.stage = stage;
 		this.character = character;
 		this.monsters = monsters;
 		this.monster = monsters[count++];
 		this.backgroundImage = backgroundImage;
+		backgroundImageLabel = new JLabel(new ImageIcon(this.backgroundImage));
 		character.setSkillCount();
-
 		setLayout(null);
 		setPanel();
 		setBounds(0, 0, 1366, 900);

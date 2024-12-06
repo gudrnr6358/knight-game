@@ -126,6 +126,19 @@ public class BottomPanelEvent {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						if (inGame.monsters.length == inGame.count) {
 							str = " 스테이지 클리어!";
+							if (inGame.stage == "stage1") {
+								inGame.character.setStage(0, true);
+							} else if (inGame.stage == "stage2") {
+								inGame.character.setStage(1, true);
+							} else if (inGame.stage == "stage3") {
+								inGame.character.setStage(2, true);
+							} else if (inGame.stage == "stage4") {
+								inGame.character.setStage(3, true);
+							} else if (inGame.stage == "stage5") {
+								inGame.character.setStage(4, true);
+							} else if (inGame.stage == "stage6") {
+								inGame.character.setStage(5, true);
+							}
 						}
 						// 최대 레벨에서 몬스터 처치시의 텍스트
 						if (inGame.character.getLevel() == inGame.character.getEXPArrayLength()) {
