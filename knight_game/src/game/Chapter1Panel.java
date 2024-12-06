@@ -87,14 +87,17 @@ public class Chapter1Panel extends JPanel {
 		}
 
 		public void mouseEntered(MouseEvent e) {
-			JLabel label = (JLabel) e.getSource();
-			label.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 224), 3, true));
-
+			if ((JLabel) e.getSource() instanceof JLabel) {
+				JLabel label = (JLabel) e.getSource();
+				label.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 224), 3, true));
+			}
 		}
 
 		public void mouseExited(MouseEvent e) {
-			JLabel label = (JLabel) e.getSource();
-			label.setBorder(null);
+			if ((JLabel) e.getSource() instanceof JLabel) {
+				JLabel label = (JLabel) e.getSource();
+				label.setBorder(null);
+			}
 		}
 
 	}

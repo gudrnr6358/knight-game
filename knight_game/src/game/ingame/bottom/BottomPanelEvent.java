@@ -1,9 +1,7 @@
 package game.ingame.bottom;
 
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +18,8 @@ public class BottomPanelEvent {
 	private static Integer textPanelCount = 0;
 	private final ImageIcon ATTACK_BUTTON_IMAGE = BattlePanel.ATTACK_BUTTON_IMAGE;
 	private final ImageIcon SKILL_BUTTON_IMAGE = BattlePanel.SKILL_BUTTON_IMAGE;
+	private final ImageIcon FIGHT_BUTTON_IMAGE = BasicPanel.FIGHT_BUTTON_IMAGE;
+	private final ImageIcon RUN_BUTTON_IMAGE = BasicPanel.RUN_BUTTON_IMAGE;
 	private boolean fadeoutCalled = false;
 
 	public BottomPanelEvent() {
@@ -37,14 +37,14 @@ public class BottomPanelEvent {
 				JButton src = (JButton) e.getSource();
 				JFrame frame = (JFrame) src.getTopLevelAncestor();
 
-				if (src.getText().equals("싸운다")) {
+				if (src.getIcon() != null && src.getIcon().equals(FIGHT_BUTTON_IMAGE)) {
 					bottomPanel.setBottomBoxPanel(new BattlePanel());
 					TextLabel.textLabel.setTextLabel("");
 					return;
 				}
 
 				// 사용 예
-				if (src.getText().equals("도망친다")) {
+				if (src.getIcon() != null && src.getIcon().equals(RUN_BUTTON_IMAGE)) {
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
 					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
