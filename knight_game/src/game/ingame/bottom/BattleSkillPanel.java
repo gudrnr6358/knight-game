@@ -4,9 +4,22 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class BattleSkillPanel extends BottomBox {
+	private final Integer BUTTON_COUNT_TEXT_X = 140;
+	private final Integer BUTTON_COUNT_TEXT_Y = 90;
+
+	public static final ImageIcon CRITICAL_ATTACK_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/skillpanel/critical_attack.png");
+	public static final ImageIcon DOUBLE_ATTACK_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/skillpanel/double_attack.png");
+	public static final ImageIcon HEAVENLY_STRIKE_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/skillpanel/heavenly_strike.png");
+
+	private final Integer BUTTON_WIDTH = 230;
+	private final Integer BUTTON_HEIGHT = 136;
 
 	public BattleSkillPanel() {
 		add(new CriticalAttack());
@@ -31,8 +44,8 @@ public class BattleSkillPanel extends BottomBox {
 	private class CriticalAttack extends SkillPanelButton {
 
 		private CriticalAttack() {
-			super("크리티컬 어택");
-			setLocation(130, 100);
+			super(CRITICAL_ATTACK_BUTTON_IMAGE);
+			setLocation(140, 90);
 		}
 
 		// 스킬 횟수 그리기
@@ -43,7 +56,7 @@ public class BattleSkillPanel extends BottomBox {
 			g.setColor(Color.RED);
 			g.drawString(
 					inGame.character.getCurrentCriticalCount() + "/" + inGame.character.getFIXED_CRTICAL_ATTACK_COUNT(),
-					getWidth() / 2 - 10, getHeight() - 25);
+					BUTTON_COUNT_TEXT_X, BUTTON_COUNT_TEXT_Y);
 		}
 
 	}
@@ -51,8 +64,8 @@ public class BattleSkillPanel extends BottomBox {
 	private class DoubleAttack extends SkillPanelButton {
 
 		private DoubleAttack() {
-			super("더블 어택");
-			setLocation(535, 100);
+			super(DOUBLE_ATTACK_BUTTON_IMAGE);
+			setLocation(540, 90);
 		}
 
 		// 스킬 횟수 그리기
@@ -61,8 +74,10 @@ public class BattleSkillPanel extends BottomBox {
 			super.paintComponent(g);
 			g.setFont(new Font("NanumGothic", Font.BOLD, 20));
 			g.setColor(Color.RED);
-			g.drawString(inGame.character.getCurrentDoubleAttackCount() + "/"
-					+ inGame.character.getFIXED_DOUBLE_ATTACK_COUNT(), getWidth() / 2 - 10, getHeight() - 25);
+			g.drawString(
+					inGame.character.getCurrentDoubleAttackCount() + "/"
+							+ inGame.character.getFIXED_DOUBLE_ATTACK_COUNT(),
+					BUTTON_COUNT_TEXT_X, BUTTON_COUNT_TEXT_Y);
 		}
 
 	}
@@ -70,8 +85,8 @@ public class BattleSkillPanel extends BottomBox {
 	private class HeavenlyStrike extends SkillPanelButton {
 
 		private HeavenlyStrike() {
-			super("천상의 일격");
-			setLocation(935, 100);
+			super(HEAVENLY_STRIKE_BUTTON_IMAGE);
+			setLocation(940, 90);
 		}
 
 		// 스킬 횟수 그리기
@@ -83,7 +98,7 @@ public class BattleSkillPanel extends BottomBox {
 			g.drawString(
 					inGame.character.getCurrentHeaventlyStrikeCount() + "/"
 							+ inGame.character.getFIXED_HEAVENTLY_STRIKE_COUNT(),
-					getWidth() / 2 - 10, getHeight() - 25);
+					BUTTON_COUNT_TEXT_X, BUTTON_COUNT_TEXT_Y);
 		}
 
 	}

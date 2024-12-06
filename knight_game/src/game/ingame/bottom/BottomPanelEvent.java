@@ -20,6 +20,10 @@ public class BottomPanelEvent {
 	private final ImageIcon SKILL_BUTTON_IMAGE = BattlePanel.SKILL_BUTTON_IMAGE;
 	private final ImageIcon FIGHT_BUTTON_IMAGE = BasicPanel.FIGHT_BUTTON_IMAGE;
 	private final ImageIcon RUN_BUTTON_IMAGE = BasicPanel.RUN_BUTTON_IMAGE;
+	private final ImageIcon CRITICAL_ATTACK_BUTTON_IMAGE = BattleSkillPanel.CRITICAL_ATTACK_BUTTON_IMAGE;
+	private final ImageIcon DOUBLE_ATTACK_BUTTON_IMAGE = BattleSkillPanel.DOUBLE_ATTACK_BUTTON_IMAGE;
+	private final ImageIcon HEAVENLY_STRIKE_BUTTON_IMAGE = BattleSkillPanel.HEAVENLY_STRIKE_BUTTON_IMAGE;
+
 	private boolean fadeoutCalled = false;
 
 	public BottomPanelEvent() {
@@ -67,7 +71,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("크리티컬 어택")) {
+				if (src.getIcon() != null && src.getIcon().equals(CRITICAL_ATTACK_BUTTON_IMAGE)) {
 					if (!inGame.character.canUseCriticalAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
@@ -79,7 +83,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("더블 어택")) {
+				if (src.getIcon() != null && src.getIcon().equals(DOUBLE_ATTACK_BUTTON_IMAGE)) {
 					if (!inGame.character.canUseDoubleAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
@@ -91,7 +95,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("천상의 일격")) {
+				if (src.getIcon() != null && src.getIcon().equals(HEAVENLY_STRIKE_BUTTON_IMAGE)) {
 					if (!inGame.character.canUseHeavenlyStrike()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;

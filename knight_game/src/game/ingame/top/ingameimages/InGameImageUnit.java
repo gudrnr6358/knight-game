@@ -32,16 +32,16 @@ public abstract class InGameImageUnit extends JLabel {
 	private JLabel setEffectImage(Boolean useSkill) {
 		// 스킬 사용 시, 스킬 이펙트 이미지 담은 JLabel 생성해서 return
 		if (useSkill) {
-			return new JLabel(new ImageIcon("images/skill_effect.png"));
+			return new JLabel(new ImageIcon("images/ingame/attack_effect/skill.png"));
 		}
-		return new JLabel(new ImageIcon("images/attack_effect.png"));
+		return new JLabel(new ImageIcon("images/ingame/attack_effect/attack.png"));
 	}
 
 	// 공격 당했을 때 깜빡이는 이펙트 및 타격 이미지 출력
 	public void attackedEffect(Boolean useSkill) {
 
 		JLabel effect = setEffectImage(useSkill);
-		effect.setBounds(0, 0, 340, 340);
+		effect.setBounds(100, 100, 200, 200);
 		effect.setVisible(true);
 		add(effect); 
 

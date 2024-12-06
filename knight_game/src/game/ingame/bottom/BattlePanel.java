@@ -4,8 +4,8 @@ import javax.swing.ImageIcon;
 
 public class BattlePanel extends BottomBox {
 
-	public static final ImageIcon ATTACK_BUTTON_IMAGE = new ImageIcon("images/ingame_attack_image.jpg");
-	public static final ImageIcon SKILL_BUTTON_IMAGE = new ImageIcon("images/ingame_skill_image.jpg");
+	public static final ImageIcon ATTACK_BUTTON_IMAGE = new ImageIcon("images/ingame/button/battlepanel/attack.jpg");
+	public static final ImageIcon SKILL_BUTTON_IMAGE = new ImageIcon("images/ingame/button/battlepanel/skill.jpg");
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BattlePanel() {

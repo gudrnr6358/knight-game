@@ -3,8 +3,10 @@ package game.ingame.bottom;
 import javax.swing.ImageIcon;
 
 public class BasicPanel extends BottomBox {
-	public static final ImageIcon FIGHT_BUTTON_IMAGE = new ImageIcon("images/fight_button_image.png");
-	public static final ImageIcon RUN_BUTTON_IMAGE = new ImageIcon("images/run_button_image.png");
+	public static final ImageIcon FIGHT_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/basicpanel/fight.png");
+	public static final ImageIcon RUN_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/basicpanel/run.png");
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BasicPanel() {
