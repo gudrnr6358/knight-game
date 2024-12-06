@@ -2,12 +2,14 @@ package game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,9 +21,10 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 public class Function {
+	private static int fadeoutCount = 0;
 
 	// 페이드 아웃
-	public static void fadeout(JPanel bgPanel, JPanel panel, JFrame frame) {
+	public static void fadeout(JPanel bgPanel, JPanel panel, JFrame frame, JPanel p) {
 		Timer timer;
 		bgPanel.setSize(1366, 899);
 		bgPanel.setBackground(new Color(0, 0, 0, 0));
@@ -45,8 +48,8 @@ public class Function {
 
 		timer = new Timer(20, new ActionListener() {
 			int b = 0;
-			
 			public void actionPerformed(ActionEvent e) {
+				fadeoutCount = 1;
 				bgPanel.setBackground(new Color(0, 0, 0, b));
 				b += 5;
 				if (b > 255) {
@@ -56,11 +59,27 @@ public class Function {
 					frame.add(panel);
 					frame.revalidate();
 					frame.repaint();
+					fadeoutCount = 0;
 				}
 				frame.repaint();
 			}
 		});
-		timer.start();
+		if (fadeoutCount == 0) {
+			timer.start();
+			removeAllMouseListeners(p);
+		}
+	}
+	
+
+	public static void removeAllMouseListeners(Component component) {
+		if (component instanceof JPanel) {
+			for (Component child : ((JPanel) component).getComponents()) {
+				removeAllMouseListeners(child);
+			}
+		}
+		for (MouseListener ml : component.getMouseListeners()) {
+			component.removeMouseListener(ml);
+		}
 	}
 
 	// 팝업 창 생성

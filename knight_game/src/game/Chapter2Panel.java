@@ -83,13 +83,16 @@ public class Chapter2Panel extends JPanel {
 			JFrame frame = (JFrame) label.getTopLevelAncestor();
 			if (label.getName() == "stage1") {
 				Function.fadeout(bgPanel,
-						new InGamePanel(character, new Stage4().getMonsters(), backgroundImage, "stage4"), frame);
+						new InGamePanel(character, new Stage4().getMonsters(), backgroundImage, "stage4"), frame,
+						Chapter2Panel.this);
 			} else if (label.getName() == "stage2") {
 				Function.fadeout(bgPanel,
-						new InGamePanel(character, new Stage5().getMonsters(), backgroundImage, "stage5"), frame);
+						new InGamePanel(character, new Stage5().getMonsters(), backgroundImage, "stage5"), frame,
+						Chapter2Panel.this);
 			} else if (label.getName() == "stage3") {
 				Function.fadeout(bgPanel,
-						new InGamePanel(character, new Stage6().getMonsters(), backgroundImage, "stage6"), frame);
+						new InGamePanel(character, new Stage6().getMonsters(), backgroundImage, "stage6"), frame,
+						Chapter2Panel.this);
 
 			}
 		}

@@ -224,7 +224,7 @@ public class LobbyPanel extends JPanel {
 					// characterStatusPanel.repaint();
 					layeredPane.remove(la);
 					layeredPane.repaint();
-					Function.fadeout(bgPanel, new LobbyPanel(character), frame);
+					Function.fadeout(bgPanel, new LobbyPanel(character), frame, LobbyPanel.this);
 				}
 				if (x >= 560 && x <= 700 && y >= 0 && y <= 50) {
 					popUpLabel.setText("저장하시겠습니까?");
@@ -235,7 +235,7 @@ public class LobbyPanel extends JPanel {
 					popUp.setVisible(false);
 				}
 				if (x >= FRAME_WIDTH - 40 && x <= FRAME_WIDTH && y >= 380 && y <= 440) {
-					Function.fadeout(bgPanel, new ChapterPanel(character), frame);
+					Function.fadeout(bgPanel, new ChapterPanel(character), frame, LobbyPanel.this);
 					layeredPane.remove(la);
 					layeredPane.repaint();
 				}
@@ -288,7 +288,7 @@ public class LobbyPanel extends JPanel {
 
 			} else if (btn.getText().equals("종료")) {
 
-				Function.fadeout(bgPanel, new HomePanel(), frame);
+				Function.fadeout(bgPanel, new HomePanel(), frame, LobbyPanel.this);
 				layeredPane.remove(la);
 				layeredPane.repaint();
 				remove(popUp);

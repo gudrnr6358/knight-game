@@ -1,7 +1,9 @@
 package game.ingame.bottom;
 
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -41,11 +43,14 @@ public class BottomPanelEvent {
 					return;
 				}
 
+				// 사용 예
 				if (src.getText().equals("도망친다")) {
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
-					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
+							(JPanel) src.getParent().getParent());
 					inGame.setEnabled(false);
+
 					return;
 				}
 
@@ -174,8 +179,10 @@ public class BottomPanelEvent {
 						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
+								(JPanel) src.getParent().getParent());
 						inGame.setEnabled(false);
+						((BottomBox) src).removeMouseEvent();
 						return;
 					}
 
@@ -190,8 +197,10 @@ public class BottomPanelEvent {
 						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
+								(JPanel) src.getParent().getParent());
 						inGame.setEnabled(false);
+						((BottomBox) src).removeMouseEvent();
 						return;
 					}
 				}

@@ -138,7 +138,7 @@ public class SetNamePanel extends JPanel {
 	}
 
 	class MyMouseEvent extends MouseAdapter {
-		
+
 		public void mousePressed(MouseEvent e) {
 			if (textArea.getText().equals(storyText[0])) {
 				textArea.setText(storyText[1]);
@@ -228,7 +228,7 @@ public class SetNamePanel extends JPanel {
 
 				JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
-				Function.fadeout(bgPanel, new LobbyPanel(character), frame);
+				Function.fadeout(bgPanel, new LobbyPanel(character), frame, SetNamePanel.this);
 				remove(popUp);
 				repaint();
 

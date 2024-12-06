@@ -94,7 +94,7 @@ public class HomePanel extends JPanel {
       JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
       if (btnText.equals("게임시작")) {
-        Function.fadeout(bgPanel, new SetNamePanel(), frame);
+        Function.fadeout(bgPanel, new SetNamePanel(), frame, HomePanel.this);
         remove((JButton) btns.get(0));
         remove((JButton) btns.get(1));
         remove((JButton) btns.get(2));
@@ -105,7 +105,7 @@ public class HomePanel extends JPanel {
         remove((JButton) btns.get(2));
         repaint();
         Character character = GameLoad.loadCharacter("saveData.dat");
-        Function.fadeout(bgPanel, new LobbyPanel(character), frame);
+        Function.fadeout(bgPanel, new LobbyPanel(character), frame, HomePanel.this);
       } else {
         System.exit(0);
       }

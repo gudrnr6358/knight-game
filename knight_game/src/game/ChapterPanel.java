@@ -110,7 +110,7 @@ public class ChapterPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton a = (JButton) e.getSource();
 				JFrame frame = (JFrame) a.getTopLevelAncestor();
-				Function.fadeout(bgPanel, new LobbyPanel(character), frame);
+				Function.fadeout(bgPanel, new LobbyPanel(character), frame, ChapterPanel.this);
 			}
 		});
 	}
@@ -127,14 +127,14 @@ public class ChapterPanel extends JPanel {
 			JPanel panel = (JPanel) e.getSource();
 			JFrame frame = (JFrame) panel.getTopLevelAncestor();
 			if (panel.getName() == "over1") {
-				Function.fadeout(bgPanel, new Chapter1Panel(character), frame);
+				Function.fadeout(bgPanel, new Chapter1Panel(character), frame, ChapterPanel.this);
 				remove(chapPanel);
 				remove(overLayPanel1);
 				remove(overLayPanel2);
 			} else if (panel.getName() == "over2") {
 				Boolean[] stage = character.getStage();
 				if (stage[0] == true && stage[1] == true && stage[2] == true) {
-					Function.fadeout(bgPanel, new Chapter2Panel(character), frame);
+					Function.fadeout(bgPanel, new Chapter2Panel(character), frame, ChapterPanel.this);
 					remove(chapPanel);
 					remove(overLayPanel1);
 					remove(overLayPanel2);
