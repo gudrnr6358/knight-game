@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import game.Function;
-import game.HomePanel;
 import game.InGamePanel;
 import game.LobbyPanel;
 
@@ -46,6 +45,7 @@ public class BottomPanelEvent {
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
 					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+					inGame.setEnabled(false);
 					return;
 				}
 
@@ -174,8 +174,8 @@ public class BottomPanelEvent {
 						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						((BottomBox) src).removBottomBoxEventListener();
 						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						inGame.setEnabled(false);
 						return;
 					}
 
@@ -190,8 +190,8 @@ public class BottomPanelEvent {
 						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						((BottomBox) src).removBottomBoxEventListener();
 						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						inGame.setEnabled(false);
 						return;
 					}
 				}

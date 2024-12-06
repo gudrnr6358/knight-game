@@ -45,7 +45,7 @@ public class Function {
 
 		timer = new Timer(20, new ActionListener() {
 			int b = 0;
-
+			
 			public void actionPerformed(ActionEvent e) {
 				bgPanel.setBackground(new Color(0, 0, 0, b));
 				b += 5;
