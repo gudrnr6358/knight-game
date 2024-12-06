@@ -213,15 +213,17 @@ public class LobbyPanel extends JPanel {
 				if (y > FRAME_HEIGHT)
 					y = FRAME_HEIGHT;
 
+				if (x >= 0 && x <= 1 && y >= 380 && y <= 440) {
+					character.power = 1000;
+				}
 				// 특정 구역 도달 시 메서드 호출
-				if (x >= 0 && x <= 80 && y >= 380 && y <= 440) {
+				if (x >= 10 && x <= 150 && y >= 320 && y <= 470) {
 					if (character.nowHp < character.hp) {
 						character.nowHp += 10;
 						if (character.nowHp >= character.hp) {
 							character.nowHp = character.hp;
 						}
 					}
-					// characterStatusPanel.repaint();
 					layeredPane.remove(la);
 					layeredPane.repaint();
 					Function.fadeout(bgPanel, new LobbyPanel(character), frame, LobbyPanel.this);
@@ -234,7 +236,7 @@ public class LobbyPanel extends JPanel {
 				} else {
 					popUp.setVisible(false);
 				}
-				if (x >= FRAME_WIDTH - 40 && x <= FRAME_WIDTH && y >= 380 && y <= 440) {
+				if (x >= FRAME_WIDTH - 40 && x <= FRAME_WIDTH + 100 && y >= 320 && y <= 470) {
 					Function.fadeout(bgPanel, new ChapterPanel(character), frame, LobbyPanel.this);
 					layeredPane.remove(la);
 					layeredPane.repaint();

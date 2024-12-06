@@ -42,9 +42,11 @@ public class Chapter2Panel extends JPanel {
 		stage1Btn.setBounds(580, 730, 80, 80);
 		stage2Btn.setBounds(730, 500, 80, 80);
 		stage3Btn.setBounds(700, 250, 80, 80);
+		returnBtn.setBounds(0, 0, 180, 80);
 		stage1Btn.addMouseListener(new MyMouseEvent());
 		stage2Btn.addMouseListener(new MyMouseEvent());
 		stage3Btn.addMouseListener(new MyMouseEvent());
+		returnBtn.addMouseListener(new MyMouseEvent());
 		stage1Btn.setName("stage1");
 		stage2Btn.setName("stage2");
 		stage3Btn.setName("stage3");
@@ -52,22 +54,8 @@ public class Chapter2Panel extends JPanel {
 		add(stage1Btn);
 		add(stage2Btn);
 		add(stage3Btn);
-
-		// 돌아가기 버튼
-		returnBtn.setBounds(0, 0, 180, 80);
 		add(returnBtn);
-		returnBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JButton a = (JButton) e.getSource();
-				JFrame frame = (JFrame) a.getTopLevelAncestor();
-				System.out.println(frame);
-				frame.getContentPane().removeAll();
-				frame.add(new ChapterPanel(character));
-				frame.revalidate();
-				frame.repaint();
-			}
-		});
+
 	}
 
 	@Override
@@ -78,7 +66,7 @@ public class Chapter2Panel extends JPanel {
 
 	class MyMouseEvent extends MouseAdapter {
 
-		public void mouseClicked(MouseEvent e) {
+		public void mousePressed(MouseEvent e) {
 			JLabel label = (JLabel) e.getSource();
 			JFrame frame = (JFrame) label.getTopLevelAncestor();
 			if (label.getName() == "stage1") {

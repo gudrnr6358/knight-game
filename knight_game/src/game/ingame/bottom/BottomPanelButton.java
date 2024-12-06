@@ -1,6 +1,10 @@
 package game.ingame.bottom;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +18,7 @@ public class BottomPanelButton extends JButton {
 		setFocusable(false);
 		setFont(new Font("SansSerif", Font.BOLD, 20));
 	}
-	
+
 	protected BottomPanelButton(ImageIcon img) {
 		super(img);
 		addMouseListener(new BottomPanelEvent().new BottomMouseListener());
@@ -24,22 +28,22 @@ public class BottomPanelButton extends JButton {
 }
 
 class BasicPanelButton extends BottomPanelButton {
+	private final Integer cornerRadius = 3;
 
-	// BasicPanelButton size 세팅 (1200, 90)
-	protected BasicPanelButton(String str) {
-		super(str);
-		setSize(1200, 90);
+	// BasicPanelButton size 세팅 (260, 148)
+	protected BasicPanelButton(ImageIcon img) {
+		super(img);
+		setSize(260, 151);
 	}
-
 }
 
 class BattlePanelButton extends BottomPanelButton {
-	// BattlePanelButton size 세팅 (250, 120)
+	// BattlePanelButton size 세팅 (250, 141)
 	protected BattlePanelButton(ImageIcon img) {
 		super(img);
 		setSize(250, 141);
 	}
-	
+
 }
 
 class SkillPanelButton extends BottomPanelButton {

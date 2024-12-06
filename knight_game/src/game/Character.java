@@ -28,7 +28,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 
   // 이름만 받아서 객체 생성, 이름 설정 Writer Reader 이용해도 괜찮을 듯
   public Character() {
-    super("???", 100, 1000);
+    super("???", 100, 10);
     this.level = 1;
     this.exp = 0;
   }
