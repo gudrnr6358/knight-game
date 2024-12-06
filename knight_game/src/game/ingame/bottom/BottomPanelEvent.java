@@ -185,8 +185,6 @@ public class BottomPanelEvent {
 						JPanel bgPanel = (JPanel) a.getComponent(0);
 						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
 								(JPanel) src.getParent().getParent());
-						inGame.setEnabled(false);
-						((BottomBox) src).removeMouseEvent();
 						return;
 					}
 
@@ -203,8 +201,6 @@ public class BottomPanelEvent {
 						JPanel bgPanel = (JPanel) a.getComponent(0);
 						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
 								(JPanel) src.getParent().getParent());
-						inGame.setEnabled(false);
-						((BottomBox) src).removeMouseEvent();
 						return;
 					}
 				}

@@ -170,7 +170,6 @@ public class SetNamePanel extends JPanel {
 
 				// 이름을 입력하세요 텍스트일때 Enter 누르면 실행
 			} else if (e.getKeyCode() == 10 && textField.getText().length() >= 2) {
-				System.out.println("dfd");
 				popUp.setVisible(true);
 				popUpLabel.setText('"' + textField.getText() + '"' + "으로 생성하시겠습니까?");
 

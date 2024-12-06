@@ -38,9 +38,4 @@ public abstract class BottomBox extends JPanel {
 		g2d.setColor(Color.WHITE);
 		g2d.fillRoundRect(0, 0, getWidth(), getHeight(), cornerRadius, cornerRadius);
 	}
-
-	public void removeMouseEvent() {
-		System.out.println("하이");
-		removeMouseListener(null);
-	}
 }

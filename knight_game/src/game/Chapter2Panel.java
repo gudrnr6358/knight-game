@@ -22,23 +22,20 @@ import game.stage.Stage6;
 public class Chapter2Panel extends JPanel {
 	JPanel bgPanel = new JPanel();
 	Character character;
-	private Image backgroundImage;
-	JLabel stage1Btn;
-	JLabel stage2Btn;
-	JLabel stage3Btn;
+	private Image backgroundImage = new ImageIcon("images/스테이지/Stage2Background.png").getImage();
 	private JButton returnBtn = new JButton(new ImageIcon("images/돌아가기.png"));
+	private JLabel stage1Btn = new JLabel(new ImageIcon("images/스테이지/스테이지1.png"));
+	private JLabel stage2Btn = new JLabel(new ImageIcon("images/스테이지/스테이지2.png"));
+	private JLabel stage3Btn = new JLabel(new ImageIcon("images/스테이지/스테이지3.png"));
 
 	public Chapter2Panel(Character character) {
 		add(bgPanel);
 		this.character = character;
 
-		backgroundImage = new ImageIcon("images/Stage2Background.png").getImage();
+		
 
 		setLayout(null);
 		setBounds(0, 0, 1366, 900);
-		stage1Btn = new JLabel(new ImageIcon("images/스테이지1.png"));
-		stage2Btn = new JLabel(new ImageIcon("images/스테이지2.png"));
-		stage3Btn = new JLabel(new ImageIcon("images/스테이지3.png"));
 		stage1Btn.setBounds(580, 730, 80, 80);
 		stage2Btn.setBounds(730, 500, 80, 80);
 		stage3Btn.setBounds(700, 250, 80, 80);

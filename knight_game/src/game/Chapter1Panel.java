@@ -20,13 +20,12 @@ import game.stage.Stage2;
 import game.stage.Stage3;
 
 public class Chapter1Panel extends JPanel {
-	ImageIcon btnImage1 = new ImageIcon("images/스테이지1.png");
-	private Image backgroundImage;
+	private Image backgroundImage = new ImageIcon("images/스테이지/Stage1Background.png").getImage();
 	private Character character;
 	JPanel bgPanel = new JPanel();
-	JLabel stage1Btn;
-	JLabel stage2Btn;
-	JLabel stage3Btn;
+	private JLabel stage1Btn = new JLabel(new ImageIcon("images/스테이지/스테이지1.png"));
+	private JLabel stage2Btn = new JLabel(new ImageIcon("images/스테이지/스테이지2.png"));
+	private JLabel stage3Btn = new JLabel(new ImageIcon("images/스테이지/스테이지3.png"));
 	private JButton returnBtn = new JButton(new ImageIcon("images/돌아가기.png"));
 
 	public Chapter1Panel(Character character) {
@@ -35,11 +34,7 @@ public class Chapter1Panel extends JPanel {
 
 		setLayout(null);
 		setBounds(0, 0, 1366, 900);
-		backgroundImage = new ImageIcon("images/Stage1Background.png").getImage();
 
-		stage1Btn = new JLabel(new ImageIcon("images/스테이지1.png"));
-		stage2Btn = new JLabel(new ImageIcon("images/스테이지2.png"));
-		stage3Btn = new JLabel(new ImageIcon("images/스테이지3.png"));
 		stage1Btn.setBounds(730, 700, 80, 80);
 		stage2Btn.setBounds(450, 580, 80, 80);
 		stage3Btn.setBounds(530, 410, 80, 80);
@@ -87,14 +82,14 @@ public class Chapter1Panel extends JPanel {
 		}
 
 		public void mouseEntered(MouseEvent e) {
-			if ((JLabel) e.getSource() instanceof JLabel) {
+			if (e.getSource() instanceof JLabel) {
 				JLabel label = (JLabel) e.getSource();
 				label.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 224), 3, true));
 			}
 		}
 
 		public void mouseExited(MouseEvent e) {
-			if ((JLabel) e.getSource() instanceof JLabel) {
+			if (e.getSource() instanceof JLabel) {
 				JLabel label = (JLabel) e.getSource();
 				label.setBorder(null);
 			}

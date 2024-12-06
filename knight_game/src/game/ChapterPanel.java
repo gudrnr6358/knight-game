@@ -171,7 +171,6 @@ public class ChapterPanel extends JPanel {
 				overText3.setText("");
 			}
 			repaint();
-			System.out.println("fdsfdf");
 		}
 
 	}

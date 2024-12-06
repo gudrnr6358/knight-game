@@ -82,10 +82,9 @@ public class LobbyPanel extends JPanel {
 	}
 
 	class Background extends JPanel {
-		private Image backgroundImage;
+		private Image backgroundImage = new ImageIcon("images/홈패널/백.jpeg").getImage();;
 
 		public Background() {
-			backgroundImage = new ImageIcon("images/백.jpeg").getImage();
 		}
 
 		@Override
@@ -96,14 +95,14 @@ public class LobbyPanel extends JPanel {
 	}
 
 	class Player extends JLabel {
-		private Image img2;
-		private Image img3;
-		private Image img4;
-		private Image img5;
-		private Image img6;
-		private Image img7;
-		private Image img8;
-		private Image img9;
+		private Image img2 = new ImageIcon("images/캐릭터/캐릭터1.png").getImage();
+		private Image img3 = new ImageIcon("images/캐릭터/캐릭터2.png").getImage();
+		private Image img4 = new ImageIcon("images/캐릭터/캐릭터3.png").getImage();
+		private Image img5 = new ImageIcon("images/캐릭터/캐릭터4.png").getImage();
+		private Image img6 = new ImageIcon("images/캐릭터/캐릭터5.png").getImage();
+		private Image img7 = new ImageIcon("images/캐릭터/캐릭터6.png").getImage();
+		private Image img8 = new ImageIcon("images/캐릭터/캐릭터7.png").getImage();
+		private Image img9 = new ImageIcon("images/캐릭터/캐릭터8.png").getImage();
 		private int x, y;
 		private final int CHARACTER_WIDTH = 100;
 		private final int CHARACTER_HEIGHT = 100;
@@ -113,16 +112,6 @@ public class LobbyPanel extends JPanel {
 		private int a = 0;
 
 		public Player() {
-			// this.way = way;
-			img2 = new ImageIcon("images/캐릭터1.png").getImage();
-			img3 = new ImageIcon("images/캐릭터2.png").getImage();
-			img4 = new ImageIcon("images/캐릭터3.png").getImage();
-			img5 = new ImageIcon("images/캐릭터4.png").getImage();
-			img6 = new ImageIcon("images/캐릭터5.png").getImage();
-			img7 = new ImageIcon("images/캐릭터6.png").getImage();
-			img8 = new ImageIcon("images/캐릭터7.png").getImage();
-			img9 = new ImageIcon("images/캐릭터8.png").getImage();
-
 			x = 625;
 			y = 380;
 			addKeyListener(new MyKey());
@@ -168,8 +157,6 @@ public class LobbyPanel extends JPanel {
 				}
 
 			}
-
-			System.out.println(way);
 
 		}
 
