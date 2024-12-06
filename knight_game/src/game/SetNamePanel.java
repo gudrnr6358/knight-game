@@ -3,7 +3,6 @@ package game;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -36,7 +35,6 @@ public class SetNamePanel extends JPanel {
 	JLabel name = new JLabel();
 	JTextField textField = new JTextField(10) {
 		protected void paintComponent(Graphics g) {
-			g.setColor(getBackground());
 			g.fillRect(0, 0, getWidth(), getHeight());
 		}
 	};
@@ -44,14 +42,12 @@ public class SetNamePanel extends JPanel {
 	JPanel barConPanel = new JPanel();
 	JPanel bar = new JPanel();
 	JLabel warning = new JLabel("꺄아아악");
-	JPanel popUp = new JPanel();
-	JLabel popUpLabel = new JLabel();
-	JButton popUpBtn1 = new JButton("생성");
-	JButton popUpBtn2 = new JButton("다시입력");
-	JPanel btnPanel = new JPanel();
+
+	JPanel popUp = Function.popUp();
+	JLabel popUpLabel;
 
 	public void paintComponent(Graphics g) {
-		ImageIcon image = new ImageIcon("images/setNameImage.jpg");
+		ImageIcon image = new ImageIcon("images/setNameImage.png");
 		g.drawImage(image.getImage(), 0, 0, this);
 	}
 
@@ -100,29 +96,13 @@ public class SetNamePanel extends JPanel {
 		textArea.setEditable(false);
 		textArea.setHighlighter(null);
 		textArea.setOpaque(false);
+		textArea.addMouseListener(new MyMouseEvent());
 
 		// 텍스트 드래그시 깨지는 것 방지
-		textArea.addMouseMotionListener(new MouseAdapter() {
-			public void mouseDragged(MouseEvent e) {
-				// 이벤트를 소비하는 명령어
-				e.consume();
-				repaint();
-			}
-		});
+		textArea.addMouseMotionListener(new MyMouseEvent());
 
 		textField.setBounds(20, 20, 1, 1);
-		textField.setForeground(Color.WHITE);
-		textField.addKeyListener(new KeyAdapter() {
-			// 텍스트 필드 10으로 길이 제한
-			public void keyTyped(KeyEvent e) {
-				if (textField.getText().length() > 9) {
-					warning.setText("10자 이내로 입력하세요");
-					warning.setVisible(true);
-					e.consume();
-					textField.setFocusable(true);
-				}
-			}
-		});
+
 		// 텍스트 필드에 텍스트 입력시 해당 리스너에서 기록
 		textField.getDocument().addDocumentListener(new MyDocument());
 		textField.addKeyListener(new MyKeyEvent());
@@ -136,29 +116,12 @@ public class SetNamePanel extends JPanel {
 		warning.setBounds(20, 120, 300, 50);
 		warning.setVisible(false);
 
-		popUp.setLayout(new BorderLayout());
-		popUp.setBounds(325, 300, 700, 250);
-		popUp.setBackground(new Color(0, 0, 0, 230));
-		popUp.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3, true));
-		popUp.setVisible(false);
+		popUpLabel = (JLabel) popUp.getComponent(0);
+		JButton popUpBtn1 = (JButton) ((JPanel) popUp.getComponent(1)).getComponent(0);
+		JButton popUpBtn2 = (JButton) ((JPanel) popUp.getComponent(1)).getComponent(1);
 
-		popUpLabel.setForeground(Color.WHITE);
-		popUpLabel.setFont(new Font(popUpLabel.getText(), Font.BOLD, 30));
-		popUpLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		popUpLabel.setVerticalAlignment(SwingConstants.CENTER);
-
-		popUpBtn1.setPreferredSize(new Dimension(350, 50));
-		popUpBtn2.setPreferredSize(new Dimension(350, 50));
 		popUpBtn1.addActionListener(new MyActionEvent());
 		popUpBtn2.addActionListener(new MyActionEvent());
-
-		btnPanel.setLayout(new BorderLayout());
-		btnPanel.setOpaque(false);
-		btnPanel.add(popUpBtn1, BorderLayout.WEST);
-		btnPanel.add(popUpBtn2, BorderLayout.EAST);
-
-		popUp.add(popUpLabel);
-		popUp.add(btnPanel, BorderLayout.SOUTH);
 
 		bar.add(name);
 		bar.add(textArea);
@@ -171,9 +134,11 @@ public class SetNamePanel extends JPanel {
 		addKeyListener(new MyKeyEvent());
 		add(popUp);
 		add(barConPanel);
+
 	}
 
 	class MyMouseEvent extends MouseAdapter {
+
 		public void mousePressed(MouseEvent e) {
 			if (textArea.getText().equals(storyText[0])) {
 				textArea.setText(storyText[1]);
@@ -182,23 +147,34 @@ public class SetNamePanel extends JPanel {
 			textField.setFocusable(true);
 			textField.requestFocus();
 			repaint();
-
 		}
+
+		public void mouseDragged(MouseEvent e) {
+			// 이벤트를 소비하는 명령어
+			e.consume();
+			repaint();
+		}
+
 	}
 
 	class MyKeyEvent extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
+
 			repaint();
 			warning.setVisible(false);
+
+			// 어디선가 목소리가 들려온다 텍스트일때 Enter 누르면 실행
 			if (textArea.getText().equals(storyText[0]) && e.getKeyCode() == 10) {
 				textArea.setText(storyText[1]);
 				bar.add(textField);
-			} else if (textArea.getText().equals(storyText[1]) && e.getKeyCode() == 10
-					&& textField.getText().length() >= 2) {
+
+				// 이름을 입력하세요 텍스트일때 Enter 누르면 실행
+			} else if (e.getKeyCode() == 10 && textField.getText().length() >= 2) {
 				popUp.setVisible(true);
 				popUpLabel.setText('"' + textField.getText() + '"' + "으로 생성하시겠습니까?");
-			} else if (textArea.getText().equals(storyText[1]) && e.getKeyCode() == 10
-					&& textField.getText().length() < 2) {
+
+				// 이름을 입력하세요 텍스트이고 텍스트필드의 텍스트 길이가 2이하인 경우 Enter 눌렀을 때 실행
+			} else if (e.getKeyCode() == 10 && textField.getText().length() < 2) {
 				warning.setText("두 글자 이상 입력하세요");
 				warning.setVisible(true);
 			}
@@ -207,10 +183,20 @@ public class SetNamePanel extends JPanel {
 			textField.requestFocus();
 
 		}
+
+		// 닉네임 10자 이하로 제한
+		public void keyTyped(KeyEvent e) {
+			if (textField.getText().length() > 9) {
+				warning.setText("10자 이내로 입력하세요");
+				warning.setVisible(true);
+				e.consume();
+				textField.setFocusable(true);
+			}
+		}
+
 	}
 
 	class MyDocument implements DocumentListener {
-
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			name.setText("<html><u>" + textField.getText() + "</u></html>\t");
@@ -229,9 +215,9 @@ public class SetNamePanel extends JPanel {
 	}
 
 	class MyActionEvent implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
+
 			JButton btn = (JButton) e.getSource();
 
 			if (btn.getText().equals("생성")) {
@@ -241,7 +227,7 @@ public class SetNamePanel extends JPanel {
 
 				JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
-				HomePanel.fadeout(bgPanel, new LobbyPanel(character), frame);
+				Function.fadeout(bgPanel, new LobbyPanel(character), frame, SetNamePanel.this);
 				remove(popUp);
 				repaint();
 

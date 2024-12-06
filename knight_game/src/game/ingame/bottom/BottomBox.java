@@ -15,7 +15,7 @@ import game.InGamePanel;
 public abstract class BottomBox extends JPanel {
 
 	private static final Integer cornerRadius = 3;
-	public static InGamePanel INGAME;
+	public static InGamePanel inGame;
 
 	// TextLabel 부착 및 Border, Size, Location 제공
 	protected BottomBox() {
@@ -38,5 +38,4 @@ public abstract class BottomBox extends JPanel {
 		g2d.setColor(Color.WHITE);
 		g2d.fillRoundRect(0, 0, getWidth(), getHeight(), cornerRadius, cornerRadius);
 	}
-
 }

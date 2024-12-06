@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -15,7 +17,8 @@ public abstract class InGameImageUnit extends JLabel {
 
 	protected InGameImageUnit(ImageUnit i) {
 		super(i.getUnitImage());
-		setSize(340, 340);
+		setSize(400, 400);
+		setLayout(null);
 	}
 
 	@Override
@@ -26,8 +29,22 @@ public abstract class InGameImageUnit extends JLabel {
 		g2.dispose();
 	}
 
-	// 공격 당했을 때 깜빡이는 이펙트 출력
-	public void attackedEffect() {
+	private JLabel setEffectImage(Boolean useSkill) {
+		// 스킬 사용 시, 스킬 이펙트 이미지 담은 JLabel 생성해서 return
+		if (useSkill) {
+			return new JLabel(new ImageIcon("images/ingame/attack_effect/skill.png"));
+		}
+		return new JLabel(new ImageIcon("images/ingame/attack_effect/attack.png"));
+	}
+
+	// 공격 당했을 때 깜빡이는 이펙트 및 타격 이미지 출력
+	public void attackedEffect(Boolean useSkill) {
+
+		JLabel effect = setEffectImage(useSkill);
+		effect.setBounds(100, 100, 200, 200);
+		effect.setVisible(true);
+		add(effect); 
+
 		Timer timer = new Timer(15, new ActionListener() {
 			private int count = 0;
 			private boolean isFadingOut = true;
@@ -53,6 +70,7 @@ public abstract class InGameImageUnit extends JLabel {
 				if (count >= 2) { // 2번 깜빡임
 					((Timer) e.getSource()).stop();
 					alpha = 1f; // 원래 투명도로 복원
+					effect.setVisible(false);
 					repaint();
 				}
 			}

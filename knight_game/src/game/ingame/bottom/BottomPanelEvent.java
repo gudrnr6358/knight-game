@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import game.HomePanel;
+import game.Function;
 import game.InGamePanel;
 import game.LobbyPanel;
 
@@ -18,6 +18,13 @@ public class BottomPanelEvent {
 	private static Integer textPanelCount = 0;
 	private final ImageIcon ATTACK_BUTTON_IMAGE = BattlePanel.ATTACK_BUTTON_IMAGE;
 	private final ImageIcon SKILL_BUTTON_IMAGE = BattlePanel.SKILL_BUTTON_IMAGE;
+	private final ImageIcon FIGHT_BUTTON_IMAGE = BasicPanel.FIGHT_BUTTON_IMAGE;
+	private final ImageIcon RUN_BUTTON_IMAGE = BasicPanel.RUN_BUTTON_IMAGE;
+	private final ImageIcon CRITICAL_ATTACK_BUTTON_IMAGE = BattleSkillPanel.CRITICAL_ATTACK_BUTTON_IMAGE;
+	private final ImageIcon DOUBLE_ATTACK_BUTTON_IMAGE = BattleSkillPanel.DOUBLE_ATTACK_BUTTON_IMAGE;
+	private final ImageIcon HEAVENLY_STRIKE_BUTTON_IMAGE = BattleSkillPanel.HEAVENLY_STRIKE_BUTTON_IMAGE;
+
+	private boolean fadeoutCalled = false;
 
 	public BottomPanelEvent() {
 		super();
@@ -34,16 +41,20 @@ public class BottomPanelEvent {
 				JButton src = (JButton) e.getSource();
 				JFrame frame = (JFrame) src.getTopLevelAncestor();
 
-				if (src.getText().equals("싸운다")) {
+				if (src.getIcon() != null && src.getIcon().equals(FIGHT_BUTTON_IMAGE)) {
 					bottomPanel.setBottomBoxPanel(new BattlePanel());
 					TextLabel.textLabel.setTextLabel("");
 					return;
 				}
 
-				if (src.getText().equals("도망친다")) {
+				// 사용 예
+				if (src.getIcon() != null && src.getIcon().equals(RUN_BUTTON_IMAGE)) {
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
-					HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
+							(JPanel) src.getParent().getParent());
+					inGame.setEnabled(false);
+
 					return;
 				}
 
@@ -60,7 +71,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("크리티컬 어택")) {
+				if (src.getIcon() != null && src.getIcon().equals(CRITICAL_ATTACK_BUTTON_IMAGE)) {
 					if (!inGame.character.canUseCriticalAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
@@ -72,7 +83,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("더블 어택")) {
+				if (src.getIcon() != null && src.getIcon().equals(DOUBLE_ATTACK_BUTTON_IMAGE)) {
 					if (!inGame.character.canUseDoubleAttack()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
@@ -84,7 +95,7 @@ public class BottomPanelEvent {
 					return;
 				}
 
-				if (src.getText().equals("천상의 일격")) {
+				if (src.getIcon() != null && src.getIcon().equals(HEAVENLY_STRIKE_BUTTON_IMAGE)) {
 					if (!inGame.character.canUseHeavenlyStrike()) {
 						TextLabel.textLabel.setTextLabel("스킬 사용 가능 횟수를 초과했습니다.");
 						return;
@@ -125,11 +136,28 @@ public class BottomPanelEvent {
 						bottomPanel.setBottomBoxPanel(new BattleEndPanel());
 						if (inGame.monsters.length == inGame.count) {
 							str = " 스테이지 클리어!";
+							if (inGame.stage == "stage1") {
+								inGame.character.setStage(0, true);
+							} else if (inGame.stage == "stage2") {
+								inGame.character.setStage(1, true);
+							} else if (inGame.stage == "stage3") {
+								inGame.character.setStage(2, true);
+							} else if (inGame.stage == "stage4") {
+								inGame.character.setStage(3, true);
+							} else if (inGame.stage == "stage5") {
+								inGame.character.setStage(4, true);
+							} else if (inGame.stage == "stage6") {
+								inGame.character.setStage(5, true);
+							}
+						}
+						// 최대 레벨에서 몬스터 처치시의 텍스트
+						if (inGame.character.getLevel() == inGame.character.getEXPArrayLength()) {
+							TextLabel.textLabel.setTextLabel(inGame.monster.getName() + " 처치! 최대 레벨입니다!");
+							return;
 						}
 						inGame.character.plusEXP(inGame.monster.getEXP());
-						TextLabel.textLabel.setTextLabel(inGame.monster.getName() + " 처치 " + inGame.monster.getEXP()
-								+ "의 경험치 획득!    " + "Lv" + inGame.character.getLevel() + " ("
-								+ inGame.character.getExp() + "/" + inGame.character.getLevelExp() + ") " + str);
+						TextLabel.textLabel.setTextLabel(
+								inGame.monster.getName() + " 처치! " + inGame.monster.getEXP() + "의 경험치 획득!");
 						return;
 					}
 
@@ -151,10 +179,12 @@ public class BottomPanelEvent {
 				// BattleEndPanel 클릭
 				if (src.getClass().equals(BattleEndPanel.class)) {
 					// 캐릭터 사망시
-					if (!inGame.character.isAlive()) {
+					if (!inGame.character.isAlive() && !fadeoutCalled) {
+						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
+								(JPanel) src.getParent().getParent());
 						return;
 					}
 
@@ -163,11 +193,14 @@ public class BottomPanelEvent {
 						inGame.setPanel();
 						return;
 					}
+
 					// 다음 몬스터가 없을 때
-					if (!inGame.setMonster()) {
+					if (!inGame.setMonster() && !fadeoutCalled) {
+						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						HomePanel.fadeout(bgPanel, new LobbyPanel(inGame.character), frame);
+						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
+								(JPanel) src.getParent().getParent());
 						return;
 					}
 				}

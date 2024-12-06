@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class WarriorSkeleton extends Skeleton {
 
 	public WarriorSkeleton() {
-		super("전사 스켈레톤", 70, 40);
+		super("전사 스켈레톤", 80, 35);
 		// TODO Auto-generated constructor stub
 	}
 

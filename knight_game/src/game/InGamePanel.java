@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import game.ingame.bottom.BasicPanel;
@@ -24,26 +26,29 @@ public class InGamePanel extends JPanel {
 	public Monster[] monsters;
 	public Monster monster;
 	public Integer count = 0;
+	private JLabel backgroundImageLabel;
 	private Image backgroundImage;
 	private JPanel bgPanel = new JPanel();
 	private InGameImageUnit inGameImageCharacter;
 	private InGameImageUnit inGameImageMonster;
+	public String stage;
 
 	// 첫 생성 시에는 멤버 초기화, setPanel 호출해서 기본 틀 생성
-	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage) {
+	public InGamePanel(Character character, Monster[] monsters, Image backgroundImage, String stage) {
 		super();
+		this.stage = stage;
 		this.character = character;
 		this.monsters = monsters;
 		this.monster = monsters[count++];
 		this.backgroundImage = backgroundImage;
+		backgroundImageLabel = new JLabel(new ImageIcon(this.backgroundImage));
 		character.setSkillCount();
-
 		setLayout(null);
 		setPanel();
 		setBounds(0, 0, 1366, 900);
 		// BottomPanelEvent, BottomBox character, monster 정보 공유
 		BottomPanelEvent.inGame = InGamePanel.this;
-		BottomBox.INGAME = this;
+		BottomBox.inGame = this;
 	}
 
 	// 이전 Panel 제거하고 Panel 부착
@@ -93,12 +98,14 @@ public class InGamePanel extends JPanel {
 		return false;
 	}
 
+	// 캐릭터가 공격 당했을 때
 	public void characterAttackedEffect() {
-		inGameImageCharacter.attackedEffect();
+		inGameImageCharacter.attackedEffect(monster.useSkill);
 	}
 
+	// 몬스터가 공격 당했을 때
 	public void monsterAttackedEffect() {
-		inGameImageMonster.attackedEffect();
+		inGameImageMonster.attackedEffect(character.useSkill);
 	}
 
 	// 생성자 사용해서 기본 틀 제공 및 StatusBar, Image 부착하는 메서드 호출

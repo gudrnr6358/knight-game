@@ -1,6 +1,12 @@
 package game.ingame.bottom;
 
+import javax.swing.ImageIcon;
+
 public class BasicPanel extends BottomBox {
+	public static final ImageIcon FIGHT_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/basicpanel/fight.png");
+	public static final ImageIcon RUN_BUTTON_IMAGE = new ImageIcon(
+			"images/ingame/button/basicpanel/run.png");
 
 	// 크기, 위치 설정 및 버튼 부착
 	public BasicPanel() {
@@ -11,8 +17,8 @@ public class BasicPanel extends BottomBox {
 	private class FightButton extends BasicPanelButton {
 
 		private FightButton() {
-			super("싸운다");
-			setLocation(60, 100);
+			super(FIGHT_BUTTON_IMAGE);
+			setLocation(295, 90);
 		}
 
 	}
@@ -20,8 +26,8 @@ public class BasicPanel extends BottomBox {
 	private class RunButton extends BasicPanelButton {
 
 		private RunButton() {
-			super("도망친다");
-			setLocation(60, 210);
+			super(RUN_BUTTON_IMAGE);
+			setLocation(795, 90);
 		}
 
 	}

@@ -33,12 +33,12 @@ public class BattleEndPanel extends BottomBox {
 		private NextPageInfoLabel setString() {
 
 			// 캐릭터 사망
-			if (!INGAME.character.isAlive()) {
+			if (!inGame.character.isAlive()) {
 				setText("클릭 시 로비로 돌아갑니다");
 				return this;
 			}
 			// 마지막 몬스터 처치
-			if (!INGAME.monsters[INGAME.monsters.length - 1].isAlive()) {
+			if (!inGame.monsters[inGame.monsters.length - 1].isAlive()) {
 				setText("클릭 시 로비로 돌아갑니다");
 				return this;
 			}

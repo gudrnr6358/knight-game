@@ -5,23 +5,28 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class HomePanel extends JPanel {
 	List btns = new ArrayList<>();
 	JPanel bgPanel = new JPanel();
+	ImageIcon image1 = new ImageIcon("images/홈패널/시작하기.png");
+	ImageIcon image2 = new ImageIcon("images/홈패널/불러오기.png");
+	ImageIcon image3 = new ImageIcon("images/홈패널/종료.png");
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		// g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.05f));
-		ImageIcon image = new ImageIcon("images/main1.jpg");
+		ImageIcon image = new ImageIcon("images/홈패널/main1.jpg");
 		g.drawImage(image.getImage(), 0, 0, this);
 
 	}
@@ -49,16 +54,19 @@ public class HomePanel extends JPanel {
 
 	public List getButtonList() {
 
-		JButton startBtn = new JButton("게임시작");
+		JButton startBtn = new JButton("게임시작", image1);
 		startBtn.addActionListener(new MyEvent());
-		JButton loadBtn = new JButton("불러오기");
-		loadBtn.addActionListener(new MyEvent());
-		JButton exitBtn = new JButton("종료");
-		exitBtn.addActionListener(new MyEvent());
+		startBtn.addMouseListener(new MyMouseEvent());
 
-		startBtn.setBounds(100, 100, 70, 50);
-		// btn2.setBounds(140, 100, 50, 50);
-		// btn3.setBounds(180, 100, 50, 50);
+		JButton loadBtn = new JButton("불러오기", image2);
+		loadBtn.addActionListener(new MyEvent());
+		loadBtn.addMouseListener(new MyMouseEvent());
+
+		JButton exitBtn = new JButton("종료", image3);
+		exitBtn.addActionListener(new MyEvent());
+		exitBtn.addMouseListener(new MyMouseEvent());
+
+		JButton a = new JButton();
 
 		btns.add(startBtn);
 		btns.add(loadBtn);
@@ -69,6 +77,8 @@ public class HomePanel extends JPanel {
 		add(exitBtn);
 
 		startBtn.setBorderPainted(false);
+		loadBtn.setBorderPainted(false);
+		exitBtn.setBorderPainted(false);
 		return btns;
 	}
 
@@ -78,13 +88,14 @@ public class HomePanel extends JPanel {
 	}
 
 	class MyEvent implements ActionListener {
+
 		public void actionPerformed(ActionEvent e) {
 			JButton btn = (JButton) e.getSource();
 			String btnText = btn.getText();
 			JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
 			if (btnText.equals("게임시작")) {
-				fadeout(bgPanel, new SetNamePanel(), frame);
+				Function.fadeout(bgPanel, new SetNamePanel(), frame, HomePanel.this);
 				remove((JButton) btns.get(0));
 				remove((JButton) btns.get(1));
 				remove((JButton) btns.get(2));
@@ -95,37 +106,26 @@ public class HomePanel extends JPanel {
 				remove((JButton) btns.get(2));
 				repaint();
 				Character character = GameLoad.loadCharacter("saveData.dat");
-				fadeout(bgPanel, new LobbyPanel(character), frame);
+				Function.fadeout(bgPanel, new LobbyPanel(character), frame, HomePanel.this);
 			} else {
 				System.exit(0);
 			}
 		}
 	}
 
-	public static void fadeout(JPanel bgPanel, JPanel panel, JFrame frame) {
-		Timer timer;
-		bgPanel.setSize(1366, 899);
-		bgPanel.setBackground(new Color(0, 0, 0, 0));
+	class MyMouseEvent extends MouseAdapter {
 
-		timer = new Timer(20, new ActionListener() {
-			int b = 0;
+		public void mouseEntered(MouseEvent e) {
+			JButton btn = (JButton) e.getSource();
+			btn.setBorderPainted(true);
+			btn.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 224), 3, true));
 
-			public void actionPerformed(ActionEvent e) {
-				bgPanel.setBackground(new Color(0, 0, 0, b));
-				b += 5;
-				if (b > 255) {
-					frame.getContentPane().removeAll();
-					((Timer) e.getSource()).stop();
-					b = 255;
-					frame.add(panel);
-					frame.revalidate();
-					frame.repaint();
-				}
-				frame.repaint();
-			}
-		});
+		}
 
-		timer.start();
+		public void mouseExited(MouseEvent e) {
+			JButton btn = (JButton) e.getSource();
+			btn.setBorderPainted(false);
+		}
+
 	}
-
 }

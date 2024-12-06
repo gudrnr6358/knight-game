@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class BabyDragon extends Dragon {
 
 	public BabyDragon() {
-		super("아기 용", 30, 17);
+		super("아기 용", 40, 17);
 	}
 
 	@Override

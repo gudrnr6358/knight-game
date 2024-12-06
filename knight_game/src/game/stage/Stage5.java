@@ -1,15 +1,15 @@
 package game.stage;
 
-import game.monster.slime.BossSlime;
-import game.monster.dragon.AncientDragon;
-import game.monster.skeleton.SkeletonHorde;
 import game.monster.Monster;
+import game.monster.dragon.dark.DarkAncientDragon;
+import game.monster.skeleton.dark.DarkSkeletonHorde;
+import game.monster.slime.dark.DarkBossSlime;
 
 public class Stage5 {
 	private Monster[] monsters;
 
 	public Stage5() {
-		monsters = new Monster[] { new BossSlime(), new AncientDragon(), new SkeletonHorde() };
+		monsters = new Monster[] { new DarkBossSlime(), new DarkAncientDragon(), new DarkSkeletonHorde() };
 	}
 
 	public Monster[] getMonsters() {
