@@ -26,7 +26,7 @@ public class Chapter1Panel extends JPanel {
 	private JLabel stage1Btn = new JLabel(new ImageIcon("images/스테이지/스테이지1.png"));
 	private JLabel stage2Btn = new JLabel(new ImageIcon("images/스테이지/스테이지2.png"));
 	private JLabel stage3Btn = new JLabel(new ImageIcon("images/스테이지/스테이지3.png"));
-	private JButton returnBtn = new JButton(new ImageIcon("images/돌아가기.png"));
+	private JLabel returnBtn = new JLabel(new ImageIcon("images/돌아가기.png"));
 
 	public Chapter1Panel(Character character) {
 		add(bgPanel);
@@ -77,7 +77,8 @@ public class Chapter1Panel extends JPanel {
 				Function.fadeout(bgPanel,
 						new InGamePanel(character, new Stage3().getMonsters(), backgroundImage, "stage3"), frame,
 						Chapter1Panel.this);
-
+			} else {
+				Function.fadeout(bgPanel, new ChapterPanel(character), frame, Chapter1Panel.this);
 			}
 		}
 

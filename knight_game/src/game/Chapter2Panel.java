@@ -23,16 +23,14 @@ public class Chapter2Panel extends JPanel {
 	JPanel bgPanel = new JPanel();
 	Character character;
 	private Image backgroundImage = new ImageIcon("images/스테이지/Stage2Background.png").getImage();
-	private JButton returnBtn = new JButton(new ImageIcon("images/돌아가기.png"));
 	private JLabel stage1Btn = new JLabel(new ImageIcon("images/스테이지/스테이지1.png"));
 	private JLabel stage2Btn = new JLabel(new ImageIcon("images/스테이지/스테이지2.png"));
 	private JLabel stage3Btn = new JLabel(new ImageIcon("images/스테이지/스테이지3.png"));
+	private JLabel returnBtn = new JLabel(new ImageIcon("images/돌아가기.png"));
 
 	public Chapter2Panel(Character character) {
 		add(bgPanel);
 		this.character = character;
-
-		
 
 		setLayout(null);
 		setBounds(0, 0, 1366, 900);
@@ -78,7 +76,8 @@ public class Chapter2Panel extends JPanel {
 				Function.fadeout(bgPanel,
 						new InGamePanel(character, new Stage6().getMonsters(), backgroundImage, "stage6"), frame,
 						Chapter2Panel.this);
-
+			} else {
+				Function.fadeout(bgPanel, new ChapterPanel(character), frame, Chapter2Panel.this);
 			}
 		}
 
