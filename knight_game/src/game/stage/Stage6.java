@@ -1,16 +1,12 @@
 package game.stage;
 
-import game.monster.boss.Boss;
 import game.monster.Monster;
+import game.monster.boss.Boss;
 
-public class Stage6 {
-	private Monster[] monsters;
+public class Stage6 extends Stage {
 
 	public Stage6() {
 		monsters = new Monster[] { new Boss() };
 	}
 
-	public Monster[] getMonsters() {
-		return monsters;
-	}
 }
