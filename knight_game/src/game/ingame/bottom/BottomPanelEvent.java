@@ -51,8 +51,7 @@ public class BottomPanelEvent {
 				if (src.getIcon() != null && src.getIcon().equals(RUN_BUTTON_IMAGE)) {
 					JPanel a = (JPanel) src.getParent().getParent().getParent();
 					JPanel bgPanel = (JPanel) a.getComponent(0);
-					Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
-							(JPanel) src.getParent().getParent());
+					Function.FADE_OUT(new LobbyPanel(inGame.character), frame, (JPanel) src.getParent().getParent());
 					inGame.setEnabled(false);
 
 					return;
@@ -183,8 +182,7 @@ public class BottomPanelEvent {
 						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
-								(JPanel) src.getParent().getParent());
+						Function.FADE_OUT(new LobbyPanel(inGame.character), frame, (JPanel) src.getParent().getParent());
 						return;
 					}
 
@@ -199,8 +197,7 @@ public class BottomPanelEvent {
 						fadeoutCalled = true; // 플래그 설정
 						JPanel a = (JPanel) src.getParent().getParent();
 						JPanel bgPanel = (JPanel) a.getComponent(0);
-						Function.fadeout(bgPanel, new LobbyPanel(inGame.character), frame,
-								(JPanel) src.getParent().getParent());
+						Function.FADE_OUT(new LobbyPanel(inGame.character), frame, (JPanel) src.getParent().getParent());
 						return;
 					}
 				}

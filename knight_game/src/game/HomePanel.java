@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 
 public class HomePanel extends JPanel {
 	List btns = new ArrayList<>();
-	JPanel bgPanel = new JPanel();
 	ImageIcon image1 = new ImageIcon("images/홈패널/시작하기.png");
 	ImageIcon image2 = new ImageIcon("images/홈패널/불러오기.png");
 	ImageIcon image3 = new ImageIcon("images/홈패널/종료.png");
@@ -33,7 +32,6 @@ public class HomePanel extends JPanel {
 
 	public HomePanel() {
 
-		add(bgPanel);
 		// image = new ImageIcon("img/main1.jpg");
 		setLayout(null);
 
@@ -95,7 +93,7 @@ public class HomePanel extends JPanel {
 			JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
 			if (btnText.equals("게임시작")) {
-				Function.fadeout(bgPanel, new SetNamePanel(), frame, HomePanel.this);
+				Function.FADE_OUT(new SetNamePanel(), frame, HomePanel.this);
 				remove((JButton) btns.get(0));
 				remove((JButton) btns.get(1));
 				remove((JButton) btns.get(2));
@@ -106,7 +104,7 @@ public class HomePanel extends JPanel {
 				remove((JButton) btns.get(2));
 				repaint();
 				Character character = GameLoad.loadCharacter("saveData.dat");
-				Function.fadeout(bgPanel, new LobbyPanel(character), frame, HomePanel.this);
+				Function.FADE_OUT(new LobbyPanel(character), frame, HomePanel.this);
 			} else {
 				System.exit(0);
 			}
