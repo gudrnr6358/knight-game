@@ -24,22 +24,25 @@ public class Function {
 	private static int fadeoutCount = 0;
 
 	// 페이드 아웃
-	public static void fadeout(JPanel bgPanel, JPanel panel, JFrame frame, JPanel p) {
+	// 다음 패널, 프레임, 기존 패널
+	public final static void FADE_OUT(JPanel nextPanel, JFrame frame, JPanel existingPanel) {
 		Timer timer;
+		// 기존 패널에 bgPanel 추가해서 페이드 아웃 효과 추가 
+		JPanel bgPanel = new JPanel();
 		bgPanel.setSize(1366, 899);
 		bgPanel.setBackground(new Color(0, 0, 0, 0));
+		existingPanel.add(bgPanel);
+
 		frame.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				super.mouseClicked(e);
 				e.consume();
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
 				super.mousePressed(e);
 				e.consume();
 			}
@@ -48,6 +51,7 @@ public class Function {
 
 		timer = new Timer(20, new ActionListener() {
 			int b = 0;
+
 			public void actionPerformed(ActionEvent e) {
 				fadeoutCount = 1;
 				bgPanel.setBackground(new Color(0, 0, 0, b));
@@ -56,7 +60,7 @@ public class Function {
 					frame.getContentPane().removeAll();
 					((Timer) e.getSource()).stop();
 					b = 255;
-					frame.add(panel);
+					frame.add(nextPanel);
 					frame.revalidate();
 					frame.repaint();
 					fadeoutCount = 0;
@@ -64,12 +68,12 @@ public class Function {
 				frame.repaint();
 			}
 		});
+		// 한번만 적용되게하는 if 문
 		if (fadeoutCount == 0) {
 			timer.start();
-			removeAllMouseListeners(p);
+			removeAllMouseListeners(existingPanel);
 		}
 	}
-	
 
 	public static void removeAllMouseListeners(Component component) {
 		if (component instanceof JPanel) {

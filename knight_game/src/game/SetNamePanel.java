@@ -38,7 +38,6 @@ public class SetNamePanel extends JPanel {
 			g.fillRect(0, 0, getWidth(), getHeight());
 		}
 	};
-	JPanel bgPanel = new JPanel();
 	JPanel barConPanel = new JPanel();
 	JPanel bar = new JPanel();
 	JLabel warning = new JLabel("꺄아아악");
@@ -53,7 +52,6 @@ public class SetNamePanel extends JPanel {
 
 	public SetNamePanel() {
 		setLayout(null);
-		add(bgPanel);
 
 		// paintComponent로 namePanel 둥글게 처리
 		JPanel namePanel = new JPanel() {
@@ -227,7 +225,7 @@ public class SetNamePanel extends JPanel {
 
 				JFrame frame = (JFrame) btn.getTopLevelAncestor();
 
-				Function.fadeout(bgPanel, new LobbyPanel(character), frame, SetNamePanel.this);
+				Function.FADE_OUT(new LobbyPanel(character), frame, SetNamePanel.this);
 				remove(popUp);
 				repaint();
 

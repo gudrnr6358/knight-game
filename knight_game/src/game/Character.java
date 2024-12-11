@@ -107,7 +107,7 @@ public class Character extends AbstractCombatant implements ImageUnit, Serializa
 	}
 
 	public Integer getExp() {
-		if (level > EXP.length) {
+		if (level >= EXP.length) {
 			return 0;
 		}
 		return exp;

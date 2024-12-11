@@ -3,14 +3,11 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,14 +19,12 @@ import game.stage.Stage3;
 public class Chapter1Panel extends JPanel {
 	private Image backgroundImage = new ImageIcon("images/스테이지/Stage1Background.png").getImage();
 	private Character character;
-	JPanel bgPanel = new JPanel();
 	private JLabel stage1Btn = new JLabel(new ImageIcon("images/스테이지/스테이지1.png"));
 	private JLabel stage2Btn = new JLabel(new ImageIcon("images/스테이지/스테이지2.png"));
 	private JLabel stage3Btn = new JLabel(new ImageIcon("images/스테이지/스테이지3.png"));
 	private JLabel returnBtn = new JLabel(new ImageIcon("images/돌아가기.png"));
 
 	public Chapter1Panel(Character character) {
-		add(bgPanel);
 		this.character = character;
 
 		setLayout(null);
@@ -66,19 +61,16 @@ public class Chapter1Panel extends JPanel {
 			JLabel label = (JLabel) e.getSource();
 			JFrame frame = (JFrame) label.getTopLevelAncestor();
 			if (label.getName() == "stage1") {
-				Function.fadeout(bgPanel,
-						new InGamePanel(character, new Stage1().getMonsters(), backgroundImage, "stage1"), frame,
-						Chapter1Panel.this);
+				Function.FADE_OUT(new InGamePanel(character, new Stage1().getMonsters(), backgroundImage, "stage1"),
+						frame, Chapter1Panel.this);
 			} else if (label.getName() == "stage2") {
-				Function.fadeout(bgPanel,
-						new InGamePanel(character, new Stage2().getMonsters(), backgroundImage, "stage2"), frame,
-						Chapter1Panel.this);
+				Function.FADE_OUT(new InGamePanel(character, new Stage2().getMonsters(), backgroundImage, "stage2"),
+						frame, Chapter1Panel.this);
 			} else if (label.getName() == "stage3") {
-				Function.fadeout(bgPanel,
-						new InGamePanel(character, new Stage3().getMonsters(), backgroundImage, "stage3"), frame,
-						Chapter1Panel.this);
+				Function.FADE_OUT(new InGamePanel(character, new Stage3().getMonsters(), backgroundImage, "stage3"),
+						frame, Chapter1Panel.this);
 			} else {
-				Function.fadeout(bgPanel, new ChapterPanel(character), frame, Chapter1Panel.this);
+				Function.FADE_OUT(new ChapterPanel(character), frame, Chapter1Panel.this);
 			}
 		}
 

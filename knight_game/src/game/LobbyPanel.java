@@ -20,7 +20,6 @@ import game.ingame.top.statuspanel.CharacterStatusPanel;
 public class LobbyPanel extends JPanel {
 	int count = 0;
 	Character character;
-	JPanel bgPanel = new JPanel();
 	JLayeredPane layeredPane = new JLayeredPane();
 	Player la = new Player();
 	ImageIcon saveBtn = new ImageIcon("images/popup/저장.png");
@@ -45,7 +44,6 @@ public class LobbyPanel extends JPanel {
 		characterStatusPanel = new CharacterStatusPanel(character);
 		this.character = character;
 
-		add(bgPanel);
 		characterStatusPanel.setLocation(20, 20);
 		add(characterStatusPanel);
 
@@ -213,7 +211,7 @@ public class LobbyPanel extends JPanel {
 					}
 					layeredPane.remove(la);
 					layeredPane.repaint();
-					Function.fadeout(bgPanel, new LobbyPanel(character), frame, LobbyPanel.this);
+					Function.FADE_OUT(new LobbyPanel(character), frame, LobbyPanel.this);
 				}
 				if (x >= 560 && x <= 700 && y >= 0 && y <= 50) {
 					popUpLabel.setText("저장하시겠습니까?");
@@ -224,7 +222,7 @@ public class LobbyPanel extends JPanel {
 					popUp.setVisible(false);
 				}
 				if (x >= FRAME_WIDTH - 40 && x <= FRAME_WIDTH + 100 && y >= 320 && y <= 470) {
-					Function.fadeout(bgPanel, new ChapterPanel(character), frame, LobbyPanel.this);
+					Function.FADE_OUT(new ChapterPanel(character), frame, LobbyPanel.this);
 					layeredPane.remove(la);
 					layeredPane.repaint();
 				}
@@ -277,7 +275,7 @@ public class LobbyPanel extends JPanel {
 
 			} else if (btn.getText().equals("종료")) {
 
-				Function.fadeout(bgPanel, new HomePanel(), frame, LobbyPanel.this);
+				Function.FADE_OUT(new HomePanel(), frame, LobbyPanel.this);
 				layeredPane.remove(la);
 				layeredPane.repaint();
 				remove(popUp);
